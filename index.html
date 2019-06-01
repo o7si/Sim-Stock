@@ -1,10 +1,66 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<title>Hello World</title>
+<html lang="zh">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Sims-stock</title>
 	</head>
+	<link rel="stylesheet" type="text/css" href="css/index.css" media=" (min-width: 640px)" />
+	<link rel="stylesheet" type="text/css" href="css/indexPhone.css" media=" (max-width: 639px)" />
 	<body>
-		<p>Hello World</p>
+		<div class="phoneScreen"></div>
+		<div class="myNav">
+			<div class="navSign">
+				<a id="navSign">登录丨注册</a>
+			</div>
+			<div class="navLogo">
+				<h2>Sim - Stock</h2>
+			</div>
+		</div>
+		<div class="backScreen">
+			<div class="titleScreen">
+				<h2>Sim-Stock </h2>
+				<h3>股票模拟网站</h3>
+				<P>XCH和shayuanshayuan联手打造</P>
+				<p>专为所有股票爱好者们所研发的真实股票模拟软件</p>
+			</div>
+		</div>
+		<div class="footer">
+			<div>
+				<a href="###">© xxxx-xxxx Sims-stock 版权所有 | 京ICP备xxxxxxxx号-x</a>
+			</div>
+			<div><a href="###">联系我们 | 常见问题</a></div>
+		</div>
+		<div class="signScreen" id="signScreen">
+			<div class="alterSign" id="alterSign">
+				<div class="alterLogo" id="alterLogo"></div>
+				<div class="exitSign" id="exitSign">
+					<img src="img/exit.png" width="30px" height="30px">
+				</div>
+				<form id="loginForm">
+					<input id="User" type="text" placeholder="用户名或邮箱" autocomplete="off" onFocus="Userfocus();" onBlur="Userblur();"><br>
+					<input id="passWord" type="password" placeholder="密码"><br>
+					<input id="signIn" type='submit' value="登录">
+					<a href="###" id="lostPassword">忘记密码</a>
+					<a href="###" class="registerButton" id="registerButton">注册</a>
+				</form>
+
+				<form id="registerForm">
+					<input id="registerUser" type="text" placeholder="请输入用户名" autocomplete="off"><br>
+					<div id="userImg" class="userImg"><img src="img/userTrue.png" alt="正确" width="40" height="40"></div>
+					<div id="userTip" class="userTip"></div>
+					<input id="registerpassWord" type="password" placeholder="请输入密码"><br>
+					<div id="registerpassWordImg" class="registerpassWordImg"><img src="img/userTrue.png" alt="正确" width="40" height="40"></div>
+					<div id="registerpassWordTip" class="registerpassWordTip"></div>
+					<input id="repassWord" type="password" placeholder="请重复密码"><br>
+					<div id="repassWordImg" class="repassWordImg"><img src="img/userTrue.png" alt="正确" width="40" height="40"></div>
+					<div id="repassWordTip" class="repassWordTip"></div>
+					<input id="registerIn" type='submit' value="注册">
+					<a href="###" class="signButton" id="signButton">登录</a>
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/index.js">
+		</script>
 	</body>
 </html>
