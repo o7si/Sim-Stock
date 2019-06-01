@@ -1,2 +1,0 @@
-# Sim-Stock
-text
