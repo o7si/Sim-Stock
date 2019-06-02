@@ -7,6 +7,7 @@
 	</head>
 	<link rel="stylesheet" type="text/css" href="css/index.css" media=" (min-width: 640px)" />
 	<link rel="stylesheet" type="text/css" href="css/indexPhone.css" media=" (max-width: 639px)" />
+	<script src="js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
 	<body>
 		<div class="phoneScreen"></div>
 		<div class="myNav">
@@ -38,22 +39,38 @@
 					<img src="img/exit.png" width="30px" height="30px">
 				</div>
 				<form id="loginForm">
-					<input id="User" type="text" placeholder="用户名或邮箱" autocomplete="off" onFocus="Userfocus();" onBlur="Userblur();"><br>
-					<input id="passWord" type="password" placeholder="密码"><br>
+					<input id="userName" type="text" placeholder="用户名或邮箱" maxlength="18" autocomplete="off"><br>
+					<input id="passWord" type="password" placeholder="密码" maxlength="16"><br>
 					<input id="signIn" type='submit' value="登录">
 					<a href="###" id="lostPassword">忘记密码</a>
 					<a href="###" class="registerButton" id="registerButton">注册</a>
 				</form>
 
 				<form id="registerForm">
-					<input id="registerUser" type="text" placeholder="请输入用户名" autocomplete="off"><br>
-					<div id="userImg" class="userImg"><img src="img/userTrue.png" alt="正确" width="40" height="40"></div>
+					<input id="registerUser" type="text" placeholder="请输入用户名" maxlength="18" autocomplete="off"  onFocus="userfocus();" onBlur="userblur();"><br>
+					
+					<div id="userImg" class="userImg">
+						<!-- 临时标记，用来动态输入判断标记 -->
+					</div>
+					
 					<div id="userTip" class="userTip"></div>
-					<input id="registerpassWord" type="password" placeholder="请输入密码"><br>
-					<div id="registerpassWordImg" class="registerpassWordImg"><img src="img/userTrue.png" alt="正确" width="40" height="40"></div>
+					<input id="registerpassWord" type="password" maxlength="16" placeholder="请输入密码" onFocus="pswfocus();" onBlur="pswblur();"><br>
+					
+					<div id="note1">包含大小写字符</div>
+					<div id="note2">包含至少一个数字或者特殊符号</div>
+					<div id="note3">长度至少8位</div>
+					
+					<div id="registerpassWordImg" class="registerpassWordImg">
+						<!-- 临时标记，用来动态输入判断标记 -->
+					</div>
+					
 					<div id="registerpassWordTip" class="registerpassWordTip"></div>
-					<input id="repassWord" type="password" placeholder="请重复密码"><br>
-					<div id="repassWordImg" class="repassWordImg"><img src="img/userTrue.png" alt="正确" width="40" height="40"></div>
+					<input id="repassWord" type="password" maxlength="16" placeholder="请重复密码" onFocus="repswfocus();" onBlur="repswblur();"><br>
+					
+					<div id="repassWordImg" class="repassWordImg">
+						<!-- 临时标记，用来动态输入判断标记 -->
+					</div>
+					
 					<div id="repassWordTip" class="repassWordTip"></div>
 					<input id="registerIn" type='submit' value="注册">
 					<a href="###" class="signButton" id="signButton">登录</a>
