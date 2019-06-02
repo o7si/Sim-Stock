@@ -20,7 +20,10 @@ function hiddensign() {
 		signscreen.style.display = 'none';
 		loginform.reset();
 		resigiterform.reset();
-
+		deleteregisterimg();
+		deleteregisterusertip();
+		deleteregisterpswtip();
+		deleteregisterrepswtip();
 	}
 }
 // 隐藏注册显示登陆
@@ -38,6 +41,10 @@ function resigiterlogin() {
 		loginform.style.display = 'block';
 		resigiterform.style.display = 'none';
 		resigiterform.reset();
+		deleteregisterimg();
+		deleteregisterusertip();
+		deleteregisterpswtip();
+		deleteregisterrepswtip();
 	}
 }
 
@@ -56,19 +63,28 @@ function userblur() {
 // 判断用户名是否合法
 function usercheck() {
 	var checkusername = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
-	var reg = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]"); 
+	var reg = new RegExp("[^[A-Za-z0-9]+$]"); 
+	var userimg = document.getElementById('userImg');
 	var userName = document.getElementById("registerUser").value;
-	if (!checkusername.test(userName)) {
 		if(userName.length <8){
-			alert("用户名不足8位");
+			addregisterimg('userimg','img/registerFalse.png');
+			addregistertip('userTip','用户名为8到18位');
 		}else if(/^[0-9]+$/.test(userName)){
-			alert('全部是数字');
+			// alert('全部是数字');
+			addregisterimg('userimg','img/registerFalse.png');
+			addregistertip('userTip','用户名至少包含一位英文');
 		}else if (/^[a-zA-Z]+$/.test(userName)){
-			alert('全部是英文');
-		}else if (reg.test(userName))
-			alert('用户名特殊字符');
+			// alert('全部是英文');
+			addregisterimg('userimg','img/registerFalse.png');
+			addregistertip('userTip','用户名至少包含一位数字');
+		}else if (!checkusername.test(userName)){
+			// alert('用户名特殊字符')
+			addregisterimg('userimg','img/registerFalse.png');
+			addregistertip('userTip','用户名禁止使用特殊字符');
 		}else { 
 			console.log("注册成功");
+			addregisterimg('userimg','img/registerTrue.png');
+			deleteregisterusertip();
 			return;
 		}
 }
@@ -95,29 +111,34 @@ function passwordcheck() {
 	var reg = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]"); 
 	var registerpsw = document.getElementById("registerpassWord").value;
 	if (!checkpassword.test(registerpsw)) {
-		if(registerpsw < 6){
-			alert("密码不足6位");
-			document.getElementById("registerpassWord").focus();
+		if(registerpsw.length < 6){
+			// registerpsw.onkeyup = function () {
+			// 	addregistertip();
+			// }
+			addregisterimg('registerpassWordimg','img/registerFalse.png');
+			addregistertip('registerpassWordTip','密码为6到16位');
 		}else if(/^[0-9]+$/.test(registerpsw)){
-			alert('密码强度：低');
+			addregisterimg('registerpassWordimg','img/registerWarning.png');
+			// alert('密码强度：低');
+			addregistertip('registerpassWordTip','密码强度低');
+		}else if (/^[A-Za-z0-9]+$/.test(registerpsw) || /^[0-9a-zA-Z]+$/.test(registerpsw)) {
+			addregisterimg('registerpassWordimg','img/registerWarning.png');
+			addregistertip('registerpassWordTip','密码强度中');
 		}else if (/^[a-zA-Z]+$/.test(registerpsw)){
-			alert('密码强度：低');
-		}else if (reg.test(registerpsw))
-			alert('密码强度：高');
+			addregisterimg('registerpassWordimg','img/registerWarning.png');
+			addregistertip('registerpassWordTip','密码强度低');
+		}else if (reg.test(registerpsw)){
+		addregisterimg('registerpassWordimg','img/registerTrue.png');
+			addregistertip('registerpassWordTip','密码强度高');
 		}else {
-		console.log("注册成功");
+		// console.log("注册成功");
+		addregisterimg('registerpassWordimg','img/registerTrue.png');
+		deleteregisterpswtip();
 		return;
+		}
 	}
 }
 
-// 密码完成度提示
-function checkValue() {
-        $('#note1').css('color', /[a-z]/.test(this.value) && /[A-Z]/.test(this.value) ? 'green' : 'black');
-        $('#note2').css('display', /[\d~!@#\$%^&\*\(\)_]/.test(this.value) ? 'green' : 'black');
-        $('#note3').css('color', this.value.length >= 8 ? 'green' : 'black');
-    }
-    $('#registerpassWord').bind({input:checkValue,propertychange:checkValue})
-		
 
 function repswfocus() {
 	// alert("获得焦点");
@@ -134,12 +155,49 @@ function repassworkcheck() {
 	var registerpsw = document.getElementById("registerpassWord").value;
 	var repassWord = document.getElementById("repassWord").value;
 	if(registerpsw === repassWord){
-		alert("1");
+		addregisterimg('repassWordimg','img/registerTrue.png');
+		deleteregisterrepswtip();
 	}else{
-		alert("2");
+		addregisterimg('repassWordimg','img/registerFalse.png');
+		addregistertip('repassWordTip','两次密码输入不一致');
 	}
 }
 
+// 刷新提醒图片
+function addregisterimg(obj,way){
+	var img =document.getElementById(obj);
+	img.src=way;
+	img.style.width = "40px"
+	img.style.height = "40px"
+	img.style.display = "block";
+};
+
+// 清除提醒图片
+function deleteregisterimg(obj){
+	var imguser =document.getElementById('userimg');
+	var imgrepsw =document.getElementById('registerpassWordimg');
+	var imgrerepsw =document.getElementById('repassWordimg');
+	imguser.style.display = "none";
+	imgrepsw.style.display = "none";
+	imgrerepsw.style.display = "none";
+}
+
+// 添加提示文字
+function addregistertip(obj,sentence){
+	var newdiv = document.getElementById(obj); 
+	newdiv.innerHTML = sentence;
+};
+
+//清除提醒文字
+ function deleteregisterusertip(){
+	$('#userTip').empty();
+}
+function deleteregisterpswtip(){
+	$('#registerpassWordTip').empty();
+}
+function deleteregisterrepswtip(){
+	$('#repassWordTip').empty();
+}
 
 showsign();
 hiddensign();

@@ -48,7 +48,8 @@
 	height: 100%;
 	position: absolute;
 	background: url(../img/111.jpg) no-repeat center 0px;
-	background-size: 640px 100%;
+	background-size: 100% 100%;
+	min-height: 640px;
 }
 
 .navLogo {
@@ -201,7 +202,7 @@
 	padding-left: 15px;
 	position: absolute;
 	margin-left: -150px;
-	top: 30%;
+	top: 25%;
 	left: 50%;
 
 }
@@ -215,7 +216,7 @@
 	padding-left: 15px;
 	position: absolute;
 	margin-left: -150px;
-	top: 45%;
+	top: 40%;
 	left: 50%;
 }
 
@@ -228,7 +229,7 @@
 	padding-left: 15px;
 	position: absolute;
 	margin-left: -150px;
-	top: 60%;
+	top: 55%;
 	left: 50%;
 }
 
@@ -265,3 +266,42 @@
 	border: 1px solid #ccc;
 }
 
+.userImg {
+	position: absolute;
+	top: 115px;
+	right: 7px;
+}
+
+
+.userTip {
+	position: absolute;
+	top: 155px;
+	left: 80px;
+	color: #e21b1b;
+}
+
+.registerpassWordImg {
+	position: absolute;
+	top: 180px;
+	right: 7px;
+}
+
+.registerpassWordTip{
+	position: absolute;
+	top: 224px;
+	left: 80px;
+	color: #e21b1b;
+}
+
+.repassWordImg {
+	position: absolute;
+	top: 250px;
+	right: 7px;
+}
+
+.repassWordTip {
+	position: absolute;
+	top: 295px;
+	left: 80px;
+	color: #e21b1b;
+}
