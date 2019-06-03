@@ -7,14 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ff3ab71-b914-4994-b63a-bfbbdc96f5d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/o7si/controller/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/o7si/controller/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/o7si/dao/impl/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/o7si/dao/impl/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/cn/o7si/User/testUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/cn/o7si/User/testUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/sim_stock/WEB-INF/classes/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/sim_stock/WEB-INF/classes/spring.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -64,7 +57,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="4191" />
+          <entry key="java" value="4880" />
           <entry key="jsp" value="581" />
           <entry key="properties" value="154" />
           <entry key="sql" value="10" />
@@ -74,7 +67,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4191" />
+          <entry key="JAVA" value="4880" />
           <entry key="JSP" value="581" />
           <entry key="PLAIN_TEXT" value="9" />
           <entry key="Properties" value="154" />
@@ -85,7 +78,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="6" />
-          <entry key="java" value="36" />
+          <entry key="java" value="38" />
           <entry key="js" value="1" />
           <entry key="jsp" value="6" />
           <entry key="properties" value="2" />
@@ -98,7 +91,7 @@
         <counts>
           <entry key="CLASS" value="6" />
           <entry key="Database Element" value="1" />
-          <entry key="JAVA" value="36" />
+          <entry key="JAVA" value="38" />
           <entry key="JSP" value="6" />
           <entry key="JavaScript" value="1" />
           <entry key="Properties" value="2" />
@@ -110,13 +103,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/cn/o7si/User/testUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="165">
+              <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="77" column="22" lean-forward="true" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/vo/ResponseData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="795">
+              <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
+              <folding>
+                <element signature="e#233#234#0" expanded="true" />
+                <element signature="e#263#264#0" expanded="true" />
+                <element signature="e#309#310#0" expanded="true" />
+                <element signature="e#347#348#0" expanded="true" />
+                <element signature="e#373#374#0" expanded="true" />
+                <element signature="e#400#401#0" expanded="true" />
+                <element signature="e#435#436#0" expanded="true" />
+                <element signature="e#467#468#0" expanded="true" />
+                <element signature="e#505#506#0" expanded="true" />
+                <element signature="e#538#539#0" expanded="true" />
+                <element signature="e#591#592#0" expanded="true" />
+                <element signature="e#635#636#0" expanded="true" />
+                <element signature="e#666#667#0" expanded="true" />
+                <element signature="e#693#694#0" expanded="true" />
+                <element signature="e#733#734#0" expanded="true" />
+                <element signature="e#765#766#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -129,8 +161,8 @@
       <list>
         <option value="spring-beans.schema" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -155,8 +187,9 @@
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/controller/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/dao/impl/UserDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/test/cn/o7si/User/testUser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/o7si/vo/ResponseData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserController.java" />
       </list>
     </option>
   </component>
@@ -181,7 +214,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="676" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
@@ -234,16 +268,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cn" type="462c0819:PsiDirectoryNode" />
               <item name="o7si" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sim-Stock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sim-Stock" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="o7si" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Sim-Stock" type="b2602c69:ProjectViewProjectNode" />
@@ -305,9 +329,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/ShaYuan/Desktop/Project/back-end/Sim-Stock/src/test/cn/o7si/User/testUser.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559557191536" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559559850913" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -572,7 +597,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559536085546</updated>
-      <workItem from="1559536086937" duration="16889000" />
+      <workItem from="1559536086937" duration="19524000" />
     </task>
     <servers />
   </component>
@@ -609,7 +634,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16889000" />
+    <option name="totallyTimeSpent" value="19524000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -621,7 +646,7 @@
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Capture Tool" />
       <window_info id="Web" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22919819" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22919819" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Console" weight="0.3295082" />
       <window_info anchor="bottom" id="Spring" order="0" />
@@ -634,7 +659,7 @@
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" />
       <window_info anchor="bottom" id="Application Servers" order="9" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="10" visible="true" weight="0.34590164" />
+      <window_info active="true" anchor="bottom" id="Run" order="10" visible="true" weight="0.34590164" />
       <window_info anchor="bottom" id="Debug" order="11" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
@@ -874,20 +899,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/vo/ResponseData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="65" lean-forward="true" selection-start-line="48" selection-start-column="65" selection-end-line="48" selection-end-column="65" />
+        <state relative-caret-position="795">
+          <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#233#234#0" expanded="true" />
+            <element signature="e#263#264#0" expanded="true" />
+            <element signature="e#309#310#0" expanded="true" />
+            <element signature="e#347#348#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#400#401#0" expanded="true" />
+            <element signature="e#435#436#0" expanded="true" />
+            <element signature="e#467#468#0" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#538#539#0" expanded="true" />
+            <element signature="e#591#592#0" expanded="true" />
+            <element signature="e#635#636#0" expanded="true" />
+            <element signature="e#666#667#0" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#733#734#0" expanded="true" />
+            <element signature="e#765#766#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/cn/o7si/User/testUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="165">
+          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="77" column="22" lean-forward="true" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
