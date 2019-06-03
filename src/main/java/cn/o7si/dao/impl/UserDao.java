@@ -49,7 +49,7 @@ public class UserDao implements IUserDao {
             throw new RuntimeException();
 
         // 返回查询结果
-        return null;
+        return users.get(0);
     }
 
     @Override

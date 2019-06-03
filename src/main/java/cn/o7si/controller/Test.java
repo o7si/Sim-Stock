@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/test")
 public class Test {
 
-    @RequestMapping(value = "/helloworld", method = RequestMethod.POST)
+    @RequestMapping(value = "/helloworld")
     public @ResponseBody Message testHelloWorld(@RequestBody Message message) {
         System.out.println(message);
         message.setMsg("HelloWorld");
