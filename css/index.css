@@ -2,7 +2,8 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	color: #000;
+	color: #000000;
+	font-family: "微软雅黑";
 	font-size: 12px;
 }
 
@@ -23,15 +24,16 @@ body {
 }
 
 .navLogo {
-	width: 480px;
+	width: 680px;
 	max-height: 90px;
-	height: 90px;
+	height: 80px;
 	margin: 0 auto;
-	background: url(../img/Logo.png) no-repeat 0px center;
+	background: url(../img/whiteLogo.png) no-repeat 0px center;
+	background-size: 100px 100px;
 }
 
 .myNav h2 {
-	font-size: 50px;
+	font-size: 60px;
 	color: white;
 	padding-left: 80px;
 	line-height: 90px;
@@ -160,15 +162,31 @@ body {
 	position: relative;
 }
 
+
+.falseLogin {
+	width: 200px;
+	height: 50px;
+	position: absolute;
+	bottom: 24%;
+	left: 50%;
+	margin-left: -100px;
+	font-weight: bold;
+	color: red;
+	font-size: 22px;
+	text-align: center;
+}
+
+
 /* 弹出登陆框Logo */
 .alterLogo {
-	width: 60px;
-	height: 60px;
-	background: url(../img/Logo.png) no-repeat;
+	width: 80px;
+	height: 80px;
+	background: url(../img/whiteLogo.png) no-repeat;
+	background-size: 80px 80px;
 	position: absolute;
-	top: 15%;
+	top: 13%;
 	left: 50%;
-	margin-left: -30px;
+	margin-left: -40px;
 }
 
 /* 登录--用户名 */
@@ -369,8 +387,8 @@ body {
 /* 以下为注册页面判断效果 */
 .userImg {
 	position: absolute;
-	top: 150px;
-	right: 15px;
+	top: 160px;
+	right: 35px;
 }
 
 
@@ -383,8 +401,15 @@ body {
 
 .registerpassWordImg {
 	position: absolute;
-	top: 225px;
-	right: 15px;
+	top: 235px;
+	right: 35px;
+}
+
+#userimg {
+}
+
+#registerpassWordimg {
+	
 }
 
 .registerpassWordTip {
@@ -396,8 +421,8 @@ body {
 
 .repassWordImg {
 	position: absolute;
-	top: 300px;
-	right: 15px;
+	top: 310px;
+	right: 35px;
 }
 
 .repassWordTip {
