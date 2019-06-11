@@ -1,0 +1,203 @@
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	color: #000000;
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+
+.myNav {
+	width: 100%;
+	height: 60px;
+	border-bottom: 1px solid #ccc;
+	box-shadow: #000000 1px;
+}
+
+.navMenu {
+	width: 60px;
+	height: 60px;
+	border: 1px solid #ccc;
+	border-bottom: none;
+	background: url(../img/navManu.png) no-repeat center;
+	background-size: 40px 40px;
+	float: left;
+	cursor: pointer;
+}
+
+.navLeft img {
+	margin-left: 20px;
+	float: left;
+}
+
+.navLeft h2 {
+	float: left;
+	line-height: 60px;
+	font-size: 30px;
+	color: #fadb0b;
+	margin-left: 20px;
+}
+
+.navRight {
+	width: 60%;
+	height: 100%;
+	float: right;
+	position: relative;
+}
+
+/* 头像样式 */
+.headImage {
+	width: 40px;
+	height: 40px;
+	background: url(../img/headImage.png) no-repeat center;
+	background-size: 40px 40px;
+}
+
+/* Nav部分无序列表样式 */
+.navRight>ul>li {
+	float: right;
+	cursor: pointer;
+	margin-left: 40px;
+	font-size: 16px;
+	line-height: 60px;
+}
+
+.navRight>ul>li:nth-child(1) {
+	margin-top: 10px;
+	margin-right: 30px;
+}
+
+.navRight>ul>li:hover {
+	color: #fadb0b;
+}
+
+.navRight a {
+	font-size: 14px;
+	text-align: left;
+	text-decoration: none;
+}
+
+/* 钱包内容 */
+.navBill {
+	right: 460px;
+}
+
+/* 消息部分 */
+.navNotice {
+	right: 390px;
+}
+
+/* 支持与服务 */
+.navSupport {
+	right: 270px;
+}
+
+/* 主页 */
+#mainPage {
+	margin-top: 15px;
+}
+
+/* 语言选择 */
+.navLanguage {
+	right:100px;
+}
+
+/* 公共样式 */
+.navPublic {
+	top: 46px;
+	position: absolute;
+	display: none;
+	border-radius: 5px;
+	border: 1px solid white;
+	box-shadow: 0 3px 5px #ccc;
+}
+
+.navPublic ul {
+	background: white;
+	width: 110px;
+	height: 40px;
+}
+
+.navPublic ul li:hover {
+	background: #eee;
+}
+
+.navPublic ul li {
+	cursor: pointer;
+	width: 100px;
+	height: 40px;
+	float: left;
+	line-height: 40px;
+	padding-left: 10px;
+}
+
+.asideLeft_small {
+	width: 60px;
+	height: 908px;
+	border: 1px solid #ccc;
+	border-top: 0 none;
+	border-bottom: 0 none;
+	overflow: hidden;
+	position: absolute;
+	transition: all 1s;
+	
+	position: fixed;
+	
+}
+
+.asideLeft_big {
+	width: 200px;
+	height: 908px;
+	border: 1px solid #ccc;
+	border-top: 0 none;
+	border-bottom: 0 none;
+	overflow: hidden;
+	position: absolute;
+	display: none;
+}
+
+.asideLeft_small ul li{
+	width: 50px;
+	height: 50px;
+	margin: 20px auto;
+	padding-top: 50px;
+	cursor: pointer;
+}
+
+.asideLeft_small ul li:nth-child(1) {
+	margin-top: 60px;
+	background: url(../img/personalData.png) no-repeat center;
+	background-size: 40px 40px;
+}
+
+.asideLeft_small ul li:nth-child(2) {
+	background: url(../img/certification.png) no-repeat center;
+	background-size: 40px 40px;
+}
+
+.asideLeft_small ul li:nth-child(3) {
+	background: url(../img/vipMember.png) no-repeat center;
+	background-size: 40px 40px;
+}
+
+.asideLeft_small ul li:nth-child(4) {
+	background: url(../img/personFriend.png) no-repeat center;
+	background-size: 40px 40px;
+}
+
+.asideLeft_small ul li:nth-child(5) {
+	background: url(../img/rightOpen.png) no-repeat center;
+	background-size: 40px 40px;
+}
+
+.asideLeft_big ul {
+	margin: 0 0 0 20px;
+}
+
+.asideLeft_big ul li {
+	width: 100px;
+	font-size: 20px;
+	margin-top: 100px;
+	padding: 0;
+	cursor: pointer;
+}

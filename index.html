@@ -4,10 +4,12 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Sims-stock</title>
+	<link href="img/3.ico" rel="SHORTCUT ICON" />
 	</head>
 	<link rel="stylesheet" type="text/css" href="css/index.css" media=" (min-width: 940px)" />
 	<link rel="stylesheet" type="text/css" href="css/indexPhone.css" media=" (max-width: 939px)" />
-	<script src="js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/indexAjax.js" type="text/javascript" charset="utf-8"></script>
 	<body>
 		<div class="phoneScreen"></div>
 		<div class="myNav">
@@ -40,20 +42,22 @@
 				</div>
 				<!-- 登陆页面 -->
 				<form id="loginForm">
-					<input id="userName" type="text" placeholder="用户名或邮箱" maxlength="18" autocomplete="off"><br>
-					<input id="passWord" type="password" placeholder="密码" maxlength="16"><br>
-					<input id="signIn" type='submit' value="登录">
+					<input id="userName" type="text" placeholder="请输入用户名" maxlength="18" autocomplete="off" onFocus="loginuserfocus();"><br>
+					<div id="tipName"></div>
+					<input id="passWord" type="password" placeholder="密码" maxlength="16" onFocus="loginuserfocus();"><br>
+					<div id="falseLogin" class="falseLogin"></div>
+					<button type="button" id="signIn" onclick="login()">登录</button>
 					<a href="###" id="lostPassword">忘记密码</a>
 					<a href="###" class="registerButton" id="registerButton">注册</a>
 				</form>
 				<!-- 注册页面 -->
 				<form id="registerForm">
-					<input id="registerUser" type="text" placeholder="请输入用户名" maxlength="18" autocomplete="off"  onFocus="userfocus();" onBlur="userblur();">				
+					<input id="registerUser" type="text" placeholder="请输入用户名" maxlength="18" autocomplete="off"  onFocus="userfocus();" onBlur="userblur()"; onkeyup="isExist()">				
 					<div id="userImg" class="userImg">
 						<img id="userimg">
 					</div>					
 					<div id="userTip" class="userTip"></div>
-					<input id="registerpassWord" type="password" maxlength="16" placeholder="请输入密码" onFocus="pswfocus();" onBlur="pswblur();">
+					<input id="registerpassWord" type="password" maxlength="16" placeholder="请输入密码" onFocus="pswfocus();" onBlur="pswblur()"; onkeyup="passwordcheck()";>
 					<div id="registerpassWordImg" class="registerpassWordImg">
 						<img id="registerpassWordimg">
 					</div>					
@@ -63,7 +67,7 @@
 						<img id="repassWordimg">
 					</div>
 					<div id="repassWordTip" class="repassWordTip"></div>		
-					<input id="registerIn" type='submit' value="注册">
+					<button type="button" id="registerIn" onclick="register()">注册</button>
 					<a href="###" class="signButton" id="signButton">登录</a>
 				</form>
 			</div>
