@@ -1,80 +1,101 @@
 package cn.o7si.controller;
 
-import cn.o7si.entities.User;
+import cn.o7si.entities.Account;
 import cn.o7si.service.IUserService;
+import cn.o7si.utils.StatusCodeUtils;
 import cn.o7si.vo.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * 用户相关操作
- * 1. 验证用户名是否存在
- * 2. 用户注册
- * 3. 用户登录
- */
-@Controller("userController")
+@Controller
 @RequestMapping("/user")
 public class UserController {
 
     @Autowired
-    private IUserService userService;
+    private IUserService service;
 
-    @RequestMapping(value = "/isExist")
-    public @ResponseBody ResponseData<User> existUser(@RequestBody User user) {
-        String username = user.getUsername();
-        boolean isExist = userService.isExist(username);
+    @RequestMapping(value = "/account/exist", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseData exist(@RequestBody Account data) {
+        // 调用业务层判断该账户名称是否被使用
+        String username = data.getUsername();
+        boolean exist = service.exist(username);
 
-        ResponseData<User> rtData = new ResponseData<>();
-        rtData.setOperate("isExist");
-        rtData.setData(user);
+        // 响应给客户端的数据
+        ResponseData rtData = new ResponseData();
 
-        if (!isExist) {
-            rtData.setStatusCode(1000);
-            rtData.setDesc("INFO: 用户名[" + username + "]可被注册");
+        // 设置返回值
+        if (exist) {
+            rtData.setAction("");
+            rtData.setData(null);
+            rtData.setStatusCode(StatusCodeUtils.ACCOUNTEXIST);
+            rtData.setDesc("服务器存在名称为[" + data.getUsername() + "]的用户");
         } else {
-            rtData.setStatusCode(1001);
-            rtData.setDesc("INFO: 用户名[" + username + "]不可被注册");
+            rtData.setAction("");
+            rtData.setData(null);
+            rtData.setStatusCode(StatusCodeUtils.ACCOUNTNOTEXIST);
+            rtData.setDesc("服务器不存在名称为[" + data.getUsername() + "]的用户");
         }
+
         return rtData;
     }
 
-    @RequestMapping(value = "/register")
-    public @ResponseBody ResponseData<User> registerUser(@RequestBody User user) {
-        System.out.println("registerUser(String username, String password)");
-        String username = user.getUsername();
-        String password = user.getPassword();
-        User rtUser = userService.register(username, password);
+    @RequestMapping(value = "/account/register", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseData register(@RequestBody Account data) {
+        // 调用业务层进行账户注册
+        String username = data.getUsername();
+        String password = data.getPassword();
+        boolean registerRes = service.register(username, password);
 
-        ResponseData<User> rtData = new ResponseData<>();
-        rtData.setOperate("register");
-        rtData.setData(rtUser);
-        if (rtUser != null) {
-            rtData.setStatusCode(1003);
-            rtData.setDesc("INFO: 用户[" + rtUser.getUsername() + "]注册成功");
+        // 响应给客户端的数据
+        ResponseData rtData = new ResponseData();
+
+        // 设置返回值
+        if (registerRes) {
+            rtData.setAction("");
+            rtData.addData("username", username);
+            rtData.addData("password", password);
+            rtData.setStatusCode(StatusCodeUtils.ACCOUNTREGISTERSUCCESS);
+            rtData.setDesc("账户[" + username + "]注册成功");
         } else {
-            rtData.setStatusCode(1004);
-            rtData.setDesc("INFO: 用户[" + user.getUsername() + "]注册失败");
+            rtData.setAction("");
+            rtData.addData("username", username);
+            rtData.addData("password", password);
+            rtData.setStatusCode(StatusCodeUtils.ACCOUNTREGISTERFAILURE);
+            rtData.setDesc("账户[" + username + "]注册失败");
         }
+
         return rtData;
     }
 
-    @RequestMapping(value = "/login")
-    public @ResponseBody ResponseData<User> loginUser(@RequestBody User user) {
-        User rtUser = userService.login(user);
+    @RequestMapping(value = "/account/login", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseData login(@RequestBody Account data) {
+        // 调用业务层进行账户登录
+        String username = data.getUsername();
+        String password = data.getPassword();
+        Account account = service.login(username, password);
 
-        ResponseData<User> rtData = new ResponseData<>();
-        rtData.setOperate("login");
-        rtData.setData(rtUser);
-        if (rtUser != null) {
-            rtData.setStatusCode(1005);
-            rtData.setDesc("INFO: 用户[" + rtUser.getUsername() + "]登录成功");
-            System.out.println("登录成功");
+        // 响应给客户端的数据
+        ResponseData rtData = new ResponseData();
+        // 设置返回值
+        if (account != null) {
+            rtData.setAction("");
+            rtData.addData("account", account);
+            rtData.setStatusCode(StatusCodeUtils.ACCOUNTLOGINSUCCESS);
+            rtData.setDesc("账户[" + username + "]登录成功");
         } else {
-            rtData.setStatusCode(1006);
-            rtData.setDesc("INFO: 用户[" + user.getUsername() + "]登录失败");
+            rtData.setAction("");
+            rtData.setData(null);
+            rtData.setStatusCode(StatusCodeUtils.ACCOUNTLOGINFAILURE);
+            rtData.setDesc("账户[" + username + "]登录失败");
         }
+
         return rtData;
     }
 }

@@ -13,7 +13,7 @@
         $(function () {
             $("#test").click(function () {
                 $.ajax({
-                    url:"/test/helloworld",
+                    url:"test/helloworld",
                     contentType:"application/json;charset=UTF-8",
                     data:'{"msg":"sayHelloWorld"}',
                     dataType:"json",

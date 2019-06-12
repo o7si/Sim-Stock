@@ -1,29 +1,45 @@
 package cn.o7si.vo;
 
-public class ResponseData<T> {
+import cn.o7si.utils.StatusCodeUtils;
 
-    // 操作
-    private String operate;
-    // 响应数据
-    private T data;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ResponseData {
+
+    // 操作类型
+    private String action;
+    // 返回数据
+    private Map<String, Object> data;
     // 状态码
     private Integer statusCode;
     // 描述
     private String desc;
 
-    public String getOperate() {
-        return operate;
+    public ResponseData() {
+        this.action = "";
+        this.data = new HashMap<>();
+        this.statusCode = StatusCodeUtils.DEFAULT;
+        this.desc = "";
     }
 
-    public void setOperate(String operate) {
-        this.operate = operate;
+    public void addData(String key, Object value) {
+        data.put(key, value);
     }
 
-    public T getData() {
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    public Map<String, Object> getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public void setData(Map<String, Object> data) {
         this.data = data;
     }
 
@@ -46,7 +62,7 @@ public class ResponseData<T> {
     @Override
     public String toString() {
         return "ResponseData{" +
-                "operate='" + operate + '\'' +
+                "action='" + action + '\'' +
                 ", data=" + data +
                 ", statusCode=" + statusCode +
                 ", desc='" + desc + '\'' +

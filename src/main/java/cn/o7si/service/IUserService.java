@@ -1,31 +1,37 @@
 package cn.o7si.service;
 
-import cn.o7si.entities.User;
+import cn.o7si.entities.Account;
 
 /**
- * 用户相关操作业务层接口
+ * 用户相关操作的业务层接口
  */
 public interface IUserService {
 
     /**
-     * 判断该用户名是否已被注册
-     * @param username  用作查询的用户名
-     * @return          是否被注册
+     * 判断该账户名称是否已经被使用
+     * @param username  将要判断的账户名称
+     * @return          如果已被使用则返回true，否则返回false
      */
-    boolean isExist(String username);
+    boolean exist(String username);
 
     /**
      * 用户注册
-     * @param username  用户名
-     * @param password  密码
-     * @return          用户
+     * @param username  账户名称
+     * @param password  账户密码
+     * @return          如果注册成功则返回true，否则返回false
      */
-    User register(String username, String password);
+    boolean register(String username, String password);
 
     /**
      * 用户登录
-     * @param user  将要登录的用户
-     * @return      用户
+     * @param Account   用作登录的账户
+     * @return          如果登录成功则返回true，否则返回false
      */
-    User login(User user);
+    /**
+     * 用户登录
+     * @param username  用作登录的账户账号
+     * @param password  用作登录的账户密码
+     * @return          如果登录成功返回
+     */
+    Account login(String username, String password);
 }

@@ -1119,7 +1119,7 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="282" parent="8" name="user"/>
+    <table id="282" parent="8" name="user_account"/>
     <column id="283" parent="282" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
@@ -1146,19 +1146,26 @@
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="287" parent="282" name="user_username_uindex">
+    <column id="287" parent="282" name="create_time">
+      <Position>5</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="288" parent="282" name="user_account_username_uindex">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="288" parent="282" name="PRIMARY">
+    <key id="289" parent="282" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="289" parent="282" name="user_username_uindex">
+    <key id="290" parent="282" name="user_account_username_uindex">
       <ColNames>username</ColNames>
-      <UnderlyingIndexName>user_username_uindex</UnderlyingIndexName>
+      <UnderlyingIndexName>user_account_username_uindex</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

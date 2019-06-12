@@ -1,11 +1,30 @@
 package cn.o7si.entities;
 
-public class User {
+import java.util.Date;
+
+public class Account {
+
+    private static final Integer DEFAULTAUTHORITY = 0;
 
     private Integer id;
     private String username;
     private String password;
     private Integer authority;
+    private Date createTime;
+
+    public Account() {
+
+    }
+
+    public Account(String username, String password) {
+        this(username, password, DEFAULTAUTHORITY);
+    }
+
+    public Account(String username, String password, Integer authority) {
+        this.username = username;
+        this.password = password;
+        this.authority = authority;
+    }
 
     public Integer getId() {
         return id;
@@ -39,6 +58,14 @@ public class User {
         this.authority = authority;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -46,6 +73,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", authority=" + authority +
+                ", createTime=" + createTime +
                 '}';
     }
 }

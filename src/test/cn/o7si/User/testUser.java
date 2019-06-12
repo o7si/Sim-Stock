@@ -1,7 +1,6 @@
 package cn.o7si.User;
 
 import cn.o7si.controller.UserController;
-import cn.o7si.entities.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
