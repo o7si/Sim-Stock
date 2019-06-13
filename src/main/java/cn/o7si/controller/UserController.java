@@ -1,6 +1,7 @@
 package cn.o7si.controller;
 
 import cn.o7si.entities.Account;
+import cn.o7si.entities.Information;
 import cn.o7si.service.IUserService;
 import cn.o7si.utils.StatusCodeUtils;
 import cn.o7si.vo.ResponseData;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller
+@Controller("userController")
 @RequestMapping("/user")
 public class UserController {
 
@@ -83,6 +84,7 @@ public class UserController {
 
         // 响应给客户端的数据
         ResponseData rtData = new ResponseData();
+
         // 设置返回值
         if (account != null) {
             rtData.setAction("");
@@ -94,6 +96,56 @@ public class UserController {
             rtData.setData(null);
             rtData.setStatusCode(StatusCodeUtils.ACCOUNTLOGINFAILURE);
             rtData.setDesc("账户[" + username + "]登录失败");
+        }
+
+        return rtData;
+    }
+
+    @RequestMapping(value = "/information/show", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseData show(@RequestBody Account data) {
+        // 调用业务层查询个人信息
+        Information info = service.find(data);
+
+        // 响应给客户端的数据
+        ResponseData rtData = new ResponseData();
+
+        // 设置返回值
+        if (info != null) {
+            rtData.setAction("");
+            rtData.addData("information", info);
+            rtData.setStatusCode(StatusCodeUtils.INFORMATIONFINDSUCCESS);
+            rtData.setDesc("查询个人信息成功");
+        } else {
+            rtData.setAction("");
+            rtData.setData(null);
+            rtData.setStatusCode(StatusCodeUtils.INFORMATIONFINDFAILURE);
+            rtData.setDesc("查询个人信息失败");
+        }
+
+        return rtData;
+    }
+
+    @RequestMapping(value = "/information/modify", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseData modify(@RequestBody Information data) {
+        // 调用业务层进行个人信息修改
+        boolean success = service.modify(data);
+
+        // 响应给客户端的数据
+        ResponseData rtData = new ResponseData();
+
+        // 设置返回值
+        if (success) {
+            rtData.setAction("");
+            rtData.addData("information", data);
+            rtData.setStatusCode(StatusCodeUtils.INFORMATIONMODIFYSUCCESS);
+            rtData.setDesc("个人信息修改成功");
+        } else {
+            rtData.setAction("");
+            rtData.setData(null);
+            rtData.setStatusCode(StatusCodeUtils.INFORMATIONMODIFYFAILURE);
+            rtData.setDesc("个人信息修改失败");
         }
 
         return rtData;

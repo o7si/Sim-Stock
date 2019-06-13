@@ -4,12 +4,18 @@ import java.util.Date;
 
 public class Account {
 
+    // 默认权限
     private static final Integer DEFAULTAUTHORITY = 0;
 
+    // 账户ID
     private Integer id;
+    // 账户账号
     private String username;
+    // 账户密码
     private String password;
+    // 账户权限
     private Integer authority;
+    // 账户创建日期
     private Date createTime;
 
     public Account() {

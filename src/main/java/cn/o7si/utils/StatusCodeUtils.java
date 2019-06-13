@@ -1,5 +1,7 @@
 package cn.o7si.utils;
 
+import org.omg.CORBA.INTERNAL;
+
 /**
  * 全局状态码
  */
@@ -24,4 +26,14 @@ public class StatusCodeUtils {
     public static final Integer ACCOUNTLOGINSUCCESS = 1009;
     // 账户登录失败
     public static final Integer ACCOUNTLOGINFAILURE = 1010;
+
+    // 个人信息修改成功
+    public static final Integer INFORMATIONMODIFYSUCCESS = 1013;
+    // 个人信息修改失败
+    public static final Integer INFORMATIONMODIFYFAILURE = 1014;
+
+    // 查询个人信息成功
+    public static final Integer INFORMATIONFINDSUCCESS = 1017;
+    // 查询个人信息失败
+    public static final Integer INFORMATIONFINDFAILURE = 1018;
 }
