@@ -65,6 +65,11 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public boolean modifyAvatar(String avatarName) {
+        return false;
+    }
+
+    @Override
     public boolean modify(Information info) {
         boolean rtValue = dao.updateInformation(info);
         return rtValue;

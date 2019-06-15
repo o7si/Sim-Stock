@@ -33,5 +33,10 @@
 <body>
 <h3>Hello World</h3>
 <button id="test">sayHelloWorld</button>
+<h3>SpringMVC文件上传</h3>
+<form action="user/information/upload/avatar" method="post" enctype="multipart/form-data">
+    选择文件：<input type="file" name="upload"><br>
+    <input type="submit" value="上传">
+</form>
 </body>
 </html>

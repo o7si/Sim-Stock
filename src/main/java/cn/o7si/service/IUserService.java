@@ -39,6 +39,13 @@ public interface IUserService {
     Information find(Account data);
 
     /**
+     * 修改个人头像地址
+     * @param avatarName    图片名称
+     * @return              如果更改成功则返回true，否则返回false
+     */
+    boolean modifyAvatar(String avatarName);
+
+    /**
      * 修改个人信息
      * @param info      将要修改的个人信息
      * @return          如果修改成功则返回true，否则返回false

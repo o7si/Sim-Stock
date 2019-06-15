@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
 
 @Controller("userController")
 @RequestMapping("/user")
@@ -76,7 +83,7 @@ public class UserController {
 
     @RequestMapping(value = "/account/login", method = RequestMethod.POST)
     public @ResponseBody
-    ResponseData login(@RequestBody Account data) {
+    ResponseData login(@RequestBody Account data, HttpServletRequest request) {
         // 调用业务层进行账户登录
         String username = data.getUsername();
         String password = data.getPassword();
@@ -87,11 +94,17 @@ public class UserController {
 
         // 设置返回值
         if (account != null) {
+            // 登录成功
             rtData.setAction("");
             rtData.addData("account", account);
             rtData.setStatusCode(StatusCodeUtils.ACCOUNTLOGINSUCCESS);
             rtData.setDesc("账户[" + username + "]登录成功");
+
+            // 设置Session
+//            HttpSession session = request.getSession();
+//            session.setAttribute("currentUser", account.getId());
         } else {
+            // 登录失败
             rtData.setAction("");
             rtData.setData(null);
             rtData.setStatusCode(StatusCodeUtils.ACCOUNTLOGINFAILURE);
@@ -149,5 +162,34 @@ public class UserController {
         }
 
         return rtData;
+    }
+
+    @RequestMapping(value = "/information/upload/avatar")
+    public @ResponseBody
+    ResponseData uploadAvatar(HttpServletRequest request, MultipartFile upload) throws IOException {
+        // 头像上传位置
+        String path = request.getSession().getServletContext().getRealPath("uploads/avatar/");
+
+        // 如果路径未被创建
+        File file = new File(path);
+        if (!file.exists())
+            file.mkdirs();
+
+        // 获取文件名
+        String fileName = upload.getOriginalFilename();
+        // 随机值
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        // 拼接文件名
+        String finalName = uuid + "_" + fileName;
+
+        // 获取文件扩展名
+        String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
+
+        // 上传文件
+        upload.transferTo(new File(path, finalName));
+
+        boolean rtValue = service.modifyAvatar(finalName);
+
+        return null;
     }
 }
