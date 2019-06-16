@@ -2,9 +2,7 @@ package cn.o7si.service;
 
 import cn.o7si.entities.Account;
 
-/**
- * 用户账户相关操作接口
- */
+// 用户账户相关操作业务层接口
 public interface IUserAccountService {
 
     /**

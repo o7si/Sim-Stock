@@ -16,14 +16,9 @@ public class ResponseData {
     // 描述
     private String desc;
 
-    public ResponseData() {
-        this.action = "";
-        this.data = new HashMap<>();
-        this.statusCode = StatusCodeUtils.DEFAULT;
-        this.desc = "";
-    }
-
-    public void addData(String key, Object value) {
+    public void put(String key, Object value) {
+        if (data == null)
+            data = new HashMap<>();
         data.put(key, value);
     }
 

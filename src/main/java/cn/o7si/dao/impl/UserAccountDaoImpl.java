@@ -9,15 +9,19 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * 用户账户持久层实现类
- */
+// 用户账户持久层实现类
 @Repository("userAccountDao")
 public class UserAccountDaoImpl implements IUserAccountDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    /**
+     * 添加账户
+     * @param username  要添加的账户名称
+     * @param password  要添加的账户密码
+     * @return          如果添加成功则返回true，否则返回false
+     */
     @Override
     public boolean createAccount(String username, String password) {
         // 创建账户时使用的SQL语句
@@ -34,6 +38,11 @@ public class UserAccountDaoImpl implements IUserAccountDao {
         return rtValue == 1;
     }
 
+    /**
+     * 根据账户Id查询账户
+     * @param id        用作查询的账户Id
+     * @return          如果查询成功则返回该账户，否则返回null
+     */
     @Override
     public Account findAccountById(Integer id) {
         // 根据Id查询账户时使用的SQL语句
@@ -54,6 +63,11 @@ public class UserAccountDaoImpl implements IUserAccountDao {
         return accounts.get(0);
     }
 
+    /**
+     * 根据账户名称查询账户
+     * @param username  用作查询的账户名称
+     * @return          如果查询成功则返回该账户，否则返回null
+     */
     @Override
     public Account findAccountByUsername(String username) {
         // 根据Username查询账户时使用的SQL语句
@@ -74,6 +88,12 @@ public class UserAccountDaoImpl implements IUserAccountDao {
         return accounts.get(0);
     }
 
+    /**
+     * 根据账户名称和密码查询账户
+     * @param username  用作查询的账户名称
+     * @param password  用作查询的账户密码
+     * @return          如果查询成功则返回该账户，否则返回null
+     */
     @Override
     public Account findAccountByUsernameAndPassword(String username, String password) {
         // 根据Username和Password查询账户时使用的SQL语句
