@@ -13,9 +13,11 @@
         $(function () {
             $("#test").click(function () {
                 $.ajax({
-                    url:"test/helloworld",
+                    // url:"test/helloworld",
+                    url: "user/information/show",
                     contentType:"application/json;charset=UTF-8",
-                    data:'{"msg":"sayHelloWorld"}',
+                    // data:'{"msg":"sayHelloWorld"}',
+                    data: '{"id":1}',
                     dataType:"json",
                     type:"post",
                     success:function (data) {
@@ -37,6 +39,9 @@
 <form action="user/information/upload/avatar" method="post" enctype="multipart/form-data">
     选择文件：<input type="file" name="upload"><br>
     <input type="submit" value="上传">
+</form>
+<form action="user/information/show" method="post">
+    <input type="submit" value="123">
 </form>
 </body>
 </html>
