@@ -202,6 +202,7 @@
 	padding-left: 15px;
 	position: absolute;
 	margin-left: -150px;
+	outline: none;
 	top: 25%;
 	left: 50%;
 
@@ -216,6 +217,7 @@
 	padding-left: 15px;
 	position: absolute;
 	margin-left: -150px;
+	outline: none;
 	top: 40%;
 	left: 50%;
 }
@@ -229,6 +231,7 @@
 	padding-left: 15px;
 	position: absolute;
 	margin-left: -150px;
+	outline: none;
 	top: 55%;
 	left: 50%;
 }
@@ -268,8 +271,8 @@
 
 .userImg {
 	position: absolute;
-	top: 115px;
-	right: 7px;
+	top: 124px;
+	right: 15px;
 }
 
 
@@ -282,8 +285,8 @@
 
 .registerpassWordImg {
 	position: absolute;
-	top: 180px;
-	right: 7px;
+	top: 193px;
+	right: 15px;
 }
 
 .registerpassWordTip{
@@ -295,8 +298,8 @@
 
 .repassWordImg {
 	position: absolute;
-	top: 250px;
-	right: 7px;
+	top: 264px;
+	right: 15px;
 }
 
 .repassWordTip {

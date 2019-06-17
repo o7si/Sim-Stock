@@ -8,9 +8,10 @@
 	<link rel="stylesheet" href="css/profile.css">
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="js/profile.js"></script>
+	<script src="js/profileAjax.js" type="text/javascript" charset="utf-8"></script>
 	<body>
 		<div class="myNav">
-			<div id="navMenu" class="navMenu"  onmousemove="openMenu()" onmouseout="closeMenu()">
+			<div id="navMenu" class="navMenu" onmousemove="openMenu()" onmouseout="closeMenu()">
 			</div>
 			<div class="navLeft">
 				<img src="img/1.ico" width="58px" height="58px">
@@ -70,22 +71,262 @@
 				</ul>
 			</div>
 		</div>
+
 		<div class="asideLeft_small" id="asideLeft_small">
 			<ul>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li id="rightOpen" onclick="openMenu()"></li>
+				<li class="personDatabtn" onmouseenter="clickperson()"></li>
+				<li class="personDeterminebtn" onmouseenter="clickperson()"></li>
+				<li class="personSafebtn" onmouseenter="clickperson()"></li>
+				<li class="vipMemberbtn" onmouseenter="clickperson()"></li>
+				<li class="personFriendbtn" onmouseenter="clickperson()"></li>
+				<li class="rightOpen" onclick="openMenu()"></li>
 			</ul>
 		</div>
 		<div class="asideLeft_big" id="asideLeft_big" onmouseover="openMenu()" onmouseout="closeMenu()">
 			<ul>
-				<li>个人信息</li>
-				<li>安全设置</li>
-				<li>实名认证</li>
-				<li>联系人管理</li>
+				<li class="personDatabtn" onmouseenter="clickperson()">个人信息</li>
+				<li class="personDeterminebtn" onmouseenter="clickperson()">实名认证</li>
+				<li class="personSafebtn" onmouseenter="clickperson()">安全设置</li>
+				<li class="vipMemberbtn" onmouseenter="clickperson()">会员权益</li>
+				<li class="personFriendbtn" onmouseenter="clickperson()">联系人管理</li>
 			</ul>
+		</div>
+
+		<div class="article" id="article">
+			<div class="personData" id="personData">
+				<div class="personDataLeft">
+					<div class="personImage" id="personImage">
+					</div>
+					<div class="personGetId" class="personGetId">
+						<ul>
+							<li>登陆账号：<span class="userId"></span></li>
+							<li>用户昵称：<span class="userNick"></span></li>
+							<li>注册时间：<span class="userTime"></span></li>
+						</ul>
+					</div>
+				</div>
+				<div class="personDataRight">
+					<div class="profileInformation"  id="nickprofile">
+						<div class="profileFont">
+							昵称：
+						</div>
+						<div class="publicModify nickName">傻逼姜威</div>
+						<div class="clickModify" id="nickName" onclick="nickNameShow()">
+								<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+						</div>
+					</div>
+						<div class="confirm" id="nameConfirm">
+							<div class="trueConfirm">保存</div>
+							<div class="falseConfirm" onclick="nickNameHidden()">取消</div>
+						</div>
+					
+					<div class="profileInformation" id="genderprofile">
+						<div class="profileFont">
+							性别：
+						</div>
+						<div class="publicModify gender" >男</div>
+						<div class="clickModify"  id="gender">
+							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+						</div>
+					</div>
+					<div class="confirm" id="genderConfirm">
+						<div class="trueConfirm">保存</div>
+						<div class="falseConfirm">取消</div>
+					</div>
+					
+					<div class="profileInformation" id="modifyprofile">
+						<div class="profileFont">
+							生日：
+						</div>
+						<div class="publicModify birthday">暂时</div>
+						<div class="clickModify" id="birthday">
+							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+						</div>
+					</div>
+					<div class="confirm" id="birthdayConfirm">
+						<div class="trueConfirm">保存</div>
+						<div class="falseConfirm">取消</div>
+					</div>
+					
+					<div class="profileInformation" id="addressprofile">
+						<div class="profileFont">
+							住址：
+						</div>
+						<div class="publicModify address">内蒙古自治区</div>
+						<div class="clickModify" id="address">
+							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+						</div>
+					</div>
+					<div class="confirm" id="addressConfirm">
+						<div class="trueConfirm">保存</div>
+						<div class="falseConfirm">取消</div>
+					</div>
+					
+					<div class="profileInformation" id="occupationprofile">
+						<div class="profileFont">
+							行业：
+						</div>
+						<div class="publicModify occupation">傻逼</div>
+						<div class="clickModify" id="occupation">
+							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+						</div>
+					</div>
+					<div class="confirm" id="occupationConfirm">
+						<div class="trueConfirm">保存</div>
+						<div class="falseConfirm">取消</div>
+					</div>
+					
+					<div class="profileInformation" id="phoneprofile">
+						<div class="profileFont">
+							电话：
+						</div>
+						<div class="publicModify phone">12345678876</div>
+						<div class="clickModify" id="phone">
+							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+						</div>
+					</div>
+					<div class="confirm" id="phoneConfirm">
+						<div class="trueConfirm">保存</div>
+						<div class="falseConfirm">取消</div>
+					</div>
+					
+					<div class="profileInformation" id="emailprofile">
+						<div class="profileFont">
+							邮件：
+						</div>
+						<div class="publicModify email">123456789@qq.com</div>
+						<div class="clickModify" id="email">
+							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+						</div>
+					</div>
+					<div class="confirm" id="emailConfirm">
+						<div class="trueConfirm">保存</div>
+						<div class="falseConfirm" >取消</div>
+					</div>
+					
+					<div class="profileInformation" id="profileprofile">
+						<div class="profileFont">
+							简介：
+						</div>
+						<div class="publicModify profile">姜威真是个大傻逼啊</div>
+						<div class="clickModify" id="profile">
+							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+						</div>
+					</div>
+					<div class="confirm" id="profileConfirm">
+						<div class="trueConfirm">保存</div>
+						<div class="falseConfirm">取消</div>
+					</div>
+					
+				</div>
+			</div>
+
+			
+			<div class="personDetermine" id="personDetermine">
+				<div class="safeDiv"><span>实名认证</span></div>
+				<div class="publicImage">
+					<div>
+						<a>修改头像</a>
+					</div>
+					<ul>
+						<li>登陆账号：<span class="userPublic userId"></span></li>
+						<li>用户昵称：<span class="userPublic userNick"></span></li>
+						<li>注册时间：<span class="userPublic userTime"></span></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="personSafe" id="personSafe">
+				<div class="safeDiv"><span>安全设置</span></div>
+				<div class="publicImage">
+					<div>
+						<a>修改头像</a>
+					</div>
+					<ul>
+						<li>登陆账号：<span class="userPublic userId"></span></li>
+						<li>用户昵称：<span class="userPublic userNick"></span></li>
+						<li>注册时间：<span class="userPublic userTime"></span></li>
+					</ul>
+				</div>
+				<ul id="safeUl" class="safeUl">
+					<li>
+						<div>
+							<span>登录密码：</span>
+							<em>安全性高的密码可以使帐号更安全。建议您定期更换密码，设置一个包含字母，符号或数字中至少两项且长度超过8位的密码。</em>
+							<a href="###" onclick="showModifyPassword()">修改</a>
+						</div>
+						<div class="modifyPassword" id="modifyPassword">
+							<span>请输入旧密码：</span>
+							<input type="password"><br>
+							<span>请输入新密码：</span>
+							<input type="password" onkeyup="passwordcheck()"><br>
+							<span>请重复新密码：</span>
+							<input type="password" onkeyup="repassworkcheck()"><br>
+							<button type="button" onclick="mdPsw(true)">确定</button>
+							<button type="button" onclick="mdPsw(false)">取消</button>
+						</div>
+					</li>
+					<li>
+						<div>
+							<span>手机绑定：</span>
+							<em><i>您暂未绑定手机号</i> 您的手机为安全手机，可以找回密码，但不能用于登录</em>
+							<a href="###">绑定</a>
+						</div>
+						<div id="bindPhone" class="bindPhone">
+							
+						</div>
+					</li>
+					<li>
+						<div>
+							<span>备用邮箱：</span>
+							<em><i>您暂未绑定邮箱 </i> Sim-Stock将会发送的各类消息、优惠、服务通知将发送到您的邮箱。</em>
+							<a href="###">绑定</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<span>密保问题：</span>
+							<em><i>您暂未设置密保问题</i> 建议您设置三个容易记住，且最不容易被他人获取的问题及答案，更有效保障您的密码安全。</em>
+							<a href="###">设置</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<span>注销账号：</span>
+							<em>如果您不再使用此账号，可以将其注销。账号成功注销后，其下所有服务、数据及隐私信息将会被删除并将无法恢复。</em>
+							<a href="###">注销</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="vipMember" id="vipMember">
+				<div class="safeDiv"><span>会员权益</span></div>
+				<div class="publicImage">
+					<div>
+						<a>修改头像</a>
+					</div>
+					<ul>
+						<li>登陆账号：<span class="userPublic userId"></span></li>
+						<li>用户昵称ID ：<span class="userPublic userNick"></span></li>
+						<li>注册时间：<span class="userPublic userTime"></span></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="personFriend" id="personalData">
+				<div class="safeDiv"><span>联系人管理</span></div>
+				<div class="publicImage">
+					<div>
+						<a>修改头像</a>
+					</div>
+					<ul>
+						<li>登陆账号：<span class="userPublic userId"></span></li>
+						<li>用户昵称：<span class="userPublic userNick"></span></li>
+						<li>注册时间：<span class="userPublic userTime"></span></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

@@ -40,34 +40,38 @@
 				<div class="exitSign" id="exitSign">
 					<img src="img/exit.png" width="30px" height="30px">
 				</div>
+				<div id="loginMessage" class="loginMessage">					
+				</div>
 				<!-- 登陆页面 -->
 				<form id="loginForm">
-					<input id="userName" type="text" placeholder="请输入用户名" maxlength="18" autocomplete="off" onFocus="loginuserfocus();"><br>
+					<input id="userName" type="text" placeholder="请输入用户名" maxlength="18" autocomplete="off" onFocus="loginuserfocus()" onkeyup="checklogin()"><br>
 					<div id="tipName"></div>
-					<input id="passWord" type="password" placeholder="密码" maxlength="16" onFocus="loginuserfocus();"><br>
+					<input id="passWord" type="password" placeholder="密码" maxlength="16" onFocus="loginuserfocus()" onkeyup="checklogin()"><br>
 					<div id="falseLogin" class="falseLogin"></div>
-					<button type="button" id="signIn" onclick="login()">登录</button>
+					<button type="button" id="signIn" onclick="login()" disabled="disabled">登录</button>
 					<a href="###" id="lostPassword">忘记密码</a>
 					<a href="###" class="registerButton" id="registerButton">注册</a>
 				</form>
 				<!-- 注册页面 -->
+				<div id="registerMessage" class="registerMessage">				
+				</div>
 				<form id="registerForm">
-					<input id="registerUser" type="text" placeholder="请输入用户名" maxlength="18" autocomplete="off"  onFocus="userfocus();" onBlur="userblur()"; onkeyup="isExist()">				
+					<input id="registerUser" type="text" placeholder="请输入用户名" maxlength="18" autocomplete="off"  onFocus="userfocus()" onkeyup="userblur()"">				
 					<div id="userImg" class="userImg">
 						<img id="userimg">
 					</div>					
 					<div id="userTip" class="userTip"></div>
-					<input id="registerpassWord" type="password" maxlength="16" placeholder="请输入密码" onFocus="pswfocus();" onBlur="pswblur()"; onkeyup="passwordcheck()";>
+					<input id="registerpassWord" type="password" maxlength="16" placeholder="请输入密码" onFocus="pswfocus()" onBlur="pswblur()" onkeyup="passwordcheck()">
 					<div id="registerpassWordImg" class="registerpassWordImg">
 						<img id="registerpassWordimg">
 					</div>					
 					<div id="registerpassWordTip" class="registerpassWordTip"></div>
-					<input id="repassWord" type="password" maxlength="16" placeholder="请重复密码" onFocus="repswfocus();" onBlur="repswblur();">				
+					<input id="repassWord" type="password" maxlength="16" placeholder="请重复密码" onFocus="repswfocus()" onBlur="repswblur()" onkeyup="checkregister()">				
 					<div id="repassWordImg" class="repassWordImg">
 						<img id="repassWordimg">
 					</div>
 					<div id="repassWordTip" class="repassWordTip"></div>		
-					<button type="button" id="registerIn" onclick="register()">注册</button>
+					<button type="button" id="registerIn" onclick="register()"  disabled="disabled">注册</button>
 					<a href="###" class="signButton" id="signButton">登录</a>
 				</form>
 			</div>

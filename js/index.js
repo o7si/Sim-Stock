@@ -24,6 +24,7 @@ function hiddensign() {
 		deleteregisterusertip();
 		deleteregisterpswtip();
 		deleteregisterrepswtip();
+		document.getElementById('registerMessage').innerHTML ="";
 	}
 }
 // 隐藏注册显示登陆
@@ -45,12 +46,12 @@ function resigiterlogin() {
 		deleteregisterusertip();
 		deleteregisterpswtip();
 		deleteregisterrepswtip();
+		document.getElementById('loginMessage').innerHTML ="";
 	}
 }
 
 
 function userfocus() {
-	// alert("获得焦点");
 	console.log("获取焦点");
 }
 
@@ -75,28 +76,23 @@ function usercheck() {
 		addregisterimg('userimg', 'img/registerFalse.png');
 		addregistertip('userTip', '用户名为8到18位');
 	} else if (/^[0-9]+$/.test(userName)) {
-		// alert('全部是数字');
 		addregisterimg('userimg', 'img/registerFalse.png');
 		addregistertip('userTip', '用户名至少包含一位英文');
 	} else if (/^[a-zA-Z]+$/.test(userName)) {
-		// alert('全部是英文');
 		addregisterimg('userimg', 'img/registerFalse.png');
 		addregistertip('userTip', '用户名至少包含一位数字');
 	} else if (!checkusername.test(userName)) {
-		// alert('用户名特殊字符')
 		addregisterimg('userimg', 'img/registerFalse.png');
 		addregistertip('userTip', '用户名禁止使用特殊字符');
 	} else {
-		console.log("注册成功");
 		addregisterimg('userimg', 'img/loading.gif');
+		isExist();
 		deleteregisterusertip();
 		return;
 	}
 }
 
-
 function pswfocus() {
-	// alert("获得焦点");
 	console.log("获得焦点");
 }
 
@@ -117,14 +113,10 @@ function passwordcheck() {
 	var registerpsw = document.getElementById("registerpassWord").value;
 	if (!checkpassword.test(registerpsw)) {
 		if (registerpsw.length < 6) {
-			// registerpsw.onkeyup = function () {
-			// 	addregistertip();
-			// }
 			addregisterimg('registerpassWordimg', 'img/registerFalse.png');
 			addregistertip('registerpassWordTip', '密码为6到16位');
 		} else if (/^[0-9]+$/.test(registerpsw)) {
 			addregisterimg('registerpassWordimg', 'img/registerWarning.png');
-			// alert('密码强度：低');
 			addregistertip('registerpassWordTip', '密码强度低');
 		} else if (/^[a-zA-Z]+$/.test(registerpsw)) {
 			addregisterimg('registerpassWordimg', 'img/registerWarning.png');
@@ -136,7 +128,6 @@ function passwordcheck() {
 			addregisterimg('registerpassWordimg', 'img/registerTrue.png');
 			addregistertip('registerpassWordTip', '密码强度高');
 		} else {
-			// console.log("注册成功");
 			addregisterimg('registerpassWordimg', 'img/loading.gif.png');
 			deleteregisterpswtip();
 			return;
@@ -146,7 +137,6 @@ function passwordcheck() {
 
 
 function repswfocus() {
-	// alert("获得焦点");
 	console.log("获得焦点");
 }
 
@@ -156,7 +146,6 @@ function repswblur() {
 
 // 重新输入密码核对
 function repassworkcheck() {
-	console.log("重新输入密码框");
 	var registerpsw = document.getElementById("registerpassWord").value;
 	var repassWord = document.getElementById("repassWord").value;
 	if (registerpsw === repassWord) {
@@ -206,8 +195,30 @@ function deleteregisterrepswtip() {
 	$('#repassWordTip').empty();
 }
 
+function checkregister() {
+	var rUser = $("#registerUser").val();
+	var repsw = $("#registerpassWord").val();
+	var rere = $("#repassWord").val();
+	if (rUser.length > 0 && repsw.length > 0 && rere.length > 0) {
+		if (repsw == rere) {
+			document.getElementById("registerIn").disabled = false;
+		}
+	}
+}
+
+function checklogin() {
+	var userName= $("#userName").val();
+	var passWord = $("#passWord").val();
+	if (userName.length > 0) {
+		if (passWord.length > 0){
+			document.getElementById("signIn").disabled = false;
+		}
+	}else {
+		document.getElementById("signIn").disabled = true;
+	}
+}
+
+
 showsign();
 hiddensign();
 resigiterlogin();
-
-

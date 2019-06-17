@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Sim-Stock</title>
+		<link href="img/3.ico" rel="SHORTCUT ICON" />
+	</head>
+	<link rel="stylesheet" href="css/profile.css">
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="js/profile.js"></script>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			color: #000000;
+			font-family: "微软雅黑";
+			font-size: 12px;
+		}
+		
+		.myNav {
+			width: 100%;
+			height: 60px;
+			border-bottom: 1px solid #ccc;
+			box-shadow: #000000 1px;
+		}
+		
+		.navMenu {
+			width: 60px;
+			height: 60px;
+			border: 1px solid #ccc;
+			border-bottom: none;
+			background: url(../img/navManu2.png) no-repeat center;
+			background-size: 30px 30px;
+			float: left;
+			cursor: pointer;
+		}
+		
+		.navLeft img {
+			margin-left: 20px;
+			float: left;
+		}
+		
+		.navLeft h2 {
+			float: left;
+			line-height: 60px;
+			font-size: 30px;
+			color: #fadb0b;
+			margin-left: 20px;
+		}
+		
+		.navRight {
+			width: 60%;
+			height: 100%;
+			float: right;
+			position: relative;
+		}
+		
+		/* 头像样式 */
+		.headImage {
+			width: 40px;
+			height: 40px;
+			background: url(../img/headImage.png) no-repeat center;
+			background-size: 40px 40px;
+		}
+		
+		/* Nav部分无序列表样式 */
+		.navRight>ul>li {
+			float: right;
+			cursor: pointer;
+			margin-left: 40px;
+			font-size: 16px;
+			line-height: 60px;
+		}
+		
+		.navRight>ul>li:nth-child(1) {
+			margin-top: 10px;
+			margin-right: 30px;
+		}
+		
+		.navRight>ul>li:hover {
+			color: #fadb0b;
+		}
+		
+		.navRight a {
+			font-size: 14px;
+			text-align: left;
+			text-decoration: none;
+		}
+		
+		/* 钱包内容 */
+		.navBill {
+			right: 460px;
+		}
+		
+		/* 消息部分 */
+		.navNotice {
+			right: 390px;
+		}
+		
+		/* 支持与服务 */
+		.navSupport {
+			right: 270px;
+		}
+		
+		/* 主页 */
+		#mainPage {
+			margin-top: 15px;
+		}
+		
+		/* 语言选择 */
+		.navLanguage {
+			right:100px;
+		}
+		
+		/* 公共样式 */
+		.navPublic {
+			top: 46px;
+			position: absolute;
+			display: none;
+			border-radius: 5px;
+			border: 1px solid white;
+			box-shadow: 0 3px 5px #ccc;
+		}
+		
+		.navPublic ul {
+			background: white;
+			width: 110px;
+			height: 40px;
+		}
+		
+		.navPublic ul li:hover {
+			background: #eee;
+		}
+		
+		.navPublic ul li {
+			cursor: pointer;
+			width: 100px;
+			height: 40px;
+			float: left;
+			line-height: 40px;
+			padding-left: 10px;
+		}
+	</style>
+	<body>
+		<div class="myNav">
+			<div id="navMenu" class="navMenu">
+			</div>
+			<div class="navLeft">
+				<img src="img/1.ico" width="58px" height="58px">
+				<h2>思道客</h2>
+			</div>
+			<div class="navRight">
+				<ul>
+					<li>
+						<!-- 转向个人信息页 -->
+						<a href="###">
+							<div class="headImage"></div>
+						</a>
+					</li>
+					<div></div>
+					<li onmouseover="showMenu('navLanguage')" onmouseout="hiddenMenu('navLanguage')">中文简体</li>
+					<div class="navLanguage navPublic" id="navLanguage" onmouseover="showMenu('navLanguage')" onmouseout="hiddenMenu('navLanguage')">
+						<ul>
+							<!-- 转向英文页 -->
+							<li><a href="###">English</a></li>
+						</ul>
+					</div>
+					<li onmouseover="changeMainPage()" onmouseout="hiddenMainPage()"><a href="###"><img src="img/mainPage.png" width="25px"
+							 height="25px" id="mainPage"></a></li>
+					<!-- 转向主页 -->
+					<div></div>
+					<li onmouseover="showMenu('navSupport')" onmouseout="hiddenMenu('navSupport')">支持与服务</li>
+					<div id="navSupport" class="navSupport navPublic" onmouseover="showMenu('navSupport')" onmouseout="hiddenMenu('navSupport')">
+						<ul>
+							<!-- 转向各个页 -->
+							<li><a href="###">帮助</a></li>
+							<li><a href="###">服务</a></li>
+							<li><a href="###">建议</a></li>
+							<li><a href="###">论坛</a></li>
+							<li><a href="###">求助</a></li>
+							<li><a href="###">联系我们</a></li>
+						</ul>
+					</div>
+					<li onmouseover="showMenu('navNotice')" onmouseout="hiddenMenu('navNotice')">通知</li>
+					<div id="navNotice" class="navNotice navPublic" onmouseover="showMenu('navNotice')" onmouseout="hiddenMenu('navNotice')">
+						<ul>
+							<!-- 转向消息页 -->
+							<li><a href="###">全部消息</a></li>
+							<li><a href="###">新消息</a></li>
+						</ul>
+					</div>
+					<li onmouseover="showMenu('navBill')" onmouseout="hiddenMenu('navBill')">钱包</li>
+					<div class="navBill navPublic" id="navBill" onmouseover="showMenu('navBill')" onmouseout="hiddenMenu('navBill')">
+						<ul>
+							<!-- 转向各个页 -->
+							<li><a href="###">充值</a></li>
+							<li><a href="###">订单</a></li>
+							<li><a href="###">余额</a></li>
+							<li><a href="###">消费记录</a></li>
+							<li><a href="###">进入费用中心</a></li>
+						</ul>
+					</div>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
+
