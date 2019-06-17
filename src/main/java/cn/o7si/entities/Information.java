@@ -36,8 +36,7 @@ public class Information implements Serializable {
     private Integer uaid;
 
     public static boolean isLegalField(String field) {
-        return  field.equals("avatar") ||
-                field.equals("nickname") ||
+        return field.equals("nickname") ||
                 field.equals("gender") ||
                 field.equals("birthday") ||
                 field.equals("place") ||

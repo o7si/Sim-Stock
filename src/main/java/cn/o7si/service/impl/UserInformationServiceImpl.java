@@ -38,4 +38,10 @@ public class UserInformationServiceImpl implements IUserInformationService {
         boolean rtValue = userInformationDao.updateOrdinaryInformation(field, value, accountId);
         return rtValue;
     }
+
+    @Override
+    public boolean modifyAvatarInformation(String finalName, Integer accountId) {
+        boolean rtValue = userInformationDao.updateAvatarInformation(finalName, accountId);
+        return rtValue;
+    }
 }

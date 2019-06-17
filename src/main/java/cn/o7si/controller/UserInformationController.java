@@ -1,6 +1,5 @@
 package cn.o7si.controller;
 
-import cn.o7si.dao.IUserInformationDao;
 import cn.o7si.entities.Information;
 import cn.o7si.service.IUserInformationService;
 import cn.o7si.utils.StatusCodeUtils;
@@ -8,11 +7,17 @@ import cn.o7si.utils.TextUtils;
 import cn.o7si.vo.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 
 // 用户信息控制层
 @RequestMapping("/user/information")
@@ -100,5 +105,68 @@ public class UserInformationController {
         }
 
         return rtData;
+    }
+
+    // 功能：上传头像
+    @RequestMapping(value = "/upload/avatar", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseData uploadAvatar(HttpSession session, MultipartFile upload) {
+        // 获取登录信息
+        Integer accountId = (Integer) session.getAttribute("currentAccountId");
+
+        // 如果Session中未查询到AccountId
+        if (accountId == null)
+            return new ResponseData(StatusCodeUtils.NOTLOGGEDIN);
+
+        // 头像上传路径
+        String path = session.getServletContext().getRealPath("uploads/avatar/");
+
+        // 如果路径未被创建，则创建该路径
+        File tmpFile = new File(path);
+        if (!tmpFile.exists())
+            tmpFile.mkdirs();
+
+        // 获取文件名
+        String fileName = upload.getOriginalFilename();
+        // 随机值
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        // 拼接文件名
+        String finalName = uuid + "_" + fileName;
+
+        // 获取文件扩展名
+        String suffix = finalName.substring(finalName.lastIndexOf(".") + 1);
+
+        try {
+            // 上传文件
+            System.out.println("upload before");
+            upload.transferTo(new File(path, finalName));
+            System.out.println("upload after");
+
+            // 修改数据表中头像路径
+            boolean rtValue = userInformationService.modifyAvatarInformation(path + finalName, accountId);
+
+            // 响应给客户端的数据
+            ResponseData rtData = new ResponseData();
+
+            // 设置返回值
+            if (rtValue) {
+                // 修改成功
+                rtData.setAction(null);
+                rtData.setData(null);
+                rtData.setStatusCode(0);
+                rtData.setDesc("头像修改成功");
+            } else {
+                // 修改失败
+                rtData.setAction(null);
+                rtData.setData(null);
+                rtData.setStatusCode(0);
+                rtData.setDesc("头像修改失败");
+            }
+
+            return rtData;
+        } catch (IOException ignored) {
+            // 忽略异常
+        }
+        return new ResponseData(StatusCodeUtils.UNKNOWERROR);
     }
 }

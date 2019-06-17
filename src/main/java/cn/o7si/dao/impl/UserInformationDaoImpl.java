@@ -71,4 +71,21 @@ public class UserInformationDaoImpl implements IUserInformationDao {
         // 返回结果
         return rtValue == 1;
     }
+
+    @Override
+    public boolean updateAvatarInformation(String finalName, Integer accountId) {
+        // 更新头像信息时使用的SQL语句
+        String sql = "update user_information set avatar=? where uaid=?";
+
+        int rtValue = 0;
+        try {
+            // 执行SQL语句
+            rtValue = jdbcTemplate.update(sql, finalName, accountId);
+        } catch (Exception ignored) {
+            // 忽略异常
+        }
+
+        // 返回结果
+        return rtValue == 1;
+    }
 }

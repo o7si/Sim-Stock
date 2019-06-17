@@ -26,4 +26,6 @@ public interface IUserInformationDao {
      * @return              如果修改成功则返回true，否则返回false
      */
     boolean updateOrdinaryInformation(String field, Object value, Integer accountId);
+
+    boolean updateAvatarInformation(String finalName, Integer accountId);
 }
