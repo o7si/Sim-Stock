@@ -34,6 +34,7 @@ public class UserAccountDaoImpl implements IUserAccountDao {
         } catch (Exception ignored) {
             // 忽略异常
         }
+
         // 返回结果
         return rtValue == 1;
     }

@@ -1,7 +1,6 @@
 package cn.o7si.dao.impl;
 
 import cn.o7si.dao.IUserInformationDao;
-import cn.o7si.entities.Account;
 import cn.o7si.entities.Information;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -18,6 +17,23 @@ public class UserInformationDaoImpl implements IUserInformationDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Override
+    public boolean createInformation(Integer accountId) {
+        // 向Information表中插入一条新的记录时使用的SQL语句
+        String sql = "insert into user_information(uaid) values (?)";
+
+        int rtValue = 0;
+        try {
+            // 执行SQL语句
+            rtValue = jdbcTemplate.update(sql, accountId);
+        } catch (Exception ignored) {
+            // 忽略异常
+        }
+
+        // 返回结果
+        return rtValue == 1;
+    }
 
     @Override
     public Information findInformationByAccountId(Integer accountId) {
@@ -40,12 +56,19 @@ public class UserInformationDaoImpl implements IUserInformationDao {
     }
 
     @Override
-    public boolean updateInformation(Information info) {
-        // 更新详细信息时使用的SQL语句
-        // String sql = "update user_information set avatar=?, nickname=?, birthday=?, place=?, hobby=?, phone=?, email=?, profile=? where uaid=?;";
+    public boolean updateOrdinaryInformation(String field, Object value, Integer accountId) {
+        // 更新普通信息时使用的SQL语句
+        String sql = "update user_information set " + field + "=? where uaid=?";
 
-        // 执行SQL语句
-        // jdbcTemplate.update(sql, info.getAvatar());
-        return false;
+        int rtValue = 0;
+        try {
+            // 执行SQL语句
+            rtValue = jdbcTemplate.update(sql, value, accountId);
+        } catch (Exception ignored) {
+            // 忽略异常
+        }
+
+        // 返回结果
+        return rtValue == 1;
     }
 }

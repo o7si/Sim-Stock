@@ -1,8 +1,9 @@
 package cn.o7si.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Information {
+public class Information implements Serializable {
 
     // 默认性别
     private static final Integer DEFAULTGENDER = 0;
@@ -23,8 +24,8 @@ public class Information {
     private Date birthday;
     // 地区
     private String place;
-    // 兴趣爱好
-    private String hobby;
+    // 行业
+    private Integer industry;
     // 电话号码
     private String phone;
     // 电子邮件
@@ -34,7 +35,14 @@ public class Information {
     // 账户ID
     private Integer uaid;
 
-    public Information() {
+    public static boolean isLegalField(String field) {
+        return  field.equals("avatar") ||
+                field.equals("nickname") ||
+                field.equals("gender") ||
+                field.equals("birthday") ||
+                field.equals("place") ||
+                field.equals("industry") ||
+                field.equals("profile");
     }
 
     public Integer getId() {
@@ -85,12 +93,12 @@ public class Information {
         this.place = place;
     }
 
-    public String getHobby() {
-        return hobby;
+    public Integer getIndustry() {
+        return industry;
     }
 
-    public void setHobby(String hobby) {
-        this.hobby = hobby;
+    public void setIndustry(Integer industry) {
+        this.industry = industry;
     }
 
     public String getPhone() {
@@ -134,7 +142,7 @@ public class Information {
                 ", gender=" + gender +
                 ", birthday=" + birthday +
                 ", place='" + place + '\'' +
-                ", hobby='" + hobby + '\'' +
+                ", industry=" + industry +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", profile='" + profile + '\'' +

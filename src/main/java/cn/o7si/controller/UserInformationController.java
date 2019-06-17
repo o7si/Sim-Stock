@@ -4,14 +4,15 @@ import cn.o7si.dao.IUserInformationDao;
 import cn.o7si.entities.Information;
 import cn.o7si.service.IUserInformationService;
 import cn.o7si.utils.StatusCodeUtils;
+import cn.o7si.utils.TextUtils;
 import cn.o7si.vo.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 // 用户信息控制层
 @RequestMapping("/user/information")
@@ -24,9 +25,13 @@ public class UserInformationController {
     // 功能：查询个人信息
     @RequestMapping(value = "/find", method = RequestMethod.POST)
     public @ResponseBody
-    ResponseData find(HttpServletRequest request) {
+    ResponseData find(HttpSession session) {
         // 获取相关数据
-        Integer accountId = (Integer) request.getSession().getAttribute("currentAccountId");
+        Integer accountId = (Integer) session.getAttribute("currentAccountId");
+
+        // 如果Session中未查询到AccountId
+        if (accountId == null)
+            return new ResponseData(StatusCodeUtils.NOTLOGGEDIN);
 
         // 查询当前账户的详细信息
         Information rtInfo = userInformationService.findInformation(accountId);
@@ -37,15 +42,15 @@ public class UserInformationController {
         // 设置返回值
         if (rtInfo != null) {
             // 查找到相关数据
-            rtData.setAction("");
+            rtData.setAction(null);
             rtData.put("information", rtInfo);
-            rtData.setStatusCode(StatusCodeUtils.ACCOUNTEXIST);
+            rtData.setStatusCode(StatusCodeUtils.INFORMATIONFINDSUCCESS);
             rtData.setDesc("用户信息查询成功");
         } else {
             // 未查找到相关数据
-            rtData.setAction("");
+            rtData.setAction(null);
             rtData.setData(null);
-            rtData.setStatusCode(StatusCodeUtils.ACCOUNTNOTEXIST);
+            rtData.setStatusCode(StatusCodeUtils.INFORMATIONFINDFAILURE);
             rtData.setDesc("用户信息查询失败");
         }
 
@@ -53,8 +58,47 @@ public class UserInformationController {
     }
 
     // 功能：修改个人信息
-    @RequestMapping("/modify")
-    public void tmp() {
+    @RequestMapping(value = "/modify", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseData modify(@RequestBody Map<String, Object> data, HttpSession session) {
+        // 获取相关数据
+        Integer accountId = (Integer) session.getAttribute("currentAccountId");
+        String field = (String) data.get("field");
+        Object value = data.get("value");
 
+        // 如果Session中未查询到AccountId
+        if (accountId == null)
+            return new ResponseData(StatusCodeUtils.NOTLOGGEDIN);
+
+        // 提供参数不足
+        if (TextUtils.isEmpty(field))
+            return new ResponseData(StatusCodeUtils.MISSPARAM);
+
+        // 修改字段不满足要求
+        if (!Information.isLegalField(field))
+            return new ResponseData(StatusCodeUtils.BADINFORMATIONFIELD);
+
+        // 调用业务层修改个人信息
+        boolean rtValue = userInformationService.modifyOrdinaryInformation(field, value, accountId);
+
+        // 响应给客户端的数据
+        ResponseData rtData = new ResponseData();
+
+        // 设置返回值
+        if (rtValue) {
+            // 修改成功
+            rtData.setAction(null);
+            rtData.setData(null);
+            rtData.setStatusCode(StatusCodeUtils.INFORMATIONMODIFYSUCCESS);
+            rtData.setDesc("用户信息修改成功");
+        } else {
+            // 修改失败
+            rtData.setAction(null);
+            rtData.setData(null);
+            rtData.setStatusCode(StatusCodeUtils.INFORMATIONMODIFYFAILURE);
+            rtData.setDesc("用户信息修改失败");
+        }
+
+        return rtData;
     }
 }

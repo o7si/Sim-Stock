@@ -16,6 +16,13 @@ public class ResponseData {
     // 描述
     private String desc;
 
+    public ResponseData() {
+    }
+
+    public ResponseData(Integer statusCode) {
+        this.statusCode = statusCode;
+    }
+
     public void put(String key, Object value) {
         if (data == null)
             data = new HashMap<>();
