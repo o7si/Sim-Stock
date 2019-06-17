@@ -110,13 +110,13 @@
 						<div class="profileFont">
 							昵称：
 						</div>
-						<div class="publicModify nickName">傻逼姜威</div>
-						<div class="clickModify" id="nickName" onclick="nickNameShow()">
+						<div class="publicModify nickName">暂未设置</div>
+						<div class="clickModify" id="nickName" onclick="nickNameShow()" >
 								<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
 						</div>
 					</div>
 						<div class="confirm" id="nameConfirm">
-							<div class="trueConfirm">保存</div>
+							<div class="trueConfirm" onclick="nickNameInput()">保存</div>
 							<div class="falseConfirm" onclick="nickNameHidden()">取消</div>
 						</div>
 					
@@ -125,13 +125,13 @@
 							性别：
 						</div>
 						<div class="publicModify gender" >男</div>
-						<div class="clickModify"  id="gender">
+						<div class="clickModify"  id="gender" onclick="genderShow()">
 							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
 						</div>
 					</div>
 					<div class="confirm" id="genderConfirm">
-						<div class="trueConfirm">保存</div>
-						<div class="falseConfirm">取消</div>
+						<div class="trueConfirm" onclick="genderInput()">保存</div>
+						<div class="falseConfirm"  onclick="genderHidden()">取消</div>
 					</div>
 					
 					<div class="profileInformation" id="modifyprofile">

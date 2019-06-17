@@ -50,18 +50,19 @@ function login() {
 		url: "/Sim-Stock/user/account/login",
 		contentType: "application/json;charset=UTF-8",
 		data: JSON.stringify(loginGetJsonData()),
+		xhrFields: {
+						withCredentials: true
+				},
 		dataType: "json",
 		type: "post",
 		success: function(data) {
 			if(data.statusCode == 1009) {
-				localStorage.setItem('id',data.data.account.id);
-				localStorage.setItem('username',data.data.account.username);
-				localStorage.setItem('createTime',data.data.account.createTime);				
-				window.location.href="http://simstock.com/front/profile.html";
-			document.getElementById('loginMessage').innerHTML ="";
-			}else if(data.statusCode == 1010) {
-				document.getElementById('loginMessage').innerHTML ="用户名或密码错误";
-			}
+				// localStorage.setItem('id',data.data.account.id);
+				// localStorage.setItem('username',data.data.account.username);
+				// localStorage.setItem('createTime',data.data.account.createTime);				
+				// alert(data.desc);
+				// window.href="http://simstock.com/Project/Sim-Stock/profile.html";
+				// window.location.href="http://simstock.com/Project/Sim-Stock/profile.html";
 		},
 		error: function() {
 			console.log("no");
