@@ -2,6 +2,7 @@ package cn.o7si.controller;
 
 import cn.o7si.entities.Account;
 import cn.o7si.service.IUserAccountService;
+import cn.o7si.utils.JwtUtils;
 import cn.o7si.utils.StatusCodeUtils;
 import cn.o7si.utils.TextUtils;
 import cn.o7si.vo.ResponseData;
@@ -100,7 +101,7 @@ public class UserAccountController {
     // 功能：账户登录
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public @ResponseBody
-    ResponseData login(@RequestBody Map<String, Object> data, HttpSession session) {
+    ResponseData login(@RequestBody Map<String, Object> data) {
         // 获取相关数据
         String username = (String) data.get("username");
         String password = (String) data.get("password");
@@ -119,12 +120,10 @@ public class UserAccountController {
         if (rtAccount != null) {
             // 登录成功
             rtData.setAction(null);
-            rtData.setData(null);
+            // 生成Token
+            rtData.put("token", JwtUtils.createToken(rtAccount.getId()));
             rtData.setStatusCode(StatusCodeUtils.ACCOUNTLOGINSUCCESS);
             rtData.setDesc("账户[" + username + "]登录成功");
-
-            // 保存当前用户账户ID到Session中
-            session.setAttribute("currentAccountId", rtAccount.getId());
         } else {
             // 登录失败
             rtData.setAction(null);

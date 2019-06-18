@@ -2,15 +2,14 @@ package cn.o7si.controller;
 
 import cn.o7si.entities.Information;
 import cn.o7si.service.IUserInformationService;
+import cn.o7si.utils.JwtUtils;
 import cn.o7si.utils.StatusCodeUtils;
 import cn.o7si.utils.TextUtils;
 import cn.o7si.vo.ResponseData;
+import com.auth0.jwt.interfaces.Claim;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
@@ -30,11 +29,12 @@ public class UserInformationController {
     // 功能：查询个人信息
     @RequestMapping(value = "/find", method = RequestMethod.POST)
     public @ResponseBody
-    ResponseData find(HttpSession session) {
-        // 获取相关数据
-        Integer accountId = (Integer) session.getAttribute("currentAccountId");
+    ResponseData find(@RequestBody Map<String, Object> data) {
+        // 获取登录状态
+        Map<String, Claim> claim = JwtUtils.verifyToken((String) data.get("token"));
+        Integer accountId = claim != null ? claim.get("accountId").asInt() : null;
 
-        // 如果Session中未查询到AccountId
+        // 如果用户未登录
         if (accountId == null)
             return new ResponseData(StatusCodeUtils.NOTLOGGEDIN);
 
@@ -65,15 +65,18 @@ public class UserInformationController {
     // 功能：修改个人信息
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
     public @ResponseBody
-    ResponseData modify(@RequestBody Map<String, Object> data, HttpSession session) {
-        // 获取相关数据
-        Integer accountId = (Integer) session.getAttribute("currentAccountId");
-        String field = (String) data.get("field");
-        Object value = data.get("value");
+    ResponseData modify(@RequestBody Map<String, Object> data) {
+        // 获取登录状态
+        Map<String, Claim> claim = JwtUtils.verifyToken((String) data.get("token"));
+        Integer accountId = claim != null ? claim.get("accountId").asInt() : null;
 
-        // 如果Session中未查询到AccountId
+        // 如果用户未登录
         if (accountId == null)
             return new ResponseData(StatusCodeUtils.NOTLOGGEDIN);
+
+        // 获取进行修改的相关数据
+        String field = (String) data.get("field");
+        Object value = data.get("value");
 
         // 提供参数不足
         if (TextUtils.isEmpty(field))
@@ -107,16 +110,10 @@ public class UserInformationController {
         return rtData;
     }
 
-    // 功能：上传头像
+    // 功能：上传头像（暂不可用）
     @RequestMapping(value = "/upload/avatar", method = RequestMethod.POST)
     public @ResponseBody
     ResponseData uploadAvatar(HttpSession session, MultipartFile upload) {
-        // 获取登录信息
-        Integer accountId = (Integer) session.getAttribute("currentAccountId");
-
-        // 如果Session中未查询到AccountId
-        if (accountId == null)
-            return new ResponseData(StatusCodeUtils.NOTLOGGEDIN);
 
         // 头像上传路径
         String path = session.getServletContext().getRealPath("uploads/avatar/");
@@ -142,8 +139,8 @@ public class UserInformationController {
             upload.transferTo(new File(path, finalName));
             System.out.println("upload after");
 
-            // 修改数据表中头像路径
-            boolean rtValue = userInformationService.modifyAvatarInformation(path + finalName, accountId);
+            // 修改数据表中头像路径（暂时写死）
+            boolean rtValue = userInformationService.modifyAvatarInformation(path + finalName, 1);
 
             // 响应给客户端的数据
             ResponseData rtData = new ResponseData();

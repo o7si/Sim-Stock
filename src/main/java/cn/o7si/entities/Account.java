@@ -1,8 +1,9 @@
 package cn.o7si.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Account {
+public class Account implements Serializable {
 
     // 默认权限
     private static final Integer DEFAULTAUTHORITY = 0;
