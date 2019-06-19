@@ -43,4 +43,11 @@ public class StatusCodeUtils {
     public static final Integer INFORMATIONFINDSUCCESS = 1017;
     // 查询个人信息失败
     public static final Integer INFORMATIONFINDFAILURE = 1018;
+
+    // 头像上传成功
+    public static final Integer AVATARMODIFYSUCCESS = 1021;
+    // 头像上传失败
+    public static final Integer AVATARMODIFYFAILURE = 1022;
+    // 非图像文件
+    public static final Integer FILENOTIMAGE = 1023;
 }

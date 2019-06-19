@@ -30,6 +30,7 @@ public class UserInformationController {
     @RequestMapping(value = "/find", method = RequestMethod.POST)
     public @ResponseBody
     ResponseData find(@RequestBody Map<String, Object> data) {
+        System.out.println((String) data.get("token"));
         // 获取登录状态
         Map<String, Claim> claim = JwtUtils.verifyToken((String) data.get("token"));
         Integer accountId = claim != null ? claim.get("accountId").asInt() : null;
@@ -48,6 +49,7 @@ public class UserInformationController {
         if (rtInfo != null) {
             // 查找到相关数据
             rtData.setAction(null);
+            rtInfo.erase();
             rtData.put("information", rtInfo);
             rtData.setStatusCode(StatusCodeUtils.INFORMATIONFINDSUCCESS);
             rtData.setDesc("用户信息查询成功");
@@ -113,7 +115,17 @@ public class UserInformationController {
     // 功能：上传头像（暂不可用）
     @RequestMapping(value = "/upload/avatar", method = RequestMethod.POST)
     public @ResponseBody
-    ResponseData uploadAvatar(HttpSession session, MultipartFile upload) {
+    ResponseData uploadAvatar(Map<String, Object> data, HttpSession session, MultipartFile upload) {
+        // 获取登录状态
+        Map<String, Claim> claim = JwtUtils.verifyToken((String) data.get("token"));
+        Integer accountId = claim != null ? claim.get("accountId").asInt() : null;
+        System.out.println(accountId);
+//        Integer accountId;
+        accountId = 1;
+
+        // 如果用户未登录
+        if (accountId == null)
+            return new ResponseData(StatusCodeUtils.NOTLOGGEDIN);
 
         // 头像上传路径
         String path = session.getServletContext().getRealPath("uploads/avatar/");
@@ -133,14 +145,18 @@ public class UserInformationController {
         // 获取文件扩展名
         String suffix = finalName.substring(finalName.lastIndexOf(".") + 1);
 
+        System.out.println(suffix);
+
+        // 非图像文件
+        if (!suffix.equals("jpg") && !suffix.equals("png") && !suffix.equals("gif"))
+            return new ResponseData(StatusCodeUtils.FILENOTIMAGE);
+
         try {
             // 上传文件
-            System.out.println("upload before");
             upload.transferTo(new File(path, finalName));
-            System.out.println("upload after");
 
-            // 修改数据表中头像路径（暂时写死）
-            boolean rtValue = userInformationService.modifyAvatarInformation(path + finalName, 1);
+            // 修改数据表中头像路径
+            boolean rtValue = userInformationService.modifyAvatarInformation(path + finalName, accountId);
 
             // 响应给客户端的数据
             ResponseData rtData = new ResponseData();
@@ -150,13 +166,13 @@ public class UserInformationController {
                 // 修改成功
                 rtData.setAction(null);
                 rtData.setData(null);
-                rtData.setStatusCode(0);
+                rtData.setStatusCode(StatusCodeUtils.AVATARMODIFYSUCCESS);
                 rtData.setDesc("头像修改成功");
             } else {
                 // 修改失败
                 rtData.setAction(null);
                 rtData.setData(null);
-                rtData.setStatusCode(0);
+                rtData.setStatusCode(StatusCodeUtils.AVATARMODIFYFAILURE);
                 rtData.setDesc("头像修改失败");
             }
 
@@ -164,6 +180,7 @@ public class UserInformationController {
         } catch (IOException ignored) {
             // 忽略异常
         }
+        // 文件上传失败
         return new ResponseData(StatusCodeUtils.UNKNOWERROR);
     }
 }

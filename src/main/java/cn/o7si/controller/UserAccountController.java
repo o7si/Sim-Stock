@@ -122,6 +122,8 @@ public class UserAccountController {
             rtData.setAction(null);
             // 生成Token
             rtData.put("token", JwtUtils.createToken(rtAccount.getId()));
+            rtAccount.erase();
+            rtData.put("account", rtAccount);
             rtData.setStatusCode(StatusCodeUtils.ACCOUNTLOGINSUCCESS);
             rtData.setDesc("账户[" + username + "]登录成功");
         } else {

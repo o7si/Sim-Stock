@@ -17,6 +17,12 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/user/information/*"/>-->
+            <!--<bean class="cn.o7si.interceptor.AuthorityInterceptor"/>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"/>

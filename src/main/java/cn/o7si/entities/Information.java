@@ -44,6 +44,11 @@ public class Information implements Serializable {
                 field.equals("profile");
     }
 
+    public void erase() {
+        phone = "156-6139-4223";
+        email = "3091482559@qq.com";
+    }
+
     public Integer getId() {
         return id;
     }
