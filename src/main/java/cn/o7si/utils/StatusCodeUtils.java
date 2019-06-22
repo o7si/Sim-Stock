@@ -50,4 +50,9 @@ public class StatusCodeUtils {
     public static final Integer AVATARMODIFYFAILURE = 1022;
     // 非图像文件
     public static final Integer FILENOTIMAGE = 1023;
+
+    // 获取股票列表成功
+    public static final Integer GETSTOCKLISTSUCCESS = 1051;
+    // 获取股票列表失败
+    public static final Integer GETSTOCKLISTFAILURE = 1052;
 }
