@@ -30,14 +30,14 @@ public class UserInformationController {
     @RequestMapping(value = "/find", method = RequestMethod.POST)
     public @ResponseBody
     ResponseData find(@RequestBody Map<String, Object> data) {
-        System.out.println((String) data.get("token"));
+        System.out.println((String)data.get("token"));
         // 获取登录状态
         Map<String, Claim> claim = JwtUtils.verifyToken((String) data.get("token"));
         Integer accountId = claim != null ? claim.get("accountId").asInt() : null;
 
         // 如果用户未登录
         if (accountId == null)
-            return new ResponseData(StatusCodeUtils.NOTLOGGEDIN);
+            return new ResponseData(StatusCodeUtils.NOTLOGGEDIN, "未登录");
 
         // 查询当前账户的详细信息
         Information rtInfo = userInformationService.findInformation(accountId);
@@ -48,15 +48,12 @@ public class UserInformationController {
         // 设置返回值
         if (rtInfo != null) {
             // 查找到相关数据
-            rtData.setAction(null);
-            rtInfo.erase();
+            rtInfo.eraseSensitiveData();
             rtData.put("information", rtInfo);
             rtData.setStatusCode(StatusCodeUtils.INFORMATIONFINDSUCCESS);
             rtData.setDesc("用户信息查询成功");
         } else {
             // 未查找到相关数据
-            rtData.setAction(null);
-            rtData.setData(null);
             rtData.setStatusCode(StatusCodeUtils.INFORMATIONFINDFAILURE);
             rtData.setDesc("用户信息查询失败");
         }
@@ -74,7 +71,7 @@ public class UserInformationController {
 
         // 如果用户未登录
         if (accountId == null)
-            return new ResponseData(StatusCodeUtils.NOTLOGGEDIN);
+            return new ResponseData(StatusCodeUtils.NOTLOGGEDIN, "未登录");
 
         // 获取进行修改的相关数据
         String field = (String) data.get("field");
@@ -97,14 +94,12 @@ public class UserInformationController {
         // 设置返回值
         if (rtValue) {
             // 修改成功
-            rtData.setAction(null);
-            rtData.setData(null);
+            rtData.put("field", field);
+            rtData.put("value", value);
             rtData.setStatusCode(StatusCodeUtils.INFORMATIONMODIFYSUCCESS);
             rtData.setDesc("用户信息修改成功");
         } else {
             // 修改失败
-            rtData.setAction(null);
-            rtData.setData(null);
             rtData.setStatusCode(StatusCodeUtils.INFORMATIONMODIFYFAILURE);
             rtData.setDesc("用户信息修改失败");
         }
@@ -164,13 +159,11 @@ public class UserInformationController {
             // 设置返回值
             if (rtValue) {
                 // 修改成功
-                rtData.setAction(null);
                 rtData.setData(null);
                 rtData.setStatusCode(StatusCodeUtils.AVATARMODIFYSUCCESS);
                 rtData.setDesc("头像修改成功");
             } else {
                 // 修改失败
-                rtData.setAction(null);
                 rtData.setData(null);
                 rtData.setStatusCode(StatusCodeUtils.AVATARMODIFYFAILURE);
                 rtData.setDesc("头像修改失败");

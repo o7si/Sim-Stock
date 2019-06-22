@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 
@@ -47,14 +44,12 @@ public class UserAccountController {
         // 设置返回值
         if (exist) {
             // 存在
-            rtData.setAction(null);
-            rtData.setData(null);
+            rtData.put("username", username);
             rtData.setStatusCode(StatusCodeUtils.ACCOUNTEXIST);
             rtData.setDesc("服务器存在名称为[" + username + "]的用户");
         } else {
             // 不存在
-            rtData.setAction(null);
-            rtData.setData(null);
+            rtData.put("username", username);
             rtData.setStatusCode(StatusCodeUtils.ACCOUNTNOTEXIST);
             rtData.setDesc("服务器不存在名称为[" + username + "]的用户");
         }
@@ -83,14 +78,12 @@ public class UserAccountController {
         // 设置返回值
         if (registerRes) {
             // 注册成功
-            rtData.setAction(null);
-            rtData.setData(null);
+            rtData.put("username", username);
             rtData.setStatusCode(StatusCodeUtils.ACCOUNTREGISTERSUCCESS);
             rtData.setDesc("账户[" + username + "]注册成功");
         } else {
             // 注册失败
-            rtData.setAction(null);
-            rtData.setData(null);
+            rtData.put("username", username);
             rtData.setStatusCode(StatusCodeUtils.ACCOUNTREGISTERFAILURE);
             rtData.setDesc("账户[" + username + "]注册失败");
         }
@@ -119,17 +112,14 @@ public class UserAccountController {
         // 设置返回值
         if (rtAccount != null) {
             // 登录成功
-            rtData.setAction(null);
-            // 生成Token
             rtData.put("token", JwtUtils.createToken(rtAccount.getId()));
-            rtAccount.erase();
+            rtAccount.eraseSensitiveData();
             rtData.put("account", rtAccount);
             rtData.setStatusCode(StatusCodeUtils.ACCOUNTLOGINSUCCESS);
             rtData.setDesc("账户[" + username + "]登录成功");
         } else {
             // 登录失败
-            rtData.setAction(null);
-            rtData.setData(null);
+            rtData.put("username", username);
             rtData.setStatusCode(StatusCodeUtils.ACCOUNTLOGINFAILURE);
             rtData.setDesc("账户[" + username + "]登录失败");
         }

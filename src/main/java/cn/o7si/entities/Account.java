@@ -33,7 +33,8 @@ public class Account implements Serializable {
         this.authority = authority;
     }
 
-    public void erase() {
+    public void eraseSensitiveData() {
+        id = null;
         password = null;
     }
 
