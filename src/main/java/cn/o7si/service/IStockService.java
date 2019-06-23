@@ -1,10 +1,11 @@
 package cn.o7si.service;
 
 import cn.o7si.entities.Stock;
+import cn.o7si.vo.PageBeanVo;
 
 import java.util.List;
 
 public interface IStockService {
 
-    List<Stock> findAll();
+    PageBeanVo<Stock> findList(PageBeanVo page);
 }

@@ -3,6 +3,7 @@ package cn.o7si.service.impl;
 import cn.o7si.dao.IStockDao;
 import cn.o7si.entities.Stock;
 import cn.o7si.service.IStockService;
+import cn.o7si.vo.PageBeanVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,15 @@ public class StockServiceImpl implements IStockService {
     private IStockDao stockDao;
 
     @Override
-    public List<Stock> findAll() {
-        List<Stock> stocks = stockDao.findAll();
-        return stocks;
+    public PageBeanVo<Stock> findList(PageBeanVo page) {
+        PageBeanVo<Stock> rtPage = new PageBeanVo<>();
+
+        List<Stock> stocks = stockDao.findList(page);
+        Integer total = stockDao.findTotal();
+
+        rtPage.setData(stocks);
+        rtPage.setTotal(total);
+        rtPage.setMaxPageNumber(total / page.getPageSize());
+        return rtPage;
     }
 }
