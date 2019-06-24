@@ -22,7 +22,7 @@ public class StockController {
     private IStockService stockService;
 
     // 功能：查询股票
-    @RequestMapping(value = "/getList", method = RequestMethod.GET)
+    @RequestMapping(value = "/getList", method = {RequestMethod.GET, RequestMethod.POST})
     public @ResponseBody
     ResponseData getList(PageBeanVo page) {
         // 调用业务层进行查询

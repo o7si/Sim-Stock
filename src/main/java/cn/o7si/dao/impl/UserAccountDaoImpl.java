@@ -114,4 +114,54 @@ public class UserAccountDaoImpl implements IUserAccountDao {
         // 返回查询结果
         return accounts.get(0);
     }
+
+    /**
+     * 根据账户编号和密码查询账户
+     * @param accountId 用作查询的账户编号
+     * @param password  用作查询的账户密码
+     * @return          如果查询成功则返回该账户，否则返回null
+     */
+    @Override
+    public boolean findAccountByAccountIdAndPassword(Integer accountId, String password) {
+        // 根据AccountId和Password查询账户时使用的SQL语句
+        String sql = "select * from user_account where id=? and password=?";
+
+        // 执行SQL语句
+        List<Account> accounts = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Account.class), accountId, password);
+
+        // 如果未查询到结果
+        if (accounts == null || accounts.size() == 0)
+            return false;
+
+        // 如果结果集不唯一
+        if (accounts.size() > 1)
+            return false;
+
+        // 返回查询结果
+        return true;
+    }
+
+    /**
+     * 修改账户信息
+     * @param accountId     账户ID
+     * @param field         将要修改的字段
+     * @param newPassword   将要修改成为的值
+     * @return              如果修改成功则返回true，否则返回false
+     */
+    @Override
+    public boolean updateAccount(Integer accountId, String field, String newPassword) {
+        // 用作修改时使用的SQL语句
+        String sql = "update user_account set " + field + "=? where id=?";
+
+        int rtValue = 0;
+        try {
+            // 执行SQL语句
+            rtValue = jdbcTemplate.update(sql, newPassword, accountId);
+        } catch (Exception ignored) {
+            // 忽略异常
+        }
+
+        // 返回结果
+        return rtValue == 1;
+    }
 }

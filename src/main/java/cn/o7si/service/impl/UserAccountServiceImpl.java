@@ -47,4 +47,28 @@ public class UserAccountServiceImpl implements IUserAccountService {
         Account rtAccount = userAccountDao.findAccountByUsernameAndPassword(username, password);
         return rtAccount;
     }
+
+    /**
+     * 验证账户密码
+     * @param accountId 账户ID
+     * @param password  密码
+     * @return          如果验证成功则返回true，否则返回false
+     */
+    @Override
+    public boolean verifyAccountPassword(Integer accountId, String password) {
+        boolean verify = userAccountDao.findAccountByAccountIdAndPassword(accountId, password);
+        return verify;
+    }
+
+    /**
+     * 密码修改
+     * @param accountId     账户ID
+     * @param newPassword   新密码
+     * @return              如果密码修改成功则返回ture，否则返回false
+     */
+    @Override
+    public boolean resetPassword(Integer accountId, String newPassword) {
+        boolean rtValue = userAccountDao.updateAccount(accountId, "password", newPassword);
+        return rtValue;
+    }
 }

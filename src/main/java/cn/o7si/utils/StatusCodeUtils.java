@@ -32,6 +32,11 @@ public class StatusCodeUtils {
     // 账户登录失败
     public static final Integer ACCOUNTLOGINFAILURE = 1010;
 
+    // 密码修改成功
+    public static final Integer RESETPASSWORDSUCCESS = 1011;
+    // 密码修改失败
+    public static final Integer RESETPASSWORDFAILURE = 1012;
+
     // 个人信息修改成功
     public static final Integer INFORMATIONMODIFYSUCCESS = 1013;
     // 个人信息修改失败
@@ -55,4 +60,9 @@ public class StatusCodeUtils {
     public static final Integer GETSTOCKLISTSUCCESS = 1051;
     // 获取股票列表失败
     public static final Integer GETSTOCKLISTFAILURE = 1052;
+
+    // 获取最近市场变化成功
+    public static final Integer GETMARKETLATESUCCESS = 1061;
+    // 获取最近市场变化失败
+    public static final Integer GETMARKETLATEFAILURE = 1061;
 }

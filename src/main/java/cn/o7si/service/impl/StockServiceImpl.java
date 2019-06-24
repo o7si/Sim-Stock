@@ -17,15 +17,18 @@ public class StockServiceImpl implements IStockService {
 
     @Override
     public PageBeanVo<Stock> findList(PageBeanVo page) {
-        PageBeanVo<Stock> rtPage = new PageBeanVo<>();
 
         List<Stock> stocks = stockDao.findList(page);
         Integer total = stockDao.findTotal();
 
-        rtPage.setData(stocks);
-        rtPage.setTotal(total);
+        PageBeanVo rtPage = new PageBeanVo();
         rtPage.setCurPageNumber(page.getCurPageNumber());
         rtPage.setMaxPageNumber((int) Math.ceil(total * 1.0 / page.getPageSize()));
+        rtPage.setPageSize(page.getPageSize());
+        rtPage.setOffset(rtPage.getOffset());
+        rtPage.setTotal(total);
+        rtPage.setData(stocks);
+
         return rtPage;
     }
 }

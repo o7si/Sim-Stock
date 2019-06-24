@@ -27,4 +27,20 @@ public interface IUserAccountService {
      * @return          如果登录成功则用户账户，否则返回null
      */
     Account login(String username, String password);
+
+    /**
+     * 验证账户密码
+     * @param accountId 账户ID
+     * @param password  密码
+     * @return          如果验证成功则返回true，否则返回false
+     */
+    boolean verifyAccountPassword(Integer accountId, String password);
+
+    /**
+     * 密码修改
+     * @param accountId     账户ID
+     * @param newPassword   新密码
+     * @return              如果密码修改成功则返回ture，否则返回false
+     */
+    boolean resetPassword(Integer accountId, String newPassword);
 }

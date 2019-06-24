@@ -6,6 +6,7 @@ import cn.o7si.utils.JwtUtils;
 import cn.o7si.utils.StatusCodeUtils;
 import cn.o7si.utils.TextUtils;
 import cn.o7si.vo.ResponseData;
+import com.auth0.jwt.interfaces.Claim;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -122,6 +123,52 @@ public class UserAccountController {
             rtData.put("username", username);
             rtData.setStatusCode(StatusCodeUtils.ACCOUNTLOGINFAILURE);
             rtData.setDesc("账户[" + username + "]登录失败");
+        }
+
+        return rtData;
+    }
+
+    @RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseData resetPassword(@RequestBody Map<String, Object> data) {
+        // 判断用户登录状态
+        Map<String, Claim> claim = JwtUtils.verifyToken((String) data.get("token"));
+        Integer accountId = claim != null ? claim.get("accountId").asInt() : null;
+
+        // 如果用户未登录
+        if (accountId == null)
+            return new ResponseData(StatusCodeUtils.NOTLOGGEDIN, "未登录");
+
+        // 获取相关数据Repeat
+        String oldPassword = (String) data.get("oldPassword");
+        String newPassword = (String) data.get("newPassword");
+        String repeatPassword = (String) data.get("repeatPassword");
+
+        // 如果新密码和重复密码不一致，则无法更改
+        if (!newPassword.equals(repeatPassword))
+            return new ResponseData();
+
+        boolean verify = userAccountService.verifyAccountPassword(accountId, oldPassword);
+
+        // 验证失败
+        if (!verify)
+            return new ResponseData(StatusCodeUtils.RESETPASSWORDFAILURE, "密码修改失败");
+
+        // 密码修改
+        boolean rtValue = userAccountService.resetPassword(accountId, newPassword);
+
+        // 响应给客户端的数据
+        ResponseData rtData = new ResponseData();
+
+        // 设置返回值
+        if (rtValue) {
+            // 修改成功
+            rtData.setStatusCode(StatusCodeUtils.RESETPASSWORDSUCCESS);
+            rtData.setDesc("密码修改成功");
+        } else {
+            // 修改失败
+            rtData.setStatusCode(StatusCodeUtils.RESETPASSWORDFAILURE);
+            rtData.setDesc("密码修改失败");
         }
 
         return rtData;

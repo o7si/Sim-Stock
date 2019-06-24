@@ -30,7 +30,6 @@ public class MarketSim {
     }
 
     public static void simulate() {
-
         // 获取所有股票
         List<Stock> stocks = stockDao.findAll();
         // 如果未查询到股票信息
@@ -53,6 +52,7 @@ public class MarketSim {
             market.setPercent(percent);
             market.setPostPrice(stock.getPrice());
             market.setChangePrice(market.getPostPrice() - market.getPrePrice());
+            market.setSid(stock.getId());
 
             markets.add(market);
         }
