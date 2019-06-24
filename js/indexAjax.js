@@ -1,3 +1,7 @@
+window.onload = function() {
+}
+
+
 function getuserJsonData() {
 	var json = {
 		"username": $("#registerUser").val(),
@@ -51,18 +55,19 @@ function login() {
 		contentType: "application/json;charset=UTF-8",
 		data: JSON.stringify(loginGetJsonData()),
 		xhrFields: {
-						withCredentials: true
-				},
+			withCredentials: true
+		},
 		dataType: "json",
 		type: "post",
 		success: function(data) {
-			if(data.statusCode == 1009) {
-				// localStorage.setItem('id',data.data.account.id);
-				// localStorage.setItem('username',data.data.account.username);
-				// localStorage.setItem('createTime',data.data.account.createTime);				
-				// alert(data.desc);
-				// window.href="http://simstock.com/Project/Sim-Stock/profile.html";
-				// window.location.href="http://simstock.com/Project/Sim-Stock/profile.html";
+			if (data.statusCode == 1009) {
+				document.cookie = data.data.token; 
+				localStorage.removeItem('username');
+				localStorage.removeItem('createTime');
+				localStorage.setItem('username',data.data.account.username);
+				localStorage.setItem('createTime',data.data.account.createTime);
+				window.location.href = "http://simstock.com/Project/Sim-Stock/profile.html";
+			}
 		},
 		error: function() {
 			console.log("no");
@@ -78,10 +83,10 @@ function register() {
 		dataType: "json",
 		type: "post",
 		success: function(data) {
-			if(data.statusCode == 1004){
-				document.getElementById('registerMessage').innerHTML ="注册成功，页面即将跳转";
-			}else if(data.statusCode == 1005) {
-				document.getElementById('registerMessage').innerHTML ="注册失败请重试";
+			if (data.statusCode == 1004) {
+				document.getElementById('registerMessage').innerHTML = "注册成功，页面即将跳转";
+			} else if (data.statusCode == 1005) {
+				document.getElementById('registerMessage').innerHTML = "注册失败请重试";
 			}
 			console.log(data.desc);
 			console.log(data.statusCode);

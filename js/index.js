@@ -10,6 +10,7 @@ function showsign() {
 		resigiterform.style.display = 'none';
 		loginform.style.display = 'block';
 	}
+	document.getElementById('registerMessage').innerHTML ="";
 }
 // 隐藏登录显示注册
 function hiddensign() {
@@ -46,6 +47,7 @@ function resigiterlogin() {
 		deleteregisterusertip();
 		deleteregisterpswtip();
 		deleteregisterrepswtip();
+		document.getElementById('registerMessage').innerHTML ="";
 		document.getElementById('loginMessage').innerHTML ="";
 	}
 }
@@ -87,6 +89,7 @@ function usercheck() {
 	} else {
 		addregisterimg('userimg', 'img/loading.gif');
 		isExist();
+		document.getElementById("registerIn").disabled = true;
 		deleteregisterusertip();
 		return;
 	}

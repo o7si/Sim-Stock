@@ -124,7 +124,7 @@
 						<div class="profileFont">
 							性别：
 						</div>
-						<div class="publicModify gender" >男</div>
+						<div class="publicModify gender" >保密</div>
 						<div class="clickModify"  id="gender" onclick="genderShow()">
 							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
 						</div>
@@ -134,88 +134,80 @@
 						<div class="falseConfirm"  onclick="genderHidden()">取消</div>
 					</div>
 					
-					<div class="profileInformation" id="modifyprofile">
+					<div class="profileInformation" id="birthdayprofile">
 						<div class="profileFont">
 							生日：
 						</div>
 						<div class="publicModify birthday">暂时</div>
-						<div class="clickModify" id="birthday">
+						<div class="clickModify" id="birthday" onclick="birthdayShow()">
 							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
 						</div>
 					</div>
 					<div class="confirm" id="birthdayConfirm">
-						<div class="trueConfirm">保存</div>
-						<div class="falseConfirm">取消</div>
+						<div class="trueConfirm" onclick="birthdayInput()">保存</div>
+						<div class="falseConfirm" onclick="birthdayHidden()">取消</div>
 					</div>
 					
 					<div class="profileInformation" id="addressprofile">
 						<div class="profileFont">
 							住址：
 						</div>
-						<div class="publicModify address">内蒙古自治区</div>
-						<div class="clickModify" id="address">
+						<div class="publicModify address"></div>
+						<div class="clickModify" id="address" onclick="addressShow()">
 							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
 						</div>
 					</div>
 					<div class="confirm" id="addressConfirm">
-						<div class="trueConfirm">保存</div>
-						<div class="falseConfirm">取消</div>
+						<div class="trueConfirm" onclick="addressInput()">保存</div>
+						<div class="falseConfirm" onclick="addressHidden()">取消</div>
 					</div>
 					
 					<div class="profileInformation" id="occupationprofile">
 						<div class="profileFont">
 							行业：
 						</div>
-						<div class="publicModify occupation">傻逼</div>
-						<div class="clickModify" id="occupation">
+						<div class="publicModify occupation"></div>
+						<div class="clickModify" id="occupation" onclick="occupationShow()">
 							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
 						</div>
 					</div>
 					<div class="confirm" id="occupationConfirm">
-						<div class="trueConfirm">保存</div>
-						<div class="falseConfirm">取消</div>
+						<div class="trueConfirm" onclick="occupationInput()">保存</div>
+						<div class="falseConfirm" onclick="occupationHidden()">取消</div>
 					</div>
 					
 					<div class="profileInformation" id="phoneprofile">
 						<div class="profileFont">
 							电话：
 						</div>
-						<div class="publicModify phone">12345678876</div>
+						<div class="publicModify phone">暂未绑定手机号</div>
 						<div class="clickModify" id="phone">
-							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+							<img src="img/bind.png" width="18px" height="18px"><span>去绑定</span>
 						</div>
-					</div>
-					<div class="confirm" id="phoneConfirm">
-						<div class="trueConfirm">保存</div>
-						<div class="falseConfirm">取消</div>
 					</div>
 					
 					<div class="profileInformation" id="emailprofile">
 						<div class="profileFont">
 							邮件：
 						</div>
-						<div class="publicModify email">123456789@qq.com</div>
+						<div class="publicModify email">暂未绑定邮箱</div>
 						<div class="clickModify" id="email">
-							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+							<img src="img/bind.png" width="18px" height="18px"><span>去绑定</span>
 						</div>
-					</div>
-					<div class="confirm" id="emailConfirm">
-						<div class="trueConfirm">保存</div>
-						<div class="falseConfirm" >取消</div>
 					</div>
 					
 					<div class="profileInformation" id="profileprofile">
 						<div class="profileFont">
 							简介：
 						</div>
-						<div class="publicModify profile">姜威真是个大傻逼啊</div>
-						<div class="clickModify" id="profile">
+						<div class="publicModify profile"></div>
+						<div class="clickModify" id="profile" onclick="profileShow()">
 							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
 						</div>
 					</div>
-					<div class="confirm" id="profileConfirm">
-						<div class="trueConfirm">保存</div>
-						<div class="falseConfirm">取消</div>
+					<div class="profileconfirm" id="profileConfirm">
+						<div class="falseConfirm" onclick="profileHidden()">取消</div>
+						<div class="trueConfirm" onclick="profileInput()">保存</div>
 					</div>
 					
 				</div>
@@ -259,9 +251,9 @@
 							<span>请输入旧密码：</span>
 							<input type="password"><br>
 							<span>请输入新密码：</span>
-							<input type="password" onkeyup="passwordcheck()"><br>
+							<input type="password" id="profilePsw" onkeyup="passwordcheck()"><br>
 							<span>请重复新密码：</span>
-							<input type="password" onkeyup="repassworkcheck()"><br>
+							<input type="password" id="repassWord" onkeyup="repassworkcheck()"><br>
 							<button type="button" onclick="mdPsw(true)">确定</button>
 							<button type="button" onclick="mdPsw(false)">取消</button>
 						</div>

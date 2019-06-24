@@ -218,21 +218,6 @@ body {
 	left: 50%;
 }
 
-/* 记住密码 */
-/* #remeberPassWord {
-	width: 20px;  
-	height: 20px;  
-	position: absolute;
-	top: 290px;
-	left: 65px;
-	background-color: yellowgreen;  
-	border: 1px solid skyblue;  
-	line-height: 20px;  
-	color: #d8d8d8; 
-	content:'\2713';
-} 
- */
-
 /* 登录按钮 */
 #signIn {
 	width: 220px;
@@ -368,6 +353,16 @@ body {
 	text-align: center;
 	font-size: 18px;
 	color: orangered;
+}
+
+/* 注册提示信息 */
+.registerMessage {
+	font-size: 18px;
+	color: tomato;
+	display: block;
+	position: absolute;
+	bottom: 130px;
+	left: 15%;
 }
 
 .registerButton:active {

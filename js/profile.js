@@ -56,18 +56,54 @@ function closeperson() {
 	$('.vipMember').css('display', 'none');
 	$('.personFriend').css('display', 'none');
 }
-// 
-// function mdPsw(obj) {
-// 	if(obj == true) {
-// 		$('#modifyPassword input').val("");
-// 		console.log("上传成功");
-// 	}else if(obj == false) {
-// 		$('#modifyPassword input').val("");
-// 	}
-// 	$('#modifyPassword').css('display','none');
-// }
-// 
-// 
+
+function mdPsw(obj) {
+	var newPsw = $('#repassWord').val();
+	if (obj == true) {
+		newPswInput(newPsw);
+		$('#modifyPassword input').val("");
+		console.log("上传成功");
+	} else if (obj == false) {
+		$('#modifyPassword input').val("");
+	}
+	$('#modifyPassword').css('display', 'none');
+}
+
+function passwordcheck() {
+	var checkpassword = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]\w{7,15}$/;
+	var reg = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
+	var profilePsw = document.getElementById("profilePsw").value;
+	if (!checkpassword.test(profilePsw)) {
+		if (profilePsw.length < 6) {
+			console.log('密码为6到16位');
+		} else if (/^[0-9]+$/.test(profilePsw)) {
+			console.log('密码强度低');
+		} else if (/^[a-zA-Z]+$/.test(profilePsw)) {
+			console.log('密码强度低');
+		} else if (/^[0-9a-zA-Z]+$/.test(profilePsw) || /^[A-Za-z0-9]+$/.test(profilePsw)) {
+			console.log('密码强度中');
+		} else if (reg.test(profilePsw)) {
+			addregisterimg('registerpassWordimg', 'img/registerTrue.png');
+			console.log('密码强度高');
+		} else {
+			console.log('密码可以')
+			return;
+		}
+	}
+}
+
+function repassworkcheck(){
+	var profilePsw = document.getElementById("profilePsw").value;
+	var repassWord = document.getElementById("repassWord").value;
+	if (profilePsw === repassWord) {
+	} else {
+	}
+}
+
+function showModifyPassword(){
+	$('#modifyPassword').css('display','block');
+}
+
 
 function showModifyButton(id) {
 	$(id).css('display', 'block');
@@ -83,29 +119,33 @@ function profileValue(json) {
 }
 
 function showAll(json) {
-	// $('.nickName').text(json.data.information.nickname);
-	// console.log(json.data.information.gender);
-	// if(json.data.information.gender == 0) {
-	// 	$('.gender').text("保密");
-	// }else if(json.data.information.gender == 1) {
-	// 	$('.gender').text("男");
-	// }else if(json.data.information.gender == 2) {
-	// 	$('.gender').text("女");
-	// }else if(json.data.information.gender == 3) {
-	// 	$('.gender').text("其他");
-	// }
-	// $('.birthday').text(json.data.information.birthday);
-	// $('.address').text(json.data.information.address);
-	// $('.occupation').text(json.data.information.occupation);
-	// $('.phone').text(json.data.information.phone);
-	// $('.email').text(json.data.information.email);
-	// $('.profile').text(json.data.information.profile);
+	$('.userNick').text(json.data.information.nickname);
+	$('.nickName').text(json.data.information.nickname);
+	if (json.data.information.gender == 0) {
+		$('.gender').text("保密");
+	} else if (json.data.information.gender == 1) {
+		$('.gender').text("男");
+	} else if (json.data.information.gender == 2) {
+		$('.gender').text("女");
+	} else if (json.data.information.gender == 3) {
+		$('.gender').text("其他");
+	}
+	var date = new Date(parseInt(json.data.information.birthday));
+	$('.birthday').text(date.getFullYear() + "-" + parseInt(date.getMonth() + 1) + "-" + date.getDate());
+	$('.address').text(json.data.information.place);
+	$('.occupation').text(json.data.information.industry);
+	$('.phone').text(json.data.information.phone);
+	$('.email').text(json.data.information.email);
+	$('.profile').text(json.data.information.profile);
 }
 
 
 var nickname;
 var gender;
-
+var address;
+var occupation;
+var born;
+var profile;
 
 function nickNameShow() {
 	nickname = $('.nickName').text();
@@ -149,8 +189,6 @@ function nickNameInput() {
 // 修改性别
 function genderShow() {
 	gender = $('.gender').text();
-	console.log(gender);
-	$("#select_id").append("<option value='Value'>Text</option>");
 	$('#gender').css('display', 'none');
 	$('#genderConfirm').css('display', 'block');
 	$('.gender').html("<select></select>");
@@ -205,8 +243,191 @@ function genderInput() {
 	}).mouseleave(function() {
 		$("#gender").css("display", "none");
 	})
-
 	changeGender(modifygender);
+}
+
+
+//生日
+function birthdayShow() {
+	nickname = $('.birthday').text();
+	$('#birthday').css('display', 'none');
+	$('#birthdayConfirm').css('display', 'block');
+	$('.birthday').html("<input type='date'/> ");
+	$('.birthday input').css({
+		"width": "200px",
+		"height": "26px",
+		"outline": "none",
+		"font-size": "16px",
+		"padding-left": "10px"
+	});
+	$('.birthday input').val(nickname);
+}
+
+
+function birthdayHidden() {
+	$('#birthdayConfirm').css('display', 'none');
+	born = 	$('.birthday input').val();
+	$('.birthday input').remove();
+	$('.birthday').text("先随便");
+	$('#birthdayprofile').mousemove(function() {
+		$("#birthday").css("display", "block");
+	}).mouseleave(function() {
+		$("#birthday").css("display", "none");
+	})
+}
+
+function birthdayInput() {
+	$('#birthdayConfirm').css('display', 'none');
+	var modifybirthday = $('.birthday input').val();
+	$('.birthday input').remove();
+	$('.birthday').text(modifybirthday);
+	$('#birthdayprofile').mousemove(function() {
+		$("#birthday").css("display", "block");
+	}).mouseleave(function() {
+		$("#birthday").css("display", "none");
+	})
+	changeBirthday(modifybirthday);
+}
+
+// 地址
+function addressShow() {
+	address = $('.address').text();
+	$('#address').css('display', 'none');
+	$('#addressConfirm').css('display', 'block');
+	$('.address').html("<input/> ");
+	$('.address input').css({
+		"width": "200px",
+		"height": "26px",
+		"outline": "none",
+		"font-size": "16px",
+		"padding-left": "10px"
+	});
+	$('.address input').val(address);
+}
+
+function addressHidden() {
+	$('#addressConfirm').css('display', 'none');
+	$('.address input').remove();
+	$('.address').text(address);
+	$('#addressprofile').mousemove(function() {
+		$("#address").css("display", "block");
+	}).mouseleave(function() {
+		$("#address").css("display", "none");
+	})
+}
+
+function addressInput() {
+	$('#addressConfirm').css('display', 'none');
+	var modifyaddress = $('.address input').val();
+	$('.address input').remove();
+	$('.address').text(modifyaddress);
+	$('#addressprofile').mousemove(function() {
+		$("#address").css("display", "block");
+	}).mouseleave(function() {
+		$("#address").css("display", "none");
+	})
+	changeAddress(modifyaddress);
+}
+
+// 工作
+function occupationShow() {
+	occupation = $('.occupation').text();
+	$('#occupation').css('display', 'none');
+	$('#occupationConfirm').css('display', 'block');
+	$('.occupation').html("<select></select>");
+	$(".occupation select").append("<option value='" + 0 + "'>解晨昊的粉丝</option>");
+	$(".occupation select").append("<option value='" + 1 + "'>电子商务</option>");
+	$(".occupation select").append("<option value='" + 2 + "'>金融</option>");
+	$(".occupation select").append("<option value='" + 3 + "'>企业服务</option>");
+	$(".occupation select").append("<option value='" + 4 + "'>教育</option>");
+	$(".occupation select").append("<option value='" + 5 + "'>文化娱乐</option>");
+	$(".occupation select").append("<option value='" + 6 + "'>游戏</option>");
+	$(".occupation select").append("<option value='" + 7 + "'>O2O</option>");
+	$(".occupation select").append("<option value='" + 8 + "'>硬件</option>");
+	$(".occupation select").append("<option value='" + 9 + "'>社交网络</option>");
+	$(".occupation select").append("<option value='" + 10 + "'>旅游</option>");
+	$(".occupation select").append("<option value='" + 11 + "'>医疗健康</option>");
+	$(".occupation select").append("<option value='" + 12 + "'>生活服务</option>");
+	$(".occupation select").append("<option value='" + 13 + "'>安全</option>");
+	$(".occupation select").append("<option value='" + 14 + "'>数据服务</option>");
+	$(".occupation select").append("<option value='" + 15 + "'>广告</option>");
+	$(".occupation select").append("<option value='" + 16 + "'>分类信息</option>");
+	$(".occupation select").append("<option value='" + 17 + "'>人工智能</option>");
+	$(".occupation select").append("<option value='" + 17 + "'>招聘</option>");
+	$(".occupation select").append("<option value='" + 19 + "'>其他</option>");
+	$(".occupation select").append("<option value='" + 20 + "'>移动互联网</option>");	
+	$('.occupation select').css({
+		"width": "200px",
+		"height": "26px",
+		"outline": "none",
+		"font-size": "16px",
+		"padding-left": "10px"
+	});
+}
+
+function occupationHidden() {
+	$('#occupationConfirm').css('display', 'none');
+	$('.occupation select').remove();
+	$('.occupation').text(occupation);
+	$('#occupationprofile').mousemove(function() {
+		$("#occupation").css("display", "block");
+	}).mouseleave(function() {
+		$("#occupation").css("display", "none");
+	})
+}
+
+function occupationInput() {
+	$('#occupationConfirm').css('display', 'none');
+	var modifyoccupation = $('.occupation select').val();
+	var selectText = $(".occupation select").find("option:selected").text();
+	$('.occupation').text(selectText);
+	$('.occupation select').remove();
+	$('#occupationprofile').mousemove(function() {
+		$("#occupation").css("display", "block");
+	}).mouseleave(function() {
+		$("#occupation").css("display", "none");
+	})
+	changeOccupation(modifyoccupation);
+}
+
+// 修改个人简介
+function profileShow() {
+	profile = $('.profile').text();
+	$('#profile').css('display', 'none');
+	$('#profileConfirm').css('display', 'block');
+	$('.profile').html("<textarea maxlength='300' id='profileTextarea' placeholder='还可以输入300字'></textarea> ");
+	$('.profile textarea').css({
+		"width": "420px",
+		"height": "160px",
+		"outline": "none",
+		"font-size": "16px",
+		"padding-left": "10px"
+	});
+	$('.profile textarea').val(profile);
+}
+
+function profileHidden() {
+	$('#profileConfirm').css('display', 'none');
+	$('.profile textarea').remove();
+	$('.profile').text(profile);
+	$('#profileprofile').mousemove(function() {
+		$("#profile").css("display", "block");
+	}).mouseleave(function() {
+		$("#profile").css("display", "none");
+	})
+}
+
+function profileInput() {
+	$('#profileConfirm').css('display', 'none');
+	var modifyprofile = $('.profile textarea').val();
+	$('.profile textarea').remove();
+	$('.profile').text(modifyprofile);
+	$('#profileprofile').mousemove(function() {
+		$("#profile").css("display", "block");
+	}).mouseleave(function() {
+		$("#profile").css("display", "none");
+	})
+	changeProfile(modifyprofile);
 }
 
 
@@ -217,5 +438,25 @@ function modifyName(name) {
 }
 
 function modifyGender(gender) {
-	$('.gender').text(gender);
+		if (gender == 0) {
+		$('.gender').text("保密");
+	} else if (gender == 1) {
+		$('.gender').text("男");
+	} else if (gender == 2) {
+		$('.gender').text("女");
+	} else if (gender == 3) {
+		$('.gender').text("其他");
+	}
+}
+
+function modifyAddressr(address) {
+	$('.address').text(address);
+}
+
+function modifyOccupation(occupation) {
+	$('.occupation').text(occupation);
+}
+
+function modifyProfile(profile) {
+	$('.profile').text(profile);
 }
