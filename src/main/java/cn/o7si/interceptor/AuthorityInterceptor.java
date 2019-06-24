@@ -5,6 +5,9 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 暂未用到
+ */
 public class AuthorityInterceptor implements HandlerInterceptor {
 
     @Override

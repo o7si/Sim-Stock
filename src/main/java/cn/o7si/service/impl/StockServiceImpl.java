@@ -24,7 +24,8 @@ public class StockServiceImpl implements IStockService {
 
         rtPage.setData(stocks);
         rtPage.setTotal(total);
-        rtPage.setMaxPageNumber(total / page.getPageSize());
+        rtPage.setCurPageNumber(page.getCurPageNumber());
+        rtPage.setMaxPageNumber((int) Math.ceil(total * 1.0 / page.getPageSize()));
         return rtPage;
     }
 }
