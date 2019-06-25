@@ -5,6 +5,7 @@ import cn.o7si.service.IUserAccountService;
 import cn.o7si.utils.JwtUtils;
 import cn.o7si.utils.StatusCodeUtils;
 import cn.o7si.utils.TextUtils;
+import cn.o7si.utils.VerifyUtils;
 import cn.o7si.vo.ResponseData;
 import com.auth0.jwt.interfaces.Claim;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +71,10 @@ public class UserAccountController {
         // 提供参数不足
         if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password))
             return new ResponseData(StatusCodeUtils.MISSPARAM);
+
+        // 验证账户名称和登录密码的合法性
+        if (!VerifyUtils.usernameVerify(username) || !VerifyUtils.loginPasswordVerify(password))
+            return new ResponseData(StatusCodeUtils.USERNAMEORPASSWORDNOTLEGAL, "账户名称或登录密码不符合规范");
 
         // 调用业务层进行账户注册
         boolean registerRes = userAccountService.register(username, password);

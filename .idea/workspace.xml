@@ -5,15 +5,14 @@
       <artifact name="Sim-Stock:war" />
     </artifacts-to-build>
   </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/cn/o7si/utils/VerifyUtils.java" description="// 判断用户名长度" line="15" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0ff3ab71-b914-4994-b63a-bfbbdc96f5d0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/o7si/entities/Wallet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/o7si/utils/VerifyUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/o7si/controller/WalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/o7si/controller/WalletController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/o7si/dao/IWalletDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/o7si/dao/IWalletDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/o7si/dao/impl/WalletDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/o7si/dao/impl/WalletDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/o7si/service/IWalletService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/o7si/service/IWalletService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/o7si/service/impl/WalletServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/o7si/service/impl/WalletServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserAccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/o7si/utils/StatusCodeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/o7si/utils/StatusCodeUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring.xml" afterDir="false" />
@@ -54,6 +53,13 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="sim_stock: schema" type="c314c289:MysqlImplModel$Schema" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="sim_stock@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="sim_stock: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="user_account: table" type="98d5ac3d:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -66,6 +72,7 @@
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="2" />
           <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.29" value="2" />
@@ -81,36 +88,36 @@
           <entry key="project.open.time.5" value="2" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="2" />
-          <entry key="project.opened" value="36" />
+          <entry key="project.opened" value="37" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cell" value="397" />
-          <entry key="java" value="41221" />
+          <entry key="java" value="42291" />
           <entry key="jsp" value="685" />
           <entry key="properties" value="171" />
           <entry key="sql" value="431" />
           <entry key="txt" value="46" />
-          <entry key="xml" value="970" />
+          <entry key="xml" value="979" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="41202" />
+          <entry key="JAVA" value="42272" />
           <entry key="JSP" value="685" />
           <entry key="PLAIN_TEXT" value="46" />
           <entry key="Properties" value="171" />
           <entry key="SQL" value="395" />
           <entry key="Scratch" value="452" />
-          <entry key="XML" value="970" />
+          <entry key="XML" value="979" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="11" />
           <entry key="gitignore" value="1" />
-          <entry key="java" value="319" />
+          <entry key="java" value="327" />
           <entry key="js" value="1" />
           <entry key="jsp" value="13" />
           <entry key="market" value="5" />
@@ -122,21 +129,21 @@
           <entry key="user_account" value="8" />
           <entry key="user_information" value="6" />
           <entry key="wallet" value="3" />
-          <entry key="xml" value="38" />
+          <entry key="xml" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="11" />
           <entry key="Database Element" value="31" />
-          <entry key="JAVA" value="319" />
+          <entry key="JAVA" value="327" />
           <entry key="JSP" value="13" />
           <entry key="JavaScript" value="1" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Properties" value="11" />
           <entry key="SQL" value="2" />
           <entry key="Scratch" value="5" />
-          <entry key="XML" value="38" />
+          <entry key="XML" value="39" />
         </counts>
       </usages-collector>
     </session>
@@ -144,92 +151,55 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/entities/Stock.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/spring.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+            <state relative-caret-position="221">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/entities/Wallet.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/utils/VerifyUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
-              <folding>
-                <element signature="e#311#312#0" expanded="true" />
-                <element signature="e#336#337#0" expanded="true" />
-                <element signature="e#373#374#0" expanded="true" />
-                <element signature="e#401#402#0" expanded="true" />
-                <element signature="e#435#436#0" expanded="true" />
-                <element signature="e#465#466#0" expanded="true" />
-                <element signature="e#511#512#0" expanded="true" />
-                <element signature="e#549#550#0" expanded="true" />
-                <element signature="e#578#579#0" expanded="true" />
-                <element signature="e#605#606#0" expanded="true" />
-                <element signature="e#643#644#0" expanded="true" />
-                <element signature="e#675#676#0" expanded="true" />
-                <element signature="e#711#712#0" expanded="true" />
-                <element signature="e#742#743#0" expanded="true" />
-                <element signature="e#791#792#0" expanded="true" />
-                <element signature="e#831#832#0" expanded="true" />
-                <element signature="e#863#864#0" expanded="true" />
-                <element signature="e#890#891#0" expanded="true" />
-                <element signature="e#931#932#0" expanded="true" />
-                <element signature="e#963#964#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="231">
+              <caret line="53" column="80" selection-start-line="53" selection-start-column="80" selection-end-line="53" selection-end-column="80" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/controller/WalletController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserInformationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/service/IWalletService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" selection-start-line="16" selection-end-line="20" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/service/impl/WalletServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="das://fc818075-f798-4e10-bb18-a703e9f1a6bc/schema/sim_stock/table/user_account">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
+            <state relative-caret-position="360">
+              <caret line="71" selection-start-line="71" selection-end-line="73" selection-end-column="72" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="das://fc818075-f798-4e10-bb18-a703e9f1a6bc/schema/sim_stock/table/wallet">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserAccountController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="79" column="45" selection-start-line="79" selection-start-column="45" selection-end-line="79" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/utils/StatusCodeUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="29" column="58" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Java/jdk1.8.0_191/src.zip!/java/lang/Character.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="6755" column="38" selection-start-line="6755" selection-start-column="26" selection-end-line="6755" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -251,6 +221,7 @@
       <find>UserCo</find>
       <find>UserC</find>
       <find>User</find>
+      <find>isWhitespace</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -259,7 +230,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/cn/o7si/utils/JwtUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/interceptor/LoginVerify.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/utils/RequestJsonUtils.java" />
@@ -296,20 +266,21 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/service/impl/UserAccountServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/dao/impl/UserAccountDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/listener/ProjectListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserAccountController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/service/IStockService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/service/impl/StockServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/dao/IStockDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/dao/impl/StockDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/controller/StockController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/entities/Wallet.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/service/IWalletService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/dao/IWalletDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/o7si/utils/StatusCodeUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/controller/WalletController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/dao/impl/WalletDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/o7si/service/impl/WalletServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/o7si/utils/VerifyUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/o7si/utils/StatusCodeUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserAccountController.java" />
       </list>
     </option>
   </component>
@@ -383,8 +354,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -445,26 +416,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cn" type="462c0819:PsiDirectoryNode" />
               <item name="o7si" type="462c0819:PsiDirectoryNode" />
-              <item name="entities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sim-Stock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sim-Stock" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="o7si" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sim-Stock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sim-Stock" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="o7si" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -478,7 +429,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -490,7 +441,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/ShaYuan/Desktop/Project/back-end/Sim-Stock/src/test/cn/o7si/User/testUser.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561446709667" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561452571703" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/Change SQL Dialect" value="GenericSQL&#10;MySQL" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="D:/SpringLearning/springmvc_day02_02fileupload" />
@@ -526,19 +477,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.Sim-Stock Local">
-    <configuration name="JwtUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.o7si.utils.JwtUtils" />
-      <module name="Sim-Stock" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.o7si.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Manager.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Sim-Stock" />
       <extension name="coverage">
@@ -597,6 +535,22 @@
       </extension>
       <option name="PACKAGE_NAME" value="cn.o7si" />
       <option name="MAIN_CLASS_NAME" value="cn.o7si.RandomMarket" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VerifyUtils.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sim-Stock" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.o7si.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.o7si.utils" />
+      <option name="MAIN_CLASS_NAME" value="cn.o7si.utils.VerifyUtils" />
       <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -739,19 +693,19 @@
     <list>
       <item itemvalue="Tomcat Server.Sim-Stock Local" />
       <item itemvalue="Tomcat Server.Sim-Stock Remote" />
-      <item itemvalue="Application.JwtUtils" />
       <item itemvalue="JUnit.RandomMarket.generate" />
       <item itemvalue="JUnit.Manager.test" />
       <item itemvalue="JUnit.MarketSim.test" />
       <item itemvalue="JUnit.RandomMarket.test" />
+      <item itemvalue="JUnit.VerifyUtils.test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.VerifyUtils.test" />
         <item itemvalue="JUnit.RandomMarket.test" />
         <item itemvalue="JUnit.MarketSim.test" />
         <item itemvalue="JUnit.Manager.test" />
         <item itemvalue="JUnit.RandomMarket.generate" />
-        <item itemvalue="Application.JwtUtils" />
       </list>
     </recent_temporary>
   </component>
@@ -801,22 +755,11 @@
       <workItem from="1561429870619" duration="3675000" />
       <workItem from="1561434474438" duration="9650000" />
       <workItem from="1561446728774" duration="51000" />
+      <workItem from="1561446923870" duration="3088000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RandomMarket_test - 2019.06.24 at 20h 10m 34s.xml">
-      <configuration name="RandomMarket.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RandomMarket_test - 2019.06.24 at 20h 10m 58s.xml">
-      <configuration name="RandomMarket.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RandomMarket_test - 2019.06.24 at 20h 21m 51s.xml">
-      <configuration name="RandomMarket.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RandomMarket_test - 2019.06.24 at 20h 25m 16s.xml">
-      <configuration name="RandomMarket.test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="RandomMarket_test - 2019.06.24 at 20h 25m 37s.xml">
       <configuration name="RandomMarket.test" configurationId="JUnit" />
     </history-entry>
@@ -835,14 +778,27 @@
     <history-entry file="RandomMarket_test - 2019.06.24 at 20h 35m 43s.xml">
       <configuration name="RandomMarket.test" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="VerifyUtils_test - 2019.06.25 at 16h 38m 36s.xml">
+      <configuration name="VerifyUtils.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="VerifyUtils_test - 2019.06.25 at 16h 38m 46s.xml">
+      <configuration name="VerifyUtils.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="VerifyUtils_test - 2019.06.25 at 16h 38m 57s.xml">
+      <configuration name="VerifyUtils.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="VerifyUtils_test - 2019.06.25 at 16h 39m 02s.xml">
+      <configuration name="VerifyUtils.test" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210928000" />
+    <option name="totallyTimeSpent" value="214016000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2980333" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30257186" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -850,6 +806,7 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Web" order="6" side_tool="true" />
       <window_info id="Image Layers" order="7" />
+      <window_info anchor="bottom" id="Statistic" weight="0.72786885" />
       <window_info anchor="bottom" id="Spring" order="0" weight="0.3295082" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.3295082" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5015129" side_tool="true" weight="0.4819672" />
@@ -860,7 +817,7 @@
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.5491803" />
       <window_info anchor="bottom" id="Application Servers" order="9" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="10" sideWeight="0.49848714" weight="0.43934426" />
+      <window_info anchor="bottom" id="Run" order="10" sideWeight="0.49848714" visible="true" weight="0.31311476" />
       <window_info anchor="bottom" id="Debug" order="11" weight="0.4409836" />
       <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
@@ -872,7 +829,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Database" order="5" weight="0.29425114" />
+      <window_info anchor="right" id="Database" order="5" visible="true" weight="0.1633888" />
       <window_info anchor="right" id="Maven Projects" order="6" weight="0.32980332" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -889,14 +846,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/utils/TextUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/page/PageBean.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/vo/ResponseData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -909,13 +858,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="647" column="17" selection-start-line="647" selection-start-column="17" selection-end-line="647" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/utils/JwtUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="32" column="18" lean-forward="true" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1025,24 +967,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/dao/IUserAccountDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/dao/impl/UserAccountDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2310">
           <caret line="161" column="9" selection-start-line="161" selection-start-column="9" selection-end-line="161" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserInformationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="71" selection-start-line="71" selection-end-line="73" selection-end-column="72" />
         </state>
       </provider>
     </entry>
@@ -1064,9 +992,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
           <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1095,13 +1020,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserAccountController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="153" column="82" selection-start-line="153" selection-start-column="82" selection-end-line="153" selection-end-column="82" />
         </state>
       </provider>
     </entry>
@@ -1152,20 +1070,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="34" column="56" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/utils/StatusCodeUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="79" column="55" selection-start-line="79" selection-start-column="55" selection-end-line="79" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/dao/IWalletDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
@@ -1177,9 +1081,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="58" column="21" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1192,7 +1093,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/entities/Wallet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
+        <state relative-caret-position="615">
           <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
           <folding>
             <element signature="e#311#312#0" expanded="true" />
@@ -1221,7 +1122,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/controller/WalletController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
+        <state relative-caret-position="645">
           <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1238,11 +1139,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/service/impl/WalletServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="450">
           <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://fc818075-f798-4e10-bb18-a703e9f1a6bc/schema/sim_stock/table/wallet">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/dao/IUserAccountDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/utils/JwtUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="41" column="43" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -1253,10 +1175,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://fc818075-f798-4e10-bb18-a703e9f1a6bc/schema/sim_stock/table/wallet">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Java/jdk1.8.0_191/src.zip!/java/lang/Character.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="6755" column="38" selection-start-line="6755" selection-start-column="26" selection-end-line="6755" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/utils/VerifyUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="53" column="80" selection-start-line="53" selection-start-column="80" selection-end-line="53" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserInformationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="71" selection-start-line="71" selection-end-line="73" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/utils/StatusCodeUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="29" column="58" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/o7si/controller/UserAccountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="79" column="45" selection-start-line="79" selection-start-column="45" selection-end-line="79" selection-end-column="45" />
         </state>
       </provider>
     </entry>

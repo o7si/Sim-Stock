@@ -26,6 +26,8 @@ public class StatusCodeUtils {
     public static final Integer ACCOUNTREGISTERSUCCESS = 1004;
     // 账户注册失败
     public static final Integer ACCOUNTREGISTERFAILURE = 1005;
+    // 账户名称或密码不符合规范
+    public static final Integer USERNAMEORPASSWORDNOTLEGAL = 1006;
 
     // 账户登录成功
     public static final Integer ACCOUNTLOGINSUCCESS = 1009;
