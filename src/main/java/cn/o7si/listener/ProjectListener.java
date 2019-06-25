@@ -12,10 +12,6 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-/**
- * 暂时不能使用的一个类
- * 状况频出
- */
 @Component
 @WebListener
 public class ProjectListener implements ApplicationListener, ServletContextListener {
@@ -24,8 +20,10 @@ public class ProjectListener implements ApplicationListener, ServletContextListe
 
     @Override
     public void onApplicationEvent(ApplicationEvent applicationEvent) {
-        marketManager = new MarketManager(5 * 1000);
-        marketManager.start();
+        if (marketManager == null) {
+            marketManager = new MarketManager(5 * 1000);
+            marketManager.start();
+        }
     }
 
     @Override
