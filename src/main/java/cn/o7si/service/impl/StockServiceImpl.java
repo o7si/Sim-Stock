@@ -31,4 +31,15 @@ public class StockServiceImpl implements IStockService {
 
         return rtPage;
     }
+
+    /**
+     * 根据ID查找股票信息
+     * @param stockId   股票ID
+     * @return          返回查找到的股票
+     */
+    @Override
+    public Stock findStock(Integer stockId) {
+        Stock rtStock = stockDao.findStockById(stockId);
+        return rtStock;
+    }
 }

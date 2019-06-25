@@ -19,6 +19,36 @@ public class StockDaoImpl implements IStockDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    /**
+     * 根据ID获取股票信息
+     * @param stockId   股票ID
+     * @return          如果查询成功则返回股票信息，否则返回null
+     */
+    @Override
+    public Stock findStockById(Integer stockId) {
+        // 查询单支股票时使用的SQL语句
+        String sql = "select * from stock where id=?";
+
+        List<Stock> stocks = null;
+        try {
+            // 执行SQL语句
+            stocks = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Stock.class), stockId);
+        } catch (Exception ignored) {
+            // 忽略异常
+        }
+
+        // 如果未查询到结果
+        if (stocks == null || stocks.size() == 0)
+            return null;
+
+        // 如果结果集不唯一
+        if (stocks.size() > 1)
+            return null;
+
+        // 返回查询结果
+        return stocks.get(0);
+    }
+
     @Override
     public List<Stock> findAll() {
         // 查询所有股票时使用的SQL语句

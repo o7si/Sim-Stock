@@ -35,4 +35,11 @@ public interface IStockDao {
      * @return          如果修改成功则返回true，否则返回false
      */
     boolean batchUpdate(List<Stock> stocks);
+
+    /**
+     * 根据ID获取股票信息
+     * @param stockId   股票ID
+     * @return          如果查询成功则返回股票信息，否则返回null
+     */
+    Stock findStockById(Integer stockId);
 }

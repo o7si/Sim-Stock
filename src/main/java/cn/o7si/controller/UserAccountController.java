@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.xml.soap.Text;
 import java.util.Map;
 
 
@@ -144,9 +145,13 @@ public class UserAccountController {
         String newPassword = (String) data.get("newPassword");
         String repeatPassword = (String) data.get("repeatPassword");
 
+        // 提供参数不足
+        if (TextUtils.isEmpty(oldPassword) || TextUtils.isEmpty(newPassword) || TextUtils.isEmpty(repeatPassword))
+            return new ResponseData(StatusCodeUtils.MISSPARAM, "提供参数不足");
+
         // 如果新密码和重复密码不一致，则无法更改
         if (!newPassword.equals(repeatPassword))
-            return new ResponseData();
+            return new ResponseData(StatusCodeUtils.RESETPASSWORDFAILURE, "密码修改失败");
 
         boolean verify = userAccountService.verifyAccountPassword(accountId, oldPassword);
 

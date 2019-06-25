@@ -60,6 +60,10 @@ public class StatusCodeUtils {
     public static final Integer GETSTOCKLISTSUCCESS = 1051;
     // 获取股票列表失败
     public static final Integer GETSTOCKLISTFAILURE = 1052;
+    // 获取单只股票信息成功
+    public static final Integer GETSINGLESTOCKSUCCESS = 1055;
+    // 获取单只股票信息失败
+    public static final Integer GETSINGLESTOCKFAILURE = 1056;
 
     // 获取最近市场变化成功
     public static final Integer GETMARKETLATESUCCESS = 1061;
