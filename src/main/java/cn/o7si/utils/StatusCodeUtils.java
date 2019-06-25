@@ -68,5 +68,14 @@ public class StatusCodeUtils {
     // 获取最近市场变化成功
     public static final Integer GETMARKETLATESUCCESS = 1061;
     // 获取最近市场变化失败
-    public static final Integer GETMARKETLATEFAILURE = 1061;
+    public static final Integer GETMARKETLATEFAILURE = 1062;
+
+    // 开户成功
+    public static final Integer OPENWALLETSUCCESS = 1071;
+    // 开户失败
+    public static final Integer OPENWALLETFAILURE = 1072;
+    // 已经开户
+    public static final Integer OPENSTATEISTRUE = 1073;
+    // 尚未开户
+    public static final Integer OPENSTATEISFALSE = 1074;
 }
