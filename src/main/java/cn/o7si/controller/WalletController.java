@@ -1,5 +1,6 @@
 package cn.o7si.controller;
 
+import cn.o7si.entities.Wallet;
 import cn.o7si.service.IWalletService;
 import cn.o7si.utils.JwtUtils;
 import cn.o7si.utils.StatusCodeUtils;
@@ -83,6 +84,39 @@ public class WalletController {
             // 开户失败
             rtData.setStatusCode(StatusCodeUtils.OPENWALLETFAILURE);
             rtData.setDesc("开户失败");
+        }
+
+        return rtData;
+    }
+
+    @RequestMapping(value = "/getData", method = {RequestMethod.GET, RequestMethod.POST})
+    public @ResponseBody
+    ResponseData getData(@RequestBody Map<String, Object> data) {
+        // 获取用户登录状态
+        Map<String, Claim> calims = JwtUtils.verifyToken((String) data.get("token"));
+        Integer accountId = calims != null ? calims.get("accountId").asInt() : null;
+
+        // 如果用户未登录
+        if (accountId == null)
+            return new ResponseData(StatusCodeUtils.NOTLOGGEDIN, "账户未登录");
+
+        // 调用业务层进行查询
+        Wallet wallet = walletService.findWallet(accountId);
+
+        // 响应给客户端的数据
+        ResponseData rtData = new ResponseData();
+
+        // 设置返回值
+        if (wallet != null) {
+            // 查询成功
+            wallet.eraseSensitiveData();
+            rtData.put("wallet", wallet);
+            rtData.setStatusCode(StatusCodeUtils.GETWALLETSUCCESS);
+            rtData.setDesc("获取钱包信息成功");
+        } else {
+            // 查询失败
+            rtData.setStatusCode(StatusCodeUtils.GETWALLETFAILURE);
+            rtData.setDesc("获取钱包信息失败");
         }
 
         return rtData;

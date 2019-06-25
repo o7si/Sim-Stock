@@ -20,4 +20,11 @@ public interface IWalletService {
      * @return              若已经开户则返回true，否则返回false
      */
     boolean findOpenState(Integer accountId);
+
+    /**
+     * 根据账户ID获取钱包信息
+     * @param accountId     账户ID
+     * @return              如果查询成功则返回钱包信息，否则返回null
+     */
+    Wallet findWallet(Integer accountId);
 }

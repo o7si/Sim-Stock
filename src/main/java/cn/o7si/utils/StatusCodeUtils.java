@@ -62,9 +62,9 @@ public class StatusCodeUtils {
     public static final Integer GETSTOCKLISTSUCCESS = 1051;
     // 获取股票列表失败
     public static final Integer GETSTOCKLISTFAILURE = 1052;
-    // 获取单只股票信息成功
+    // 获取单支股票信息成功
     public static final Integer GETSINGLESTOCKSUCCESS = 1055;
-    // 获取单只股票信息失败
+    // 获取单支股票信息失败
     public static final Integer GETSINGLESTOCKFAILURE = 1056;
 
     // 获取最近市场变化成功
@@ -80,4 +80,8 @@ public class StatusCodeUtils {
     public static final Integer OPENSTATEISTRUE = 1073;
     // 尚未开户
     public static final Integer OPENSTATEISFALSE = 1074;
+    // 获取钱包信息成功
+    public static final Integer GETWALLETSUCCESS = 1075;
+    // 获取钱包信息失败
+    public static final Integer GETWALLETFAILURE = 1076;
 }

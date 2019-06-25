@@ -47,4 +47,15 @@ public class WalletServiceImpl implements IWalletService {
         boolean rtValue = walletDao.findExistByUaid(accountId);
         return rtValue;
     }
+
+    /**
+     * 根据账户ID获取钱包信息
+     * @param accountId     账户ID
+     * @return              如果查询成功则返回钱包信息，否则返回null
+     */
+    @Override
+    public Wallet findWallet(Integer accountId) {
+        Wallet rtWallet = walletDao.findWalletByUaid(accountId);
+        return rtWallet;
+    }
 }

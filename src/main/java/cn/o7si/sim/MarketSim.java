@@ -29,6 +29,9 @@ public class MarketSim {
         MarketSim.stockDao = stockDao;
     }
 
+    private static Double rise = 0.11;
+    private static Double slide = 0.1;
+
     public static void simulate() {
         // 获取所有股票
         List<Stock> stocks = stockDao.findAll();
@@ -44,7 +47,7 @@ public class MarketSim {
             market.setPrePrice(stock.getPrice());
 
             // 股票变化率
-            Double percent = Math.random() * 0.2 - 0.1;
+            Double percent = Math.random() * (rise + slide) - slide;
             // 调整相关属性
             stock.setMarketValue(stock.getMarketValue() * (1 + percent));
             stock.setPrice(stock.getMarketValue() / stock.getTotal());

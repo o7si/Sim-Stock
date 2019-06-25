@@ -18,6 +18,10 @@ public class Wallet {
     // 账户ID
     private Integer uaid;
 
+    public void eraseSensitiveData() {
+        password = null;
+    }
+
     public Integer getId() {
         return id;
     }
