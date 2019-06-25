@@ -1,7 +1,5 @@
 package cn.o7si.utils;
 
-import org.junit.Test;
-
 /**
  * 数据合法性验证
  */
