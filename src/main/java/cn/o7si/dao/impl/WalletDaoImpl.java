@@ -91,7 +91,7 @@ public class WalletDaoImpl implements IWalletDao {
      * @return              如果更新成功则返回true，否则返回false
      */
     @Override
-    public boolean updateWallet(Wallet wallet) throws Exception {
+    public boolean updateWallet(Wallet wallet) {
         // 更新钱包时要使用的SQL语句
         String sql = "update wallet set balance=?, password=? where id=?";
 
@@ -103,9 +103,6 @@ public class WalletDaoImpl implements IWalletDao {
             // 忽略异常
         }
 
-        if (true) {
-            throw new RuntimeException("手动异常");
-        }
         // 返回更新结果
         return rtValue == 1;
     }

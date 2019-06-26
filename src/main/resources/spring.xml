@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/aop
-        https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--扫描包-->
     <context:component-scan base-package="cn.o7si"/>
@@ -35,35 +35,26 @@
     <!--开启SpringMVC框架注解的支持-->
     <mvc:annotation-driven/>
 
-    <!--配置JdbcTemplate-->
+    <!--JdbcTemplate-->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <!--配置Connection工具类-->
-    <bean id="connectionUtils" class="cn.o7si.utils.ConnectionUtils">
+    <!--事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <!--事务管理器-->
-    <bean id="txManager" class="cn.o7si.utils.TransactionManager">
-        <property name="connectionUtils" ref="connectionUtils"/>
-    </bean>
+    <!--事务控制器-->
+    <tx:advice id="txAdvice">
+        <tx:attributes>
+            <tx:method name="buy"/>
+        </tx:attributes>
+    </tx:advice>
 
-    <!--配置切面进行事务控制-->
+    <!--配置切面-->
     <aop:config>
-        <!--配置切入点-->
-        <aop:pointcut id="pt" expression="execution(* cn.o7si.service.impl.*.*(..))"/>
-        <aop:aspect id="txAdvice" ref="txManager">
-            <!--配置前置通知：开启事务-->
-            <aop:before method="beginTransaction" pointcut-ref="pt"/>
-            <!--配置后置通知：提交事务-->
-            <aop:after-returning method="commit" pointcut-ref="pt"/>
-            <!--配置异常通知：回滚事务-->
-            <aop:after-throwing method="rollback" pointcut-ref="pt"/>
-            <!--配置最终通知：释放连接-->
-            <aop:after method="release" pointcut-ref="pt"/>
-        </aop:aspect>
+        <aop:pointcut id="pc" expression="execution(* cn.o7si.service.impl.TransactionServiceImpl.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/>
     </aop:config>
-
 </beans>

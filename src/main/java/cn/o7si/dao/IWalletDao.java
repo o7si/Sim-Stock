@@ -33,5 +33,5 @@ public interface IWalletDao {
      * @param wallet        钱包
      * @return              如果更新成功则返回true，否则返回false
      */
-    boolean updateWallet(Wallet wallet) throws Exception;
+    boolean updateWallet(Wallet wallet);
 }

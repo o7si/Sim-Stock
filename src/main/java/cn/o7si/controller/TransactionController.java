@@ -49,22 +49,16 @@ public class TransactionController {
             return new ResponseData(1, "交易量不满足规则");
 
         // 调用业务层进行股票购买
-        boolean state = transactionService.buy(accountId, stockId, number);
+        try {
+            // 未出现异常，事务成功提交
+            transactionService.buy(accountId, stockId, number);
 
-        // 响应给客户端的数据
-        ResponseData rtData = new ResponseData();
-
-        // 设置返回值
-        if (state) {
-            // 交易成功
-            rtData.setStatusCode(StatusCodeUtils.BUYSTOCKSUCCESS);
-            rtData.setDesc("购入股票成功");
-        } else {
-            // 交易失败
-            rtData.setStatusCode(StatusCodeUtils.BUYSTOCKFAILURE);
-            rtData.setDesc("购入股票失败");
+            return new ResponseData(StatusCodeUtils.BUYSTOCKSUCCESS, "购入股票成功");
+        } catch (Exception e) {
+            // 异常信息
+            e.printStackTrace();
+            // 出现异常，事务已经回滚
+            return new ResponseData(StatusCodeUtils.BUYSTOCKFAILURE, "购入股票失败");
         }
-
-        return rtData;
     }
 }
