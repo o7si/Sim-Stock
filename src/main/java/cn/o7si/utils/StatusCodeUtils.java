@@ -84,4 +84,9 @@ public class StatusCodeUtils {
     public static final Integer GETWALLETSUCCESS = 1075;
     // 获取钱包信息失败
     public static final Integer GETWALLETFAILURE = 1076;
+
+    // 购入股票成功
+    public static final Integer BUYSTOCKSUCCESS = 1101;
+    // 购入股票失败
+    public static final Integer BUYSTOCKFAILURE = 1102;
 }

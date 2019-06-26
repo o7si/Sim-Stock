@@ -84,4 +84,29 @@ public class WalletDaoImpl implements IWalletDao {
         System.out.println(wallets);
         return wallets != null;
     }
+
+    /**
+     * 更新钱包信息
+     * @param wallet        钱包
+     * @return              如果更新成功则返回true，否则返回false
+     */
+    @Override
+    public boolean updateWallet(Wallet wallet) throws Exception {
+        // 更新钱包时要使用的SQL语句
+        String sql = "update wallet set balance=?, password=? where id=?";
+
+        int rtValue = 0;
+        try {
+            // 执行SQL语句
+            rtValue = jdbcTemplate.update(sql, wallet.getBalance(), wallet.getPassword(), wallet.getId());
+        } catch (Exception ignored) {
+            // 忽略异常
+        }
+
+        if (true) {
+            throw new RuntimeException("手动异常");
+        }
+        // 返回更新结果
+        return rtValue == 1;
+    }
 }
