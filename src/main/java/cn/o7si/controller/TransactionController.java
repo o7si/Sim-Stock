@@ -3,6 +3,7 @@ package cn.o7si.controller;
 import cn.o7si.service.ITransactionService;
 import cn.o7si.utils.JwtUtils;
 import cn.o7si.utils.StatusCodeUtils;
+import cn.o7si.utils.TextUtils;
 import cn.o7si.vo.ResponseData;
 import com.auth0.jwt.interfaces.Claim;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,11 @@ public class TransactionController {
     @Autowired
     private ITransactionService transactionService;
 
-    // 功能：购买股票
+    /**
+     * 功能：购买股票
+     * @param data  从前端接收的数据
+     * @return      响应给前端的数据
+     */
     @RequestMapping(value = "/buy", method = RequestMethod.POST)
     public @ResponseBody
     ResponseData buy(@RequestBody Map<String, Object> data) {
@@ -39,19 +44,20 @@ public class TransactionController {
         // 获取相关数据
         Integer stockId = (Integer) data.get("stockId");
         Integer number = (Integer) data.get("number");
+        Integer password = (Integer) data.get("password");
 
         // 如果参数不足
-        if (stockId == null || number == null)
+        if (stockId == null || number == null || password == null)
             return new ResponseData(StatusCodeUtils.MISSPARAM, "参数不足");
 
         // 如果参数不规范
-        if (number == 0)
-            return new ResponseData(1, "交易量不满足规则");
+        if (number <= 0)
+            return new ResponseData(StatusCodeUtils.MUSTPOSITIVE, "交易量必须为正整数");
 
         // 调用业务层进行股票购买
         try {
             // 未出现异常，事务成功提交
-            transactionService.buy(accountId, stockId, number);
+            transactionService.buy(accountId, stockId, number, password);
 
             return new ResponseData(StatusCodeUtils.BUYSTOCKSUCCESS, "购入股票成功");
         } catch (Exception e) {

@@ -49,6 +49,7 @@ public class StockDaoImpl implements IStockDao {
         return stocks.get(0);
     }
 
+
     @Override
     public List<Stock> findAll() {
         // 查询所有股票时使用的SQL语句
@@ -125,5 +126,17 @@ public class StockDaoImpl implements IStockDao {
 
         // 返回查询结果
         return total;
+    }
+
+    /**
+     * 更新股票信息
+     * @param stock     股票信息
+     */
+    @Override
+    public void updateStock(Stock stock) {
+        // 更新数据SQL语句
+        String sql = "update stock set sold=?, hold=? where id=?";
+
+        jdbcTemplate.update(sql, stock.getSold(), stock.getHold(), stock.getId());
     }
 }

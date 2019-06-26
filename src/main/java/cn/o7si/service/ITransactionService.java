@@ -10,6 +10,7 @@ public interface ITransactionService {
      * @param accountId     用户编号
      * @param stockId       股票编号
      * @param number        购买数量
+     * @param password      交易密码
      */
-    void buy(Integer accountId, Integer stockId, Integer number);
+    void buy(Integer accountId, Integer stockId, Integer number, Integer password);
 }

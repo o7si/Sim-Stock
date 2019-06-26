@@ -42,4 +42,10 @@ public interface IStockDao {
      * @return          如果查询成功则返回股票信息，否则返回null
      */
     Stock findStockById(Integer stockId);
+
+    /**
+     * 更新股票信息
+     * @param stock     股票信息
+     */
+    void updateStock(Stock stock);
 }
