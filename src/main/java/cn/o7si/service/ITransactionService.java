@@ -13,4 +13,13 @@ public interface ITransactionService {
      * @param password      交易密码
      */
     void buy(Integer accountId, Integer stockId, Integer number, Integer password);
+
+    /**
+     * 售出股票
+     * @param accountId     用户编号
+     * @param stockId       股票编号
+     * @param number        购买数量
+     * @param password      交易密码
+     */
+    void sell(Integer accountId, Integer stockId, Integer number, Integer password);
 }

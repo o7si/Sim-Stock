@@ -31,6 +31,7 @@ public class TransactionServiceImpl implements ITransactionService {
 
     /**
      * 购买股票
+     *
      * @param accountId 用户编号
      * @param stockId   股票编号
      * @param number    购买数量
@@ -41,12 +42,17 @@ public class TransactionServiceImpl implements ITransactionService {
 
         // 根据AccountId获取钱包信息
         Wallet wallet = walletDao.findWalletByUaid(accountId);
-        // 根据StockId获取股票信息
-        Stock stock = stockDao.findStockById(stockId);
 
         // 未开户（无钱包）
         if (wallet == null)
             throw new RuntimeException("未开户");
+
+        // 核对交易密码
+        if (!wallet.getPassword().equals(password))
+            throw new RuntimeException("交易密码错误");
+
+        // 根据StockId获取股票信息
+        Stock stock = stockDao.findStockById(stockId);
 
         // 无该股票
         if (stock == null)
@@ -58,10 +64,6 @@ public class TransactionServiceImpl implements ITransactionService {
         Double price = stock.getPrice();
         // 交易额
         Double amount = price * number;
-
-        // 核对交易密码
-        if (!wallet.getPassword().equals(password))
-            throw new RuntimeException("交易密码错误");
 
         // 如果余额不足, 中断交易
         if (amount > balance)
@@ -95,5 +97,67 @@ public class TransactionServiceImpl implements ITransactionService {
 
         // 4. 向交易表中插入此次交易记录
         transactionDao.addRecord(accountId, stockId, wallet.getId(), price, number, amount, 0);
+    }
+
+    /**
+     * 售出股票
+     *
+     * @param accountId 用户编号
+     * @param stockId   股票编号
+     * @param number    购买数量
+     * @param password  交易密码
+     */
+    @Override
+    public void sell(Integer accountId, Integer stockId, Integer number, Integer password) {
+
+        // 根据AccountId获取钱包信息        啦啦啦，获取这个因为一会要给它加钱
+        Wallet wallet = walletDao.findWalletByUaid(accountId);
+
+        // 未开户（无钱包）
+        if (wallet == null)
+            throw new RuntimeException("未开户");
+
+        // 核对交易密码
+        if (!wallet.getPassword().equals(password))
+            throw new RuntimeException("交易密码错误");
+
+        // 根据StockId获取股票信息          啦啦啦，获取这个因为一会要获取当前股价，然后才知道到底加多少钱
+        Stock stock = stockDao.findStockById(stockId);
+
+        // 无该股票
+        if (stock == null)
+            throw new RuntimeException("无该股票");
+
+        // 获取用户该支股票持有情况         啦啦啦，我要知道我有多少，不然怎么知道够不够卖
+        Hold hold = holdDao.findHold(accountId, wallet.getId(), stockId);
+
+        // 未持有此股票
+        if (hold == null)
+            throw new RuntimeException("未持有此股票");
+
+        // 交易量大于持有量，持有量不足
+        if (number > hold.getNumber())
+            throw new RuntimeException("持有量不足");
+
+        // 单股售价
+        Double price = stock.getPrice();
+        // 交易额
+        Double amount = price * number;
+
+        // 1. 向钱包内增加对应金额
+        wallet.setBalance(wallet.getBalance() + amount);
+        walletDao.updateWallet(wallet);
+
+        // 2. 修改股票相关信息
+        stock.setSold(stock.getSold() - number);
+        stock.setHold(stock.getHold() + number);
+        stockDao.updateStock(stock);
+
+        // 3. 更新用户股票持有信息
+        hold.setNumber(hold.getNumber() - number);
+        holdDao.updateHold(hold);
+
+        // 4. 向交易表中插入此次交易记录
+        transactionDao.addRecord(accountId, stockId, wallet.getId(), price, number, amount, 1);
     }
 }

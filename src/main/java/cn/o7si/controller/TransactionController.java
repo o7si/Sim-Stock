@@ -67,4 +67,42 @@ public class TransactionController {
             return new ResponseData(StatusCodeUtils.BUYSTOCKFAILURE, "购入股票失败");
         }
     }
+
+    @RequestMapping(value = "/sell", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseData sell(@RequestBody Map<String, Object> data) {
+        // 判断用户是否登录
+        Map<String, Claim> claims = JwtUtils.verifyToken((String) data.get("token"));
+        Integer accountId = claims != null ? claims.get("accountId").asInt() : null;
+
+        // 如果用户未登录
+        if (accountId == null)
+            return new ResponseData(StatusCodeUtils.NOTLOGGEDIN, "账户未登录");
+
+        // 获取相关数据
+        Integer stockId = (Integer) data.get("stockId");
+        Integer number = (Integer) data.get("number");
+        Integer password = (Integer) data.get("password");
+
+        // 如果参数不足
+        if (stockId == null || number == null || password == null)
+            return new ResponseData(StatusCodeUtils.MISSPARAM, "参数不足");
+
+        // 如果参数不规范
+        if (number <= 0)
+            return new ResponseData(StatusCodeUtils.MUSTPOSITIVE, "交易量必须为正整数");
+
+        // 调用业务层进行股票售出
+        try {
+            // 未出现异常，事务成功提交
+            transactionService.sell(accountId, stockId, number, password);
+
+            return new ResponseData(1, "售出股票成功");
+        } catch (Exception e) {
+            // 异常信息
+            e.printStackTrace();
+            // 出现异常，事务已经回滚
+            return new ResponseData(1, "售出股票失败");
+        }
+    }
 }

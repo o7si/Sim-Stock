@@ -85,6 +85,8 @@ public class StatusCodeUtils {
     // 获取钱包信息失败
     public static final Integer GETWALLETFAILURE = 1076;
 
+    // 交易量必须为正整数
+    public static final Integer MUSTPOSITIVE = 1100;
     // 购入股票成功
     public static final Integer BUYSTOCKSUCCESS = 1101;
     // 购入股票失败
