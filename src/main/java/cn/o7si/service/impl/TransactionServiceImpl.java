@@ -57,6 +57,8 @@ public class TransactionServiceImpl implements ITransactionService {
         // TODO：暂空
 
 
+
+
         // 向交易表中插入此次交易记录
         transactionDao.addRecord(accountId, stockId, wallet.getId(), price, number, amount, 0);
     }

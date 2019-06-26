@@ -1125,361 +1125,431 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="284" parent="9" name="market"/>
-    <table id="285" parent="9" name="stock"/>
-    <table id="286" parent="9" name="transaction">
+    <table id="284" parent="9" name="hold">
       <Collation>utf8_general_ci</Collation>
     </table>
-    <table id="287" parent="9" name="user_account">
+    <table id="285" parent="9" name="market"/>
+    <table id="286" parent="9" name="stock"/>
+    <table id="287" parent="9" name="transaction">
       <Collation>utf8_general_ci</Collation>
     </table>
-    <table id="288" parent="9" name="user_information">
+    <table id="288" parent="9" name="user_account">
       <Collation>utf8_general_ci</Collation>
     </table>
-    <table id="289" parent="9" name="wallet">
+    <table id="289" parent="9" name="user_information">
       <Collation>utf8_general_ci</Collation>
     </table>
-    <column id="290" parent="284" name="id">
+    <table id="290" parent="9" name="wallet">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <column id="291" parent="284" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="291" parent="284" name="pre_price">
+    <column id="292" parent="284" name="uaid">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="293" parent="284" name="wid">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="294" parent="284" name="sid">
+      <Position>4</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="295" parent="284" name="number">
+      <Position>5</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="296" parent="284" name="hold_user_account_id_fk">
+      <ColNames>uaid</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="297" parent="284" name="hold_wallet_id_fk">
+      <ColNames>wid</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="298" parent="284" name="hold_stock_id_fk">
+      <ColNames>sid</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="299" parent="284" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="300" parent="284" name="hold_user_account_id_fk">
+      <ColNames>uaid</ColNames>
+      <RefSchemaName>sim_stock</RefSchemaName>
+      <RefTableName>user_account</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="301" parent="284" name="hold_wallet_id_fk">
+      <ColNames>wid</ColNames>
+      <RefSchemaName>sim_stock</RefSchemaName>
+      <RefTableName>wallet</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="302" parent="284" name="hold_stock_id_fk">
+      <ColNames>sid</ColNames>
+      <RefSchemaName>sim_stock</RefSchemaName>
+      <RefTableName>stock</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="303" parent="285" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="304" parent="285" name="pre_price">
       <Position>2</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="292" parent="284" name="post_price">
+    <column id="305" parent="285" name="post_price">
       <Position>3</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="293" parent="284" name="change_price">
+    <column id="306" parent="285" name="change_price">
       <Position>4</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="294" parent="284" name="percent">
+    <column id="307" parent="285" name="percent">
       <Position>5</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="295" parent="284" name="time">
+    <column id="308" parent="285" name="time">
       <Position>6</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="296" parent="284" name="sid">
+    <column id="309" parent="285" name="sid">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="297" parent="284" name="market_stock_id_fk">
+    <index id="310" parent="285" name="market_stock_id_fk">
       <ColNames>sid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="298" parent="284" name="PRIMARY">
+    <key id="311" parent="285" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="299" parent="284" name="market_stock_id_fk">
+    <foreign-key id="312" parent="285" name="market_stock_id_fk">
       <ColNames>sid</ColNames>
       <RefSchemaName>sim_stock</RefSchemaName>
       <RefTableName>stock</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="300" parent="285" name="id">
+    <column id="313" parent="286" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="301" parent="285" name="name">
+    <column id="314" parent="286" name="name">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="302" parent="285" name="market_value">
+    <column id="315" parent="286" name="market_value">
       <Position>3</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="303" parent="285" name="price">
+    <column id="316" parent="286" name="price">
       <Position>4</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="304" parent="285" name="total">
+    <column id="317" parent="286" name="total">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="305" parent="285" name="sold">
+    <column id="318" parent="286" name="sold">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="306" parent="285" name="hold">
+    <column id="319" parent="286" name="hold">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="307" parent="285" name="appear">
+    <column id="320" parent="286" name="appear">
       <Position>8</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="308" parent="285" name="stock_name_uindex">
+    <index id="321" parent="286" name="stock_name_uindex">
       <ColNames>name</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="309" parent="285" name="PRIMARY">
+    <key id="322" parent="286" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="310" parent="285" name="stock_name_uindex">
+    <key id="323" parent="286" name="stock_name_uindex">
       <ColNames>name</ColNames>
       <UnderlyingIndexName>stock_name_uindex</UnderlyingIndexName>
     </key>
-    <column id="311" parent="286" name="id">
+    <column id="324" parent="287" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="312" parent="286" name="number">
+    <column id="325" parent="287" name="number">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="313" parent="286" name="single">
+    <column id="326" parent="287" name="single">
       <Position>3</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="314" parent="286" name="turnover">
+    <column id="327" parent="287" name="turnover">
       <Position>4</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="315" parent="286" name="type">
+    <column id="328" parent="287" name="type">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="316" parent="286" name="time">
+    <column id="329" parent="287" name="time">
       <Position>6</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="317" parent="286" name="uaid">
+    <column id="330" parent="287" name="uaid">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="318" parent="286" name="wid">
+    <column id="331" parent="287" name="wid">
       <Position>8</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="319" parent="286" name="sid">
+    <column id="332" parent="287" name="sid">
       <Position>9</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="320" parent="286" name="transaction_user_account_id_fk">
+    <index id="333" parent="287" name="transaction_user_account_id_fk">
       <ColNames>uaid</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="321" parent="286" name="transaction_wallet_id_fk">
+    <index id="334" parent="287" name="transaction_wallet_id_fk">
       <ColNames>wid</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="322" parent="286" name="transaction_stock_id_fk">
+    <index id="335" parent="287" name="transaction_stock_id_fk">
       <ColNames>sid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="323" parent="286" name="PRIMARY">
+    <key id="336" parent="287" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="324" parent="286" name="transaction_user_account_id_fk">
+    <foreign-key id="337" parent="287" name="transaction_user_account_id_fk">
       <ColNames>uaid</ColNames>
       <RefSchemaName>sim_stock</RefSchemaName>
       <RefTableName>user_account</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="325" parent="286" name="transaction_wallet_id_fk">
+    <foreign-key id="338" parent="287" name="transaction_wallet_id_fk">
       <ColNames>wid</ColNames>
       <RefSchemaName>sim_stock</RefSchemaName>
       <RefTableName>wallet</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="326" parent="286" name="transaction_stock_id_fk">
+    <foreign-key id="339" parent="287" name="transaction_stock_id_fk">
       <ColNames>sid</ColNames>
       <RefSchemaName>sim_stock</RefSchemaName>
       <RefTableName>stock</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="327" parent="287" name="id">
+    <column id="340" parent="288" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="328" parent="287" name="username">
+    <column id="341" parent="288" name="username">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="329" parent="287" name="password">
+    <column id="342" parent="288" name="password">
       <Position>3</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="330" parent="287" name="authority">
+    <column id="343" parent="288" name="authority">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="331" parent="287" name="create_time">
+    <column id="344" parent="288" name="create_time">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="332" parent="287" name="user_account_username_uindex">
+    <index id="345" parent="288" name="user_account_username_uindex">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="333" parent="287" name="PRIMARY">
+    <key id="346" parent="288" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="334" parent="287" name="user_account_username_uindex">
+    <key id="347" parent="288" name="user_account_username_uindex">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>user_account_username_uindex</UnderlyingIndexName>
     </key>
-    <column id="335" parent="288" name="id">
+    <column id="348" parent="289" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="336" parent="288" name="avatar">
+    <column id="349" parent="289" name="avatar">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="337" parent="288" name="nickname">
+    <column id="350" parent="289" name="nickname">
       <Position>3</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="338" parent="288" name="gender">
+    <column id="351" parent="289" name="gender">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="339" parent="288" name="birthday">
+    <column id="352" parent="289" name="birthday">
       <Position>5</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="340" parent="288" name="place">
+    <column id="353" parent="289" name="place">
       <Position>6</Position>
       <DataType>varchar(30)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="341" parent="288" name="industry">
+    <column id="354" parent="289" name="industry">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="342" parent="288" name="phone">
+    <column id="355" parent="289" name="phone">
       <Position>8</Position>
       <DataType>varchar(15)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="343" parent="288" name="email">
+    <column id="356" parent="289" name="email">
       <Position>9</Position>
       <DataType>varchar(35)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="344" parent="288" name="profile">
+    <column id="357" parent="289" name="profile">
       <Position>10</Position>
       <DataType>varchar(300)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="345" parent="288" name="uaid">
+    <column id="358" parent="289" name="uaid">
       <Position>11</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="346" parent="288" name="user_information_user_account_id_fk">
+    <index id="359" parent="289" name="user_information_user_account_id_fk">
       <ColNames>uaid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="347" parent="288" name="PRIMARY">
+    <key id="360" parent="289" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="348" parent="288" name="user_information_user_account_id_fk">
+    <foreign-key id="361" parent="289" name="user_information_user_account_id_fk">
       <ColNames>uaid</ColNames>
       <RefSchemaName>sim_stock</RefSchemaName>
       <RefTableName>user_account</RefTableName>
@@ -1487,50 +1557,50 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="349" parent="289" name="id">
+    <column id="362" parent="290" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="350" parent="289" name="balance">
+    <column id="363" parent="290" name="balance">
       <Position>2</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;10000&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="351" parent="289" name="time">
+    <column id="364" parent="290" name="time">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="352" parent="289" name="password">
+    <column id="365" parent="290" name="password">
       <Position>4</Position>
       <DataType>int(6)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;123456&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="353" parent="289" name="uaid">
+    <column id="366" parent="290" name="uaid">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="354" parent="289" name="wallet_user_account_id_fk">
+    <index id="367" parent="290" name="wallet_user_account_id_fk">
       <ColNames>uaid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="355" parent="289" name="PRIMARY">
+    <key id="368" parent="290" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="356" parent="289" name="wallet_user_account_id_fk">
+    <foreign-key id="369" parent="290" name="wallet_user_account_id_fk">
       <ColNames>uaid</ColNames>
       <RefSchemaName>sim_stock</RefSchemaName>
       <RefTableName>user_account</RefTableName>
