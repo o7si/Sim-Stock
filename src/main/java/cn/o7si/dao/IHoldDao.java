@@ -2,6 +2,8 @@ package cn.o7si.dao;
 
 import cn.o7si.entities.Hold;
 
+import java.util.List;
+
 /**
  * 股票持有情况的持久层接口
  */
@@ -30,4 +32,12 @@ public interface IHoldDao {
      * @param hold          股票持有情况
      */
     void updateHold(Hold hold);
+
+    /**
+     * 根据账户ID获取股票持有情况列表
+     *
+     * @param accountId 账户ID
+     * @return 股票持有情况列表
+     */
+    List<Hold> findHoldListByUaid(Integer accountId);
 }

@@ -70,4 +70,19 @@ public class HoldDaoImpl implements IHoldDao {
 
         jdbcTemplate.update(sql, hold.getNumber(), hold.getId());
     }
+
+    /**
+     * 根据账户ID获取股票持有情况列表
+     *
+     * @param accountId 账户ID
+     * @return 股票持有情况列表
+     */
+    @Override
+    public List<Hold> findHoldListByUaid(Integer accountId) {
+        // 查询数据SQL语句
+        String sql = "select * from hold where uaid=? and number > 0";
+
+        // 返回查询结果
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Hold.class), accountId);
+    }
 }

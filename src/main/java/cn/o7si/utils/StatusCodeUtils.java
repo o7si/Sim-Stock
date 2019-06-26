@@ -85,10 +85,25 @@ public class StatusCodeUtils {
     // 获取钱包信息失败
     public static final Integer GETWALLETFAILURE = 1076;
 
+
     // 交易量必须为正整数
     public static final Integer MUSTPOSITIVE = 1100;
     // 购入股票成功
     public static final Integer BUYSTOCKSUCCESS = 1101;
     // 购入股票失败
     public static final Integer BUYSTOCKFAILURE = 1102;
+    // 售出股票成功
+    public static final Integer SELLSTOCKSUCCESS = 1103;
+    // 售出股票失败
+    public static final Integer SELLSTOCKFAILURE = 1104;
+
+
+    // 查询单支股票持有情况成功
+    public static final Integer GETSINGLEHOLDSUCCESS = 1111;
+    // 查询单支股票持有情况失败
+    public static final Integer GETSINGLEHOLDFAILURE = 1112;
+    // 查询股票持有列表成功
+    public static final Integer GETLISTHOLDSUCCESS = 1113;
+    // 查询股票持有列表失败
+    public static final Integer GETLISTHOLDFAILURE = 1114;
 }

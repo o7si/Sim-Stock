@@ -27,8 +27,9 @@ public class TransactionController {
 
     /**
      * 功能：购买股票
-     * @param data  从前端接收的数据
-     * @return      响应给前端的数据
+     *
+     * @param data 从前端接收的数据
+     * @return 响应给前端的数据
      */
     @RequestMapping(value = "/buy", method = RequestMethod.POST)
     public @ResponseBody
@@ -68,6 +69,12 @@ public class TransactionController {
         }
     }
 
+    /**
+     * 功能：售出股票
+     *
+     * @param data 从前端接收的数据
+     * @return 响应给前端的数据
+     */
     @RequestMapping(value = "/sell", method = RequestMethod.POST)
     public @ResponseBody
     ResponseData sell(@RequestBody Map<String, Object> data) {
@@ -97,12 +104,12 @@ public class TransactionController {
             // 未出现异常，事务成功提交
             transactionService.sell(accountId, stockId, number, password);
 
-            return new ResponseData(1, "售出股票成功");
+            return new ResponseData(StatusCodeUtils.SELLSTOCKSUCCESS, "售出股票成功");
         } catch (Exception e) {
             // 异常信息
             e.printStackTrace();
             // 出现异常，事务已经回滚
-            return new ResponseData(1, "售出股票失败");
+            return new ResponseData(StatusCodeUtils.SELLSTOCKFAILURE, "售出股票失败");
         }
     }
 }

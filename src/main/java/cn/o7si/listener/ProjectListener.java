@@ -21,8 +21,8 @@ public class ProjectListener implements ApplicationListener, ServletContextListe
     @Override
     public void onApplicationEvent(ApplicationEvent applicationEvent) {
         if (marketManager == null) {
-            marketManager = new MarketManager(5 * 1000);
-//            marketManager.start();
+            marketManager = new MarketManager(10 * 1000);
+            marketManager.start();
         }
     }
 
