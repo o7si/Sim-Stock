@@ -1,4 +1,4 @@
-var numPage = 3;
+var numPage = 5;
 var curPageNumber;
 var minPage;
 var maxPage;
@@ -6,9 +6,27 @@ window.onload = function() {
 	onRequest();
 }
 
+
+
+function showMenu(div) {
+	document.getElementById(div).style = "display : block";
+}
+
+function hiddenMenu(div) {
+	document.getElementById(div).style = "display : none";
+}
+
+function changeMainPage() {
+	document.getElementById('mainPage').src = 'img/mainPage2.png';
+}
+
+function hiddenMainPage() {
+	document.getElementById('mainPage').src = 'img/mainPage.png';
+}
+
 function onRequest() {
 	$.ajax({
-		url: "/Sim-Stock/stock/getList?curPageNumber=1&pageSize="+numPage,
+		url: "/Sim-Stock/stock/getList?curPageNumber=1&pageSize=" + numPage,
 		contentType: "application/json;charset=UTF-8",
 		type: "get",
 		success: function(data) {
@@ -50,7 +68,7 @@ function bindRequest(num) {
 		})
 	})
 	$('#simPage span').click(function() {
-		console.log("上一页",curPageNumber)
+		console.log("上一页", curPageNumber)
 		if (parseInt(curPageNumber) > minPage) {
 			var upPage = parseInt(curPageNumber - 1)
 			console.log(upPage)
@@ -73,7 +91,7 @@ function bindRequest(num) {
 		}
 	})
 	$('#simPage span').click(function() {
-		console.log("下一页",curPageNumber)
+		console.log("下一页", curPageNumber)
 		if (parseInt(curPageNumber) < maxPage) {
 			var downPage = parseInt(curPageNumber + 1)
 			console.log(downPage)
@@ -97,19 +115,20 @@ function bindRequest(num) {
 	})
 }
 
+function getSim(data) {
+	console.log(data);
+	localStorage.removeItem('simId');
+	localStorage.setItem('simId',data);
+	window.location.href = "sim.html";
+}
 
 function addArray(data) {
-	$('.simList').remove();
+	$('#simList').remove()
 	var arr = data.data.page.data;
-	$('#simListBg').append('<div class="simList"></div>')
+	$('#simListBg').append('<div id="simList"></div>')
 	for (var i = 0; i < arr.length; i++) {
-		$('.simList').append('<div class="simId">股票编号:' + arr[i].id + '</div>');
-		$('.simList').append('<div class="simName">股票名称：' + arr[i].name + '</div>');
-		$('.simList').append('<div class="simValue">股票市值：' + arr[i].marketValue + '</div>');
-		$('.simList').append('<div class="simsimPrice">单股售价：' + arr[i].price + '</div>');
-		$('.simList').append('<div class="simTotal">股票总数：' + arr[i].total + '</div>');
-		$('.simList').append('<div class="simHold">公司持有数：' + arr[i].hold + '</div>');
-		$('.simList').append('<div class="simAppear">上市时间：' + arr[i].appear + '</div>');
-		$('.simList').append('<br>');
+		$('#simList').append('<div class="simPublic" id="' + (i+1) + '" onclick = "getSim('+ arr[i].id +')"><span>股票编号：' + arr[i].id + '</span> <span>股票名字：' + arr[i].name +
+			'</span> <span>股票价值：' + arr[i].marketValue.toFixed(2) + '</span> <span>股票单价：' + arr[i].price.toFixed(2) + '</span> <span>股票总数：' + arr[i].total +
+			'</span> <span>持有数量：' + arr[i].hold + '</span> <span>股票售出：' + arr[i].sold + '</span></div>')
 	}
 }

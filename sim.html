@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="css/sim.css" />
+	<script src="js/sim.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<body>
+		<div class="myNav">
+			<div class="navLeft">
+				<img src="img/1.ico" width="58px" height="58px">
+				<h2>思道客</h2>
+			</div>
+			<div class="navRight">
+				<ul>
+					<li>
+						<!-- 转向个人信息页 -->
+						<a href="./profile.html">
+							<div class="headImage"></div>
+						</a>
+					</li>
+					<li onmouseover="showMenu('navLanguage')" onmouseout="hiddenMenu('navLanguage')">中文简体</li>
+					<div class="navLanguage navPublic" id="navLanguage" onmouseover="showMenu('navLanguage')" onmouseout="hiddenMenu('navLanguage')">
+						<ul>
+							<!-- 转向英文页 -->
+							<li><a href="###">English</a></li>
+						</ul>
+					</div>
+					<li onmouseover="changeMainPage()" onmouseout="hiddenMainPage()">
+						<a href="./list.html"><img src="img/mainPage.png" width="25px" height="25px" id="mainPage"></a>
+					</li>
+					<!-- 转向主页 -->
+					<li onmouseover="showMenu('navSupport')" onmouseout="hiddenMenu('navSupport')">支持与服务</li>
+					<div id="navSupport" class="navSupport navPublic" onmouseover="showMenu('navSupport')" onmouseout="hiddenMenu('navSupport')">
+						<ul>
+							<!-- 转向各个页 -->
+							<li><a href="###">帮助</a></li>
+							<li><a href="###">服务</a></li>
+							<li><a href="###">建议</a></li>
+							<li><a href="###">论坛</a></li>
+							<li><a href="###">求助</a></li>
+							<li><a href="###">联系我们</a></li>
+						</ul>
+					</div>
+					<li onmouseover="showMenu('navNotice')" onmouseout="hiddenMenu('navNotice')">通知</li>
+					<div id="navNotice" class="navNotice navPublic" onmouseover="showMenu('navNotice')" onmouseout="hiddenMenu('navNotice')">
+						<ul>
+							<!-- 转向消息页 -->
+							<li><a href="###">全部消息</a></li>
+							<li><a href="###">新消息</a></li>
+						</ul>
+					</div>
+					<li onmouseover="showMenu('navBill')" onmouseout="hiddenMenu('navBill')">
+						<a href="./wallet.html">钱包<a />
+					</li>
+					<div class="navBill navPublic" id="navBill" onmouseover="showMenu('navBill')" onmouseout="hiddenMenu('navBill')">
+						<ul>
+							<!-- 转向各个页 -->
+							<li><a href="###">开户</a></li>
+							<li><a href="###">余额</a></li>
+							<li><a href="###">消费记录</a></li>
+						</ul>
+					</div>
+				</ul>
+			</div>
+		</div>
+		<!-- 支付密码 -->
+<!-- 		<div class="alertPassword">
+			<div class="pswInput">
+				<input type="password" id="sixPsw" maxlength="6" minlength="6" aria-required="true" autocomplete="off" required="required"/>
+			</div>
+			</div>
+		</div> -->
+		
+		<div class="left">
+			<span id="stockName"></span>
+			<span id="stockTime"></span>
+			<span id="changePrice"></span>
+			<span id="stockPercent"></span>
+
+			<ul id="stockUl">
+				<li id="maxvalue"></li>
+				<li id="top"></li>
+				<li id="mid"></li>
+				<li id="foot"></li>
+				<li id="minvalue"></li>
+			</ul>
+			<canvas id="canvas" width="1000" height="600"></canvas>
+		</div>
+		<div class="right">
+			<div class="top">
+				<h2>详细信息</h2>
+				<span id="marketvalue">股票市值：<em></em> 元</span>
+				<span id="prevalue">单股售价：<em></em> 元</span>
+				<span id="hold">剩余股票：<em></em> 支</span>
+				<span id="appear">上市时间：<em></em></span>
+			</div>
+			<div class="foot">
+				<h2>交易</h2>
+				<span id="myMoney">我的资金：<em></em>&nbsp;&nbsp;元</span>
+				<div id="addStock" class="addStock">
+					<img id="reduceBuy" src="img/reduce.png" width="20px" height="20px" onclick="reduceStock()">
+					<input type="text" onkeyup="return ValidateNumber($(this),value)" id="stockInput" value="0" />
+					<img id="addBuy" src="img/add.png" width="20px" height="20px" onclick="addStock()">
+					<button type="button" class="addNum" id="addCurrent" value="1">1</button>
+					<button type="button" class="addNum" value="10">10</button>
+					<button type="button" class="addNum" value="100">100</button><br>
+					<b id="maxAdd" class="maxChange">Max<i></i>支</b>
+				</div>
+				<div id="buyBtn" onclick="buyNow()">购买</div>
+				<div id="soldBtn" onclick="soldNow()">售出</div>
+				<div id="reduceStock" class="reduceStock">
+					<img id="reduceSold" src="img/reduce.png" width="20px" height="20px" onclick="reduceSold()">
+					<input type="text"id="soldInput" value="0" />
+					 <!-- onkeyup="return soldValidateNumber($(this),value)" -->
+					<img id="addSold" src="img/add.png" width="20px" height="20px" onclick="addSold()">
+					<button type="button" class="redNum" value="1" id="redCurrent">1</button>
+					<button type="button" class="redNum" value="10">10</button>
+					<button type="button" class="redNum" value="100">100</button><br>
+					<b id="maxReduce" class="maxChange">Max<i></i>支股</b>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

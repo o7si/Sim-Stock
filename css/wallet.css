@@ -6,14 +6,15 @@
 	font-family: "微软雅黑";
 	font-size: 12px;
 }
-body {
-	position: relative;
-}
 
+body {
+	background: #1bbc9b;
+}
 .myNav {
 	width: 100%;
 	height: 60px;
 	border-bottom: 1px solid #ccc;
+	background: white;
 	box-shadow: #000000 1px;
 }
 
@@ -22,7 +23,7 @@ body {
 	height: 60px;
 	border: 1px solid #ccc;
 	border-bottom: none;
-	background: url(../img/navManu2.png) no-repeat center;
+/* 	background: url(../img/navManu2.png) no-repeat center; */
 	background-size: 30px 30px;
 	float: left;
 	cursor: pointer;
@@ -63,14 +64,6 @@ body {
 	margin-left: 40px;
 	font-size: 16px;
 	line-height: 60px;
-}
-
-.navRight>ul>li>a {
-	font-size: 16px;
-}
-
-.navRight>ul>li>a:hover {
-	color: #fadb0b;
 }
 
 .navRight>ul>li:nth-child(1) {
@@ -129,6 +122,7 @@ body {
 	width: 110px;
 	height: 40px;
 }
+
 .navPublic ul li:hover {
 	background: #eee;
 }
@@ -142,84 +136,89 @@ body {
 	padding-left: 10px;
 }
 
-body {
-	position: relative;
+
+/* 本页开始 */
+
+.show-div {
+	width: 90%;
+	height: 700px;
+	margin: 100px auto;
+	/* background: skyblue; */
 }
 
-.simList {
-	float: left;
-}
-
-.simList div {
-	float: left;
-	margin-right: 20px;
-}
-
-.simAppear {
-	margin-bottom: 20px;
-}
-
-.divPage {
-	width: 100%;
-	height: 40px;
-	background: #ccc;
-	/* margin-top: 600px; */
+.show-div-bg {
+	width: 1600px;
+	height: 700px;
+	/* background: #000000; */
 	position: absolute;
-	bottom: 5%;
+	left: 50%;
+	margin-left: -800px;
 }
 
-.divPage div {
-	text-align: center;
-	line-height: 40px;
-	font-size: 20px;
-}
 
-.simPage span {
-	cursor: pointer;
-	margin: 10px;
-	font-size: 20px;
-}
-
-.divPage a {
-	color: #000000;
-	text-decoration: none;
-	margin-left: 10px;
-	font-size: 20px;
-}
-
-.simPage input {
-	width: 25px;
-	height: 18px;
-	text-align: center;
-}
-
-.simPage a {
-	cursor: pointer;
-}
-
-.simPublic {
-	width: 245px;
-	height: 220px;
-	/* margin-top: 50px; */
-	float: left;
-	margin-left: 50px;
-	cursor: pointer;
-	border: 1px solid #000;
+.publicDiv {
+	width: 400px;
+	height: 600px;
 	background: white;
+	margin-top: 100px;
+	margin-left: 100px;
+	float: left;
+	border-radius: 10px;
 }
 
-.simPublic span {
-	font-size: 16px;
-	margin-top: 10px;
-	margin-left: 10px;
+.publicDiv img{
 	display: block;
 	/* float: left; */
-	
+	margin: 20px auto;
 }
 
-#simList {
-	width: 80%;
-	height: 700px;
-	margin: 50px auto;
-	display: block;
+.public-show {
+	width: 400px;
+	height: 480px;
+	/* background: pink; */
+}
+
+.walletPublic:nth-child(1) {
+	padding-top: 20px;
+}
+
+.walletPublic {
+	width: 400px;
+	height: 100px;
+}
+
+.walletPublic img {
+	/* display: inline; */
+	margin: 20px;
+	float: left;
+
+}
+.walletPublic span{
+	margin-left: 10px;
+	font-size: 24px;
+	float: left;
+	line-height: 90px;
+}
+
+.appendDiv {
+	width: 400px;
+	height: 50px;
+	/* border-bottom: 1px solid #000; */
+	font-size: 20px;
+	float: left;
+	margin-left: 40px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.appendDiv div{
+	width: 100%;
+	font-size: 20px;
+	/* float: left; */
+}
+.jmpPublic {
+	display: inline;
+	color: tomato;
+	font-size: 30px!important;
+	cursor: pointer;
 }

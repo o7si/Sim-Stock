@@ -1,0 +1,409 @@
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	color: #000000;
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+
+.myNav {
+	width: 100%;
+	height: 60px;
+	border-bottom: 1px solid #ccc;
+	box-shadow: #000000 1px;
+}
+
+.navMenu {
+	width: 60px;
+	height: 60px;
+	border: 1px solid #ccc;
+	border-bottom: none;
+	background: url(../img/navManu2.png) no-repeat center;
+	background-size: 30px 30px;
+	float: left;
+	cursor: pointer;
+}
+
+.navLeft img {
+	margin-left: 20px;
+	float: left;
+}
+
+.navLeft h2 {
+	float: left;
+	line-height: 60px;
+	font-size: 30px;
+	color: #fadb0b;
+	margin-left: 20px;
+}
+
+.navRight {
+	width: 60%;
+	height: 100%;
+	float: right;
+	position: relative;
+}
+
+/* 头像样式 */
+.headImage {
+	width: 40px;
+	height: 40px;
+	background: url(../img/headImage.png) no-repeat center;
+	background-size: 40px 40px;
+}
+
+/* Nav部分无序列表样式 */
+.navRight>ul>li {
+	float: right;
+	cursor: pointer;
+	margin-left: 40px;
+	font-size: 16px;
+	line-height: 60px;
+}
+
+.navRight>ul>li>a {
+	font-size: 16px;
+}
+
+.navRight>ul>li>a:hover {
+	color: #fadb0b;
+}
+
+.navRight>ul>li:nth-child(1) {
+	margin-top: 10px;
+	margin-right: 30px;
+}
+
+.navRight>ul>li:hover {
+	color: #fadb0b;
+}
+
+.navRight a {
+	font-size: 14px;
+	text-align: left;
+	text-decoration: none;
+}
+
+/* 钱包内容 */
+.navBill {
+	right: 460px;
+}
+
+/* 消息部分 */
+.navNotice {
+	right: 390px;
+}
+
+/* 支持与服务 */
+.navSupport {
+	right: 270px;
+}
+
+/* 主页 */
+#mainPage {
+	margin-top: 15px;
+}
+
+/* 语言选择 */
+.navLanguage {
+	right: 100px;
+}
+
+/* 公共样式 */
+.navPublic {
+	top: 46px;
+	position: absolute;
+	display: none;
+	border-radius: 5px;
+	border: 1px solid white;
+	box-shadow: 0 3px 5px #ccc;
+	background: white;
+}
+
+.navPublic ul {
+	background: white;
+	width: 110px;
+	height: 40px;
+}
+
+.navPublic ul li:hover {
+	background: #eee;
+}
+
+.navPublic ul li {
+	cursor: pointer;
+	width: 100px;
+	height: 40px;
+	float: left;
+	line-height: 40px;
+	padding-left: 10px;
+}
+
+
+/* 本页面开始 */
+#canvas {
+	background: #fff;
+	/* border: 1px solid #000; */
+	display: block;
+	margin: 150px auto;
+
+}
+
+.left {
+	width: 1300px;
+	height: 800px;
+	position: absolute;
+	left: 5%;
+	/* margin-top: 20px; */
+}
+
+#stockUl {
+	position: absolute;
+	top: 20px;
+	left: 8%;
+}
+
+#stockUl li {
+	margin-top: 125px;
+}
+
+#stockName {
+	width: 100%;
+	height: 44px;
+	font-size: 26px;
+	color: #000;
+	position: absolute;
+	top: 8%;
+	left: 14%;
+}
+
+#stockTime {
+	width: 120px;
+	height: 24px;
+	font-size: 24px;
+	color: #777;
+	position: absolute;
+	top: 13%;
+	left: 14%;
+}
+
+#changePrice i {
+	font-style: normal;
+	font-size: 18px;
+}
+
+#stockPercent i {
+	font-style: normal;
+	font-size: 18px;
+}
+
+#changePrice {
+	font-size: 20px;
+	position: absolute;
+	color: #000;
+	position: absolute;
+	top: 9%;
+	left: 75%;
+}
+
+#stockPercent {
+	font-size: 20px;
+	position: absolute;
+	color: #000;
+	position: absolute;
+	top: 13%;
+	left: 75%;
+}
+
+.right {
+	width: 400px;
+	height: 700px;
+	position: absolute;
+	right: 250px;
+	top: 150px;
+	/* background: blue; */
+}
+
+.right>div:nth-child(1) {
+	width: 100%;
+	height: 40%;
+}
+
+.right h2 {
+	text-align: center;
+	font-size: 24px;
+}
+
+.right span {
+	width: 80%;
+	height: 30px;
+	line-height: 30px;
+	/* background: #0000FF; */
+	display: block;
+	font-size: 20px;
+	margin: 20px auto;
+	/* border: 1px solid #000; */
+}
+
+.right em {
+	font-size: 20px;
+	font-style: normal;
+}
+
+.right img {
+	float: left;
+	margin: 7px 10px 7px 10px;
+	cursor: pointer;
+}
+
+.addStock {
+	width: 180px;
+	height: 90px;
+	background: white;
+	margin-left: 70px;
+	text-align: center;
+	/* background: pink; */
+}
+
+#stockInput {
+	float: left;
+	width: 90px;
+	height: 30px;
+	font-size: 24px;
+	text-align: center;
+}
+
+#soldInput {
+	float: left;
+	width: 90px;
+	height: 30px;
+	font-size: 24px;
+	text-align: center;
+}
+
+.addNum {
+	width: 30px;
+	height: 30px;
+	border: 1px solid #000;
+	outline: none;
+	background: #fff;
+	border-radius: 5px;
+	margin: 10px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.redNum {
+	width: 30px;
+	height: 30px;
+	border: 1px solid #000;
+	outline: none;
+	background: #fff;
+	border-radius: 5px;
+	margin: 10px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.maxChange {
+	font-weight: normal;
+	font-size: 16px;
+}
+
+.maxChange i {
+	font-style: normal;
+	text-decoration: underline;
+	padding: 0 5px;
+	font-size: 16px;
+}
+
+
+.reduceStock {
+	width: 180px;
+	height: 90px;
+	background: white;
+	margin-left: 70px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+#buyBtn {
+	position: absolute;
+	bottom: 270px;
+	right: 70px;
+	font-size: 20px;
+	border: 1px solid #000;
+	padding: 2px 5px;
+	cursor: pointer;
+	box-shadow: 2px 2px 5px #ccc;
+}
+
+#soldBtn {
+	bottom: 160px;
+	right: 70px;
+	position: absolute;
+	font-size: 20px;
+	border: 1px solid #000;
+	padding: 2px 5px;
+	cursor: pointer;
+	box-shadow: 2px 2px 5px #ccc;
+}
+
+#addCurrent {
+	background: tomato;
+}
+
+#redCurrent {
+	background: tomato;
+}
+
+.alertPassword {
+	width: 100%;
+	height: 800px;
+	position: absolute;
+	z-index: 10;
+	top: 100px;
+	background: skyblue;
+}
+
+.pswInput {
+	width: 550px;
+	height: 90%;
+	/* background: #000; */
+	position: absolute;
+	left: 50%;
+	top: 50px;
+	margin-left: -270px;
+}
+
+#sixPsw{
+	width: 100%;
+	height: 40px;
+	position: absolute;
+	top: 30px;
+	/* visibility: hidden; */
+	border: 0 none;
+	outline: none;
+	background: rgba(255,255,255,.0);
+	color: white;
+	font-size: 24px;
+	
+}
+

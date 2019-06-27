@@ -21,7 +21,7 @@
 				<ul>
 					<li>
 						<!-- 转向个人信息页 -->
-						<a href="###">
+						<a href="./profile.html">
 							<div class="headImage"></div>
 						</a>
 					</li>
@@ -33,7 +33,7 @@
 							<li><a href="###">English</a></li>
 						</ul>
 					</div>
-					<li onmouseover="changeMainPage()" onmouseout="hiddenMainPage()"><a href="###"><img src="img/mainPage.png" width="25px"
+					<li onmouseover="changeMainPage()" onmouseout="hiddenMainPage()"><a href="./list.html"><img src="img/mainPage.png" width="25px"
 							 height="25px" id="mainPage"></a></li>
 					<!-- 转向主页 -->
 					<div></div>
@@ -57,15 +57,13 @@
 							<li><a href="###">新消息</a></li>
 						</ul>
 					</div>
-					<li onmouseover="showMenu('navBill')" onmouseout="hiddenMenu('navBill')">钱包</li>
+					<li onmouseover="showMenu('navBill')" onmouseout="hiddenMenu('navBill')"><a href="http://simstock.com/Project/Sim-Stock/wallet.html">钱包</a></li>
 					<div class="navBill navPublic" id="navBill" onmouseover="showMenu('navBill')" onmouseout="hiddenMenu('navBill')">
 						<ul>
 							<!-- 转向各个页 -->
-							<li><a href="###">充值</a></li>
-							<li><a href="###">订单</a></li>
+							<li><a href="###">开户</a></li>
 							<li><a href="###">余额</a></li>
 							<li><a href="###">消费记录</a></li>
-							<li><a href="###">进入费用中心</a></li>
 						</ul>
 					</div>
 				</ul>
@@ -249,13 +247,13 @@
 						</div>
 						<div class="modifyPassword" id="modifyPassword">
 							<span>请输入旧密码：</span>
-							<input type="password"><br>
+							<input type="password" id="oldPsw"><br>
 							<span>请输入新密码：</span>
 							<input type="password" id="profilePsw" onkeyup="passwordcheck()"><br>
 							<span>请重复新密码：</span>
 							<input type="password" id="repassWord" onkeyup="repassworkcheck()"><br>
-							<button type="button" onclick="mdPsw(true)">确定</button>
-							<button type="button" onclick="mdPsw(false)">取消</button>
+							<button type="button" onclick="mdPsw()" id="sureButton" disabled="disabled">确定</button>
+							<button type="button" onclick="exitPsw()" id="exitButton">取消</button>
 						</div>
 					</li>
 					<li>
@@ -284,9 +282,9 @@
 					</li>
 					<li>
 						<div>
-							<span>注销账号：</span>
-							<em>如果您不再使用此账号，可以将其注销。账号成功注销后，其下所有服务、数据及隐私信息将会被删除并将无法恢复。</em>
-							<a href="###">注销</a>
+							<span>交易密码：</span>
+							<em>你可以在此处设置和修改您的交易密码。</em>
+							<a href="###">修改</a>
 						</div>
 					</li>
 				</ul>

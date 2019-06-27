@@ -57,15 +57,13 @@ function closeperson() {
 	$('.personFriend').css('display', 'none');
 }
 
-function mdPsw(obj) {
+function mdPsw() {
 	var newPsw = $('#repassWord').val();
-	if (obj == true) {
-		newPswInput(newPsw);
-		$('#modifyPassword input').val("");
-		console.log("上传成功");
-	} else if (obj == false) {
-		$('#modifyPassword input').val("");
-	}
+	newPswInput();
+}
+
+function exitPsw(){
+	$('#modifyPassword input').val("");
 	$('#modifyPassword').css('display', 'none');
 }
 
@@ -76,17 +74,22 @@ function passwordcheck() {
 	if (!checkpassword.test(profilePsw)) {
 		if (profilePsw.length < 6) {
 			console.log('密码为6到16位');
+			$("#sureButton").attr("disabled",true);
 		} else if (/^[0-9]+$/.test(profilePsw)) {
 			console.log('密码强度低');
+			$("#sureButton").attr("disabled",true);
 		} else if (/^[a-zA-Z]+$/.test(profilePsw)) {
 			console.log('密码强度低');
+			$("#sureButton").attr("disabled",true);
 		} else if (/^[0-9a-zA-Z]+$/.test(profilePsw) || /^[A-Za-z0-9]+$/.test(profilePsw)) {
 			console.log('密码强度中');
+			$("#sureButton").attr("disabled",true);
 		} else if (reg.test(profilePsw)) {
-			addregisterimg('registerpassWordimg', 'img/registerTrue.png');
 			console.log('密码强度高');
+			$("#sureButton").attr("disabled",true);
 		} else {
 			console.log('密码可以')
+			$("#sureButton").attr("disabled",false);
 			return;
 		}
 	}
@@ -96,7 +99,9 @@ function repassworkcheck(){
 	var profilePsw = document.getElementById("profilePsw").value;
 	var repassWord = document.getElementById("repassWord").value;
 	if (profilePsw === repassWord) {
+		$("#sureButton").attr("disabled",false);
 	} else {
+		$("#sureButton").attr("disabled",true);
 	}
 }
 
@@ -335,7 +340,7 @@ function occupationShow() {
 	$('#occupation').css('display', 'none');
 	$('#occupationConfirm').css('display', 'block');
 	$('.occupation').html("<select></select>");
-	$(".occupation select").append("<option value='" + 0 + "'>解晨昊的粉丝</option>");
+	$(".occupation select").append("<option value='" + 0 + "'>学生</option>");
 	$(".occupation select").append("<option value='" + 1 + "'>电子商务</option>");
 	$(".occupation select").append("<option value='" + 2 + "'>金融</option>");
 	$(".occupation select").append("<option value='" + 3 + "'>企业服务</option>");
@@ -354,8 +359,8 @@ function occupationShow() {
 	$(".occupation select").append("<option value='" + 16 + "'>分类信息</option>");
 	$(".occupation select").append("<option value='" + 17 + "'>人工智能</option>");
 	$(".occupation select").append("<option value='" + 17 + "'>招聘</option>");
-	$(".occupation select").append("<option value='" + 19 + "'>其他</option>");
-	$(".occupation select").append("<option value='" + 20 + "'>移动互联网</option>");	
+	$(".occupation select").append("<option value='" + 19 + "'>移动互联网</option>");
+	$(".occupation select").append("<option value='" + 20 + "'>其他</option>");	
 	$('.occupation select').css({
 		"width": "200px",
 		"height": "26px",

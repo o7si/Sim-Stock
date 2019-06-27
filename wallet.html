@@ -4,9 +4,10 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
-	<link rel="stylesheet" type="text/css" href="css/list.css" />
-	<script src="js/list.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/wallet.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/walletAjax.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/wallet.css" />
 	<body>
 		<div class="myNav">
 			<div class="navLeft">
@@ -53,7 +54,7 @@
 							<li><a href="###">新消息</a></li>
 						</ul>
 					</div>
-					<li onmouseover="showMenu('navBill')" onmouseout="hiddenMenu('navBill')"><a href="./wallet.html">钱包</a></li>
+					<li onmouseover="showMenu('navBill')" onmouseout="hiddenMenu('navBill')">钱包</li>
 					<div class="navBill navPublic" id="navBill" onmouseover="showMenu('navBill')" onmouseout="hiddenMenu('navBill')">
 						<ul>
 							<!-- 转向各个页 -->
@@ -65,11 +66,32 @@
 				</ul>
 			</div>
 		</div>
-		<div id="simListBg">
-		</div>
-		<br><br><br>
-		<div class="divPage">
-			<div class="simPage" id="simPage">
+		<div class="show-div">
+			<div class="show-div-bg">
+				<div class="publicDiv left">
+					<img src="img/openImg.png" width="80" height="80">
+						<div class="open-show public-show">
+							
+						</div>
+				</div>
+				<div class="publicDiv mid">
+					<img src="img/walletImg.png" width="80" height="80">
+					<div class="wallet-show public-show">
+						<div id="wallet-id" class="walletPublic">
+							<img src="img/walletId.png" width="50px" height="50px">
+							<span>钱包编号</span>
+						</div>
+						<div id="wallet-balance" class="walletPublic">
+							<img src="img/walletMoney.png"  width="50px" height="50px">
+							<span>钱包余额</span>
+						</div>
+					</div>
+				</div>
+				<div class="publicDiv right">
+					<img src="img/stockImg.png" width="80" height="80">
+					<div class="stock-show public-show" id="stock-show">					
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>

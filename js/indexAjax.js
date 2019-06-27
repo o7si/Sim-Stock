@@ -66,7 +66,7 @@ function login() {
 				localStorage.removeItem('createTime');
 				localStorage.setItem('username',data.data.account.username);
 				localStorage.setItem('createTime',data.data.account.createTime);
-				window.location.href = "http://simstock.com/Project/Sim-Stock/profile.html";
+				window.location.href = "list.html";
 			}
 		},
 		error: function() {

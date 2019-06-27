@@ -3,11 +3,31 @@ window.onload = function() {
 	console.log(x);
 	getInformation();
 	showInfromation();
-	
+
 }
 
-function newPswInput(num){
-	
+function getNewPsw() {
+	var json = {
+		"token": document.cookie,
+		"oldPassword": $('#oldPsw').val(),
+		"newPassword": $('#profilePsw').val(),
+		"repeatPassword": $('#repassWord').val(),
+	}
+	return json;
+}
+
+function newPswInput() {
+	$.ajax({
+		url: "/Sim-Stock/user/account/resetPassword",
+		contentType: "application/json;charset=UTF-8",
+		data: JSON.stringify(getNewPsw()),
+		dataType: "json",
+		type: "post",
+		success: function(data) {
+			alert(data.desc);
+		},
+		error: function() {}
+	})
 }
 
 function getIninfor() {
@@ -89,7 +109,7 @@ function changeGender(gender) {
 //得到修改后的生日
 function getBirthday(birthday) {
 	var json = {
-		"token":document.cookie,
+		"token": document.cookie,
 		"field": "birthday",
 		"value": birthday,
 	};
