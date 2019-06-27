@@ -1,10 +1,9 @@
 window.onload = function() {
 	var time = setInterval(function() {
 		onRequest();
-		getWallet();
-
 	}, 1000);
-	getSingleData();
+	getWallet();
+	holdStock();
 	getHoldList();
 	changeaddCurrent();
 	changeredCurrent();
@@ -37,21 +36,21 @@ function getSingle() {
 	return json;
 }
 // 获取单只股票信息
-function getSingleData() {
-	$.ajax({
-		url: "/Sim-Stock/stock/getSingleData",
-		contentType: "application/json;charset=UTF-8",
-		data: JSON.stringify(getSingle()),
-		dataType: "json",
-		type: "post",
-		success: function(res) {
-			// 调用书写数据函数
-			trade(res);
-			simWrite(res);
-		},
-		error: function() {}
-	});
-}
+// function getSingleData() {
+// 	$.ajax({
+// 		url: "/Sim-Stock/stock/getSingleData",
+// 		contentType: "application/json;charset=UTF-8",
+// 		data: JSON.stringify(getSingle()),
+// 		dataType: "json",
+// 		type: "post",
+// 		success: function(res) {
+// 			// 调用书写数据函数
+// 			trade(res);
+// 			simWrite(res);
+// 		},
+// 		error: function() {}
+// 	});
+// }
 
 // 获取请求股票数据
 function getData() {
@@ -156,7 +155,6 @@ function drawStock(res) {
 }
 
 function setData(res) {
-	if (res.data.markets.size > 0) {
 		var arr = res.data.markets;
 		var maxValue = arr[0].postPrice;
 		var minValue = arr[0].postPrice;
@@ -173,7 +171,6 @@ function setData(res) {
 		$('#mid').text(mid.toFixed(2))
 		$('#foot').text(foot.toFixed(2))
 		$('#minvalue').text(minValue.toFixed(2))
-	}
 }
 
 function simWrite(res) {
@@ -182,7 +179,6 @@ function simWrite(res) {
 }
 
 function rightWrite(res) {
-	if (res.data.markets.size > 0) {
 		var num = (res.data.markets[0].changePrice);
 		var percent = (res.data.markets[0].percent * 100).toFixed(2) + '%'
 		if (num > 0) {
@@ -195,7 +191,6 @@ function rightWrite(res) {
 			$('#stockPercent').css('color', '#3c850f')
 			$('#changePrice').html('<i>变化值：</i>' + num.toFixed(2));
 			$('#stockPercent').html('<i>变化率：</i>' + percent)
-		}
 	}
 }
 
@@ -236,17 +231,18 @@ function getWallet() {
 // 查看钱包 获取最大购买量
 function walletCount(res) {
 	$('#myMoney em').text((res.data.wallet.balance).toFixed(2))
-	var x = manyStock((res.data.wallet.balance).toFixed(2))
-	var y = holdStock();
+	// var x = manyStock((res.data.wallet.balance).toFixed(2))
+	var x = hold;
+	var y = price;
 	if (x < y) {
 		$('#maxAdd i').text(x)
 	} else {
 		$('#maxAdd i').text(y)
 	}
-	// console.log(res)
 }
-var hold;
 
+var hold = 0;
+var price = 0;
 //  最多购买量
 function holdStock() {
 	$.ajax({
@@ -256,30 +252,14 @@ function holdStock() {
 		dataType: "json",
 		type: "post",
 		success: function(res) {
-			hold = res.data.stock.hold
-		},
-		error: function() {}
-	});
-	return hold;
-}
-
-var price = 0;
-
-// 获取最大购买量
-function manyStock(data) {
-	$.ajax({
-		url: "/Sim-Stock/stock/getSingleData",
-		contentType: "application/json;charset=UTF-8",
-		data: JSON.stringify(getSingle()),
-		dataType: "json",
-		type: "post",
-		success: function(res) {
+			console.log("tader",res)
+			hold = res.data.stock.hold;
 			price = (res.data.stock.price);
+			trade(res);
+			simWrite(res);
 		},
 		error: function() {}
 	});
-	var temp = (data / price)
-	return temp.toFixed(2);
 }
 
 // 获取个人拥有的股票数
@@ -311,6 +291,7 @@ function maxSoldWrite(res) {
 		$('#maxReduce i').text("0")
 	} else {
 		var temp = res.data.hold.number;
+		console.log(res)
 		$('#maxReduce i').text(temp)
 	}
 
@@ -429,10 +410,12 @@ function buyStock() {
 		dataType: "json",
 		type: "post",
 		success: function(res) {
-			console.log("购买成功")
+			alert("购买成功");
+			getHoldList();
+			getWallet();
 		},
 		error: function() {
-			console.log("购买失败")
+			alert("购买失败")
 		}
 	});
 	// window.location.reload()
@@ -467,10 +450,12 @@ function soldStock() {
 		dataType: "json",
 		type: "post",
 		success: function(res) {
-			console.log("售出成功")
+			alert("售出成功")
+			getHoldList();
+			getWallet();
 		},
 		error: function() {
-			console.log("售出失败")
+			alert("售出失败")
 		}
 	});
 	// window.location.reload()

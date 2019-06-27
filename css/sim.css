@@ -6,22 +6,9 @@
 	font-family: "微软雅黑";
 	font-size: 12px;
 }
-
 body {
-	width: 100%;
-	height: 100%;
 	position: relative;
 }
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-}
-
-input[type="number"] {
-	-moz-appearance: textfield;
-}
-
 
 .myNav {
 	width: 100%;
@@ -135,6 +122,7 @@ input[type="number"] {
 	border: 1px solid white;
 	box-shadow: 0 3px 5px #ccc;
 	background: white;
+	z-index: 2;
 }
 
 .navPublic ul {
@@ -142,12 +130,12 @@ input[type="number"] {
 	width: 110px;
 	height: 40px;
 }
-
 .navPublic ul li:hover {
 	background: #eee;
 }
 
 .navPublic ul li {
+	background: white;
 	cursor: pointer;
 	width: 100px;
 	height: 40px;
@@ -378,7 +366,7 @@ input[type="number"] {
 	width: 100%;
 	height: 800px;
 	position: absolute;
-	z-index: 10;
+	/* z-index: 10; */
 	top: 100px;
 	background: skyblue;
 }
