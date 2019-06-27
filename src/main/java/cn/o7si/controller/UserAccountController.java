@@ -1,11 +1,9 @@
 package cn.o7si.controller;
 
+import cn.o7si.ds.DefaultPair;
 import cn.o7si.entities.Account;
 import cn.o7si.service.IUserAccountService;
-import cn.o7si.utils.JwtUtils;
-import cn.o7si.utils.StatusCodeUtils;
-import cn.o7si.utils.TextUtils;
-import cn.o7si.utils.VerifyUtils;
+import cn.o7si.utils.*;
 import cn.o7si.vo.ResponseData;
 import com.auth0.jwt.interfaces.Claim;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +24,27 @@ public class UserAccountController {
 
     @Autowired
     private IUserAccountService userAccountService;
+
+    /**
+     * 功能：检查用户是否登录
+     *
+     * @param data 从前端接收的数据
+     * @return 响应给前端的数据
+     */
+    @RequestMapping(value = "/loginState", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseData loginState(@RequestBody Map<String, Object> data) {
+        // 验证用户登录状态
+        DefaultPair<Boolean, Integer> pair = LoginVerifyUtils.verify((String) data.get("token"));
+
+        if (pair.getFirst()) {
+            // 用户已登录
+            return new ResponseData(StatusCodeUtils.LOGGEDIN, "用户已登录");
+        } else {
+            // 用户未登录
+            return new ResponseData(StatusCodeUtils.NOTLOGGEDIN, "用户未登录");
+        }
+    }
 
     // 功能：账户是否已经存在
     @RequestMapping(value = "/exist", method = RequestMethod.POST)

@@ -14,8 +14,10 @@ public class StatusCodeUtils {
     // 缺失参数
     public static final Integer MISSPARAM = 1;
 
-    // 用户未登录，无法操作
+    // 用户未登录
     public static final Integer NOTLOGGEDIN = 100;
+    // 用户已登录
+    public static final Integer LOGGEDIN = 101;
 
     // 账户名称不存在
     public static final Integer ACCOUNTNOTEXIST = 1000;

@@ -20,6 +20,7 @@ public class HoldDaoImpl implements IHoldDao {
 
     /**
      * 增加股票持有信息
+     *
      * @param accountId 用户编号
      * @param walletId  钱包编号
      * @param stockId   股票编号
@@ -35,10 +36,11 @@ public class HoldDaoImpl implements IHoldDao {
 
     /**
      * 查询单支股票持有情况
-     * @param accountId     账户编号
-     * @param walletId      钱包编号
-     * @param stockId       股票编号
-     * @return              查询结果
+     *
+     * @param accountId 账户编号
+     * @param walletId  钱包编号
+     * @param stockId   股票编号
+     * @return 查询结果
      */
     @Override
     public Hold findHold(Integer accountId, Integer walletId, Integer stockId) {
@@ -60,8 +62,35 @@ public class HoldDaoImpl implements IHoldDao {
     }
 
     /**
+     * 查询单支股票持有情况
+     *
+     * @param stockId   股票编号
+     * @param accountId 账户编号
+     * @return 查询结果
+     */
+    @Override
+    public Hold findHold(Integer stockId, Integer accountId) {
+        // 查询数据SQL语句
+        String sql = "select * from hold where uaid=? and sid=?";
+
+        List<Hold> holds = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Hold.class), accountId, stockId);
+
+        // 如果未查询到结果
+        if (holds == null || holds.size() == 0)
+            return null;
+
+        // 如果结果集不唯一（按照设计不会出现此情况，此处只是为了增强代码的健壮性）
+        if (holds.size() > 1)
+            return null;
+
+        // 返回查询结果
+        return holds.get(0);
+    }
+
+    /**
      * 更新股票持有情况
-     * @param hold          股票持有情况
+     *
+     * @param hold 股票持有情况
      */
     @Override
     public void updateHold(Hold hold) {

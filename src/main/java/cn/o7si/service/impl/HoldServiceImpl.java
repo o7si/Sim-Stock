@@ -28,4 +28,17 @@ public class HoldServiceImpl implements IHoldService {
         List<Hold> holds = holdDao.findHoldListByUaid(accountId);
         return holds;
     }
+
+    /**
+     * 查询账户对某支股票的持有情况
+     *
+     * @param stockId   股票编号
+     * @param accountId 账户编号
+     * @return 某支股票的持有情况
+     */
+    @Override
+    public Hold findHold(Integer stockId, Integer accountId) {
+        Hold hold = holdDao.findHold(stockId, accountId);
+        return hold;
+    }
 }

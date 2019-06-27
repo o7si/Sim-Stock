@@ -1,12 +1,13 @@
 package cn.o7si.controller;
 
+import cn.o7si.ds.DefaultPair;
 import cn.o7si.entities.Hold;
 import cn.o7si.service.IHoldService;
 import cn.o7si.utils.JwtUtils;
+import cn.o7si.utils.LoginVerifyUtils;
 import cn.o7si.utils.StatusCodeUtils;
 import cn.o7si.vo.ResponseData;
 import com.auth0.jwt.interfaces.Claim;
-import jdk.nashorn.internal.ir.annotations.Immutable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -60,6 +61,48 @@ public class HoldController {
             e.printStackTrace();
             // 出现异常，查询失败
             return new ResponseData(StatusCodeUtils.GETLISTHOLDFAILURE, "股票持有列表查询失败");
+        }
+    }
+
+    /**
+     * 功能：查询某支股票的持有情况
+     *
+     * @param data 从前端接收的数据
+     * @return 响应给前端的数据
+     */
+    @RequestMapping(value = "/getHold", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseData getHold(@RequestBody Map<String, Object> data) {
+
+        // 判断用户是否登录
+        DefaultPair<Boolean, Integer> pair = LoginVerifyUtils.verify((String) data.get("token"));
+
+        // 如果用户未登录
+        if (!pair.getFirst())
+            return new ResponseData(StatusCodeUtils.NOTLOGGEDIN, "未登录");
+
+        // 获取相关数据
+        Integer stockId = (Integer) data.get("stockId");
+
+        // 缺少参数
+        if (stockId == null)
+            return new ResponseData(StatusCodeUtils.MISSPARAM, "缺少参数");
+
+        // 调用业务层进行查询
+        try {
+            // 未出现异常，查询成功
+            Hold hold = holdService.findHold(stockId, pair.getSecond());
+
+            return new ResponseData(new HashMap<String, Object>() {
+                {
+                    put("hold", hold);
+                }
+            }, StatusCodeUtils.GETSINGLEHOLDSUCCESS, "查询单支股票持有情况成功");
+        } catch (Exception e) {
+            // 异常信息
+            e.printStackTrace();
+            // 出现异常，查询失败
+            return new ResponseData(StatusCodeUtils.GETSINGLEHOLDFAILURE, "查询单支股票持有情况失败");
         }
     }
 }
