@@ -25,10 +25,12 @@ function modifyWallet(json) {
 // 修改股票持有情况
 function modifyHoldList(json) {
 	var arr = json.data.holds
-	if(arr.length < 5){
+	if(arr.length < 10){
 		for(var i = 0; i < arr.length; i ++ ) {
 			$('#stock-show').append("<div class='appendDiv' id=" + parseInt(i+1) + ">股票编号：<div class='jmpPublic' onclick='jmpSim("+ arr[i].sid +")'>" + arr[i].sid +"</div><br><div>持有数量："+ arr[i].number + "  股</div><br></div>")
-		}		
+		}
+	}else {
+			console.log("error")
 	}
 }
 

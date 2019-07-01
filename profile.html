@@ -4,6 +4,8 @@
 		<meta charset="utf-8">
 		<title>Sim-Stock</title>
 		<link href="img/3.ico" rel="SHORTCUT ICON" />
+		<link rel="stylesheet" type="text/css" href="pad-css/profile-pad.css" media="(min-width:640px) and (max-width:980px)"/>
+		<link rel="stylesheet" type="text/css" href="phone-css/profile-phone.css" media="(max-width:640px)"/>
 	</head>
 	<link rel="stylesheet" href="css/profile.css">
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
@@ -68,6 +70,18 @@
 					</div>
 				</ul>
 			</div>
+			<div class="nav-pad">
+				<img src="img/navManu.png" width="40" height="40" onmousemove="showPull()" onmouseout="hiddenPull()"/>
+			</div>
+			<div class="pull-menu" onmousemove="showPull()" onmouseout="hiddenPull()">
+				<ul>
+					<li><a href="./wallet.html">钱包</a></li>
+					<li><a href="###">通知</a></li>
+					<li><a href="###">服务</a></li>
+					<li><a href="./list.html">主页</a></li>
+					<li><a href="./profile.html">个人</a></li>
+				</ul>
+			</div>		
 		</div>
 
 		<div class="asideLeft_small" id="asideLeft_small">
@@ -111,7 +125,7 @@
 						</div>
 						<div class="publicModify nickName">暂未设置</div>
 						<div class="clickModify" id="nickName" onclick="nickNameShow()" >
-								<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+								<img src="img/modifyPen.png" width="18px" height="18px"><span onclick="removeClickModify('#nickName')">编辑</span>
 						</div>
 					</div>
 						<div class="confirm" id="nameConfirm">
@@ -125,7 +139,7 @@
 						</div>
 						<div class="publicModify gender" >保密</div>
 						<div class="clickModify"  id="gender" onclick="genderShow()">
-							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+							<img src="img/modifyPen.png" width="18px" height="18px"><span onclick="removeClickModify('#gender')">编辑</span>
 						</div>
 					</div>
 					<div class="confirm" id="genderConfirm">
@@ -139,7 +153,7 @@
 						</div>
 						<div class="publicModify birthday">暂时</div>
 						<div class="clickModify" id="birthday" onclick="birthdayShow()">
-							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+							<img src="img/modifyPen.png" width="18px" height="18px"><span onclick="removeClickModify('#birthday')">编辑</span>
 						</div>
 					</div>
 					<div class="confirm" id="birthdayConfirm">
@@ -153,7 +167,7 @@
 						</div>
 						<div class="publicModify address"></div>
 						<div class="clickModify" id="address" onclick="addressShow()">
-							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+							<img src="img/modifyPen.png" width="18px" height="18px"><span onclick="removeClickModify('#address')">编辑</span>
 						</div>
 					</div>
 					<div class="confirm" id="addressConfirm">
@@ -167,7 +181,7 @@
 						</div>
 						<div class="publicModify occupation"></div>
 						<div class="clickModify" id="occupation" onclick="occupationShow()">
-							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+							<img src="img/modifyPen.png" width="18px" height="18px"><span onclick="removeClickModify('#occupation')">编辑</span>
 						</div>
 					</div>
 					<div class="confirm" id="occupationConfirm">
@@ -179,20 +193,28 @@
 						<div class="profileFont">
 							电话：
 						</div>
-						<div class="publicModify phone">暂未绑定手机号</div>
-						<div class="clickModify" id="phone">
+						<div class="publicModify phone"></div>
+						<div class="clickModify" id="phone"">
 							<img src="img/bind.png" width="18px" height="18px"><span>去绑定</span>
 						</div>
+					</div>
+					<div class="confirm" id="phoneConfirm">
+						<div class="trueConfirm">保存</div>
+						<div class="falseConfirm">取消</div>
 					</div>
 					
 					<div class="profileInformation" id="emailprofile">
 						<div class="profileFont">
-							邮件：
+							邮箱：
 						</div>
-						<div class="publicModify email">暂未绑定邮箱</div>
-						<div class="clickModify" id="email">
+						<div class="publicModify email"></div>
+						<div class="clickModify" id="email"">
 							<img src="img/bind.png" width="18px" height="18px"><span>去绑定</span>
 						</div>
+					</div>
+					<div class="confirm" id="emailConfirm">
+						<div class="trueConfirm">保存</div>
+						<div class="falseConfirm">取消</div>
 					</div>
 					
 					<div class="profileInformation" id="profileprofile">
@@ -201,7 +223,7 @@
 						</div>
 						<div class="publicModify profile"></div>
 						<div class="clickModify" id="profile" onclick="profileShow()">
-							<img src="img/modifyPen.png" width="18px" height="18px"><span>编辑</span>
+							<img src="img/modifyPen.png" width="18px" height="18px"><span onclick="removeClickModify('#profile')">编辑</span>
 						</div>
 					</div>
 					<div class="profileconfirm" id="profileConfirm">

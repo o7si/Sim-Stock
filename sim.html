@@ -5,6 +5,8 @@
 		<title></title>
 	</head>
 	<link rel="stylesheet" type="text/css" href="css/sim.css" />
+	<link rel="stylesheet" type="text/css" href="pad-css/sim-pad.css" media="(min-width:640px) and (max-width:980px)"/>
+	<link rel="stylesheet" type="text/css" href="phone-css/sim-phone.css" media="(max-width:640px)"/>
 	<script src="js/sim.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<body>
@@ -66,14 +68,18 @@
 				</ul>
 			</div>
 		</div>
-		<!-- 支付密码 -->
-<!-- 		<div class="alertPassword">
-			<div class="pswInput">
-				<input type="password" id="sixPsw" maxlength="6" minlength="6" aria-required="true" autocomplete="off" required="required"/>
+			<div class="nav-pad">
+				<img src="img/navManu.png" width="40" height="40" onmousemove="showPull()" onmouseout="hiddenPull()"/>
 			</div>
+			<div class="pull-menu" onmousemove="showPull()" onmouseout="hiddenPull()">
+				<ul>
+					<li><a href="./wallet.html">钱包</a></li>
+					<li><a href="###">通知</a></li>
+					<li><a href="###">服务</a></li>
+					<li><a href="./list.html">主页</a></li>
+					<li><a href="./profile.html">个人</a></li>
+				</ul>
 			</div>
-		</div> -->
-		
 		<div class="left">
 			<span id="stockName"></span>
 			<span id="stockTime"></span>
@@ -87,7 +93,7 @@
 				<li id="foot"></li>
 				<li id="minvalue"></li>
 			</ul>
-			<canvas id="canvas" width="1000" height="600"></canvas>
+			<canvas id="canvas"></canvas>
 		</div>
 		<div class="right">
 			<div class="top">
